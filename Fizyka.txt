@@ -152,20 +152,48 @@ zmiana 1/R(T)   b.spada      rośnie       rośnie            rośnie
 
 
 7. Optyka
+        Normalna
+            ↓
+prom.   →\ϕ1|ϕ1/←prom.
+ padajacy \ | / odbity
+    ------------------ ← lustro
+            |\
+            |ϕ2\ ←prom.załamany
 
     Prawo odbicia Snella:               n1*sinϕ1 = n2*sinϕ2
     Współczynnik załamania:             n = c/v
-
+    
+    Dyspercja - podzielenie światła wielobarwnego (np. w pryzmacie), ze względu na różną prędkość różnych barw
+        większa prędkości = mniejszy kąt załamania
 
     Dla pojedynczej szczeliny:          
         warunek na maksimum:            d*sinϕ = (m+1/2)λ       gdzie m = {1, 2, ...}
         warunek na minimum:             d*sinϕ = mλ
+
+        d   |       \|
+        ↓   |       /|
+          =>      /  |
+          =>      \  |
+        ↑   |       \|
+        d   |       /|
     
     Dla doświadczenia Younga (dwie szczeliny):
         warunek na maksimum:            d*sinϕ = nλ             gdzie n = {0, 1, 2,...}
-        warunek na minimum:            d*sinϕ = (n + 1/2)λ
+        warunek na minimum:             d*sinϕ = (n + 1/2)λ
+
+        d   |       \|
+        ↓   |       /|
+          =>        \|
+            |       /|      <- n = 0
+            |       \|      <- n = 0
+          =>        /|
+        ↑   |       \|
+        d   |       /|
+
+
 
     Zdolność rozdzielcza siatki dyfrakcyjnej: R = λ/Δλ gdzie: λ - średnia długość fali, 
+    Stała siatki dyfrakcyjnej:          d = s/liczba rys [m]
 
 
 
@@ -214,7 +242,7 @@ zmiana 1/R(T)   b.spada      rośnie       rośnie            rośnie
 
 9. Równania Schrodingera
 
-    Funkcja falowa:                      Ψ(x, t) = Ae^(i(kx-ωt)) = A(cos(ks) - i*sin(ωt))
+    Funkcja falowa:                     Ψ(x, t) = Ae^(i(kx-ωt)) = A(cos(ks) - i*sin(ωt))
     Energia całkowita (dla małych prędkości): E = hv = hω/2π = ℏω
     Energia całkowita:                  E = ℏ²k²/2m
     Częstość falowa:                    ω = ℏk²/2m
