@@ -1,0 +1,238 @@
+0. Appendix to force:
+    Siła dośrodkowa:                    F = m*v²/R
+    Przyspieszenie dośrodkowe           a_r = V²/R
+
+    Częstość kątowa:                    ω = 2πf
+    liczba falowa:                      k = 2π/λ
+
+
+    OPERATORY:
+        pole SKALARNE: grad φ = i*dφ/dx + j*dφ/dy + k*dφ/dz = wektor
+        pole WEKTOROWE: div wekt(A) = dA_x/dx + dA_y/dy + dA_z/dz = skalar
+                                        
+                                        |  i    j    k   |
+        pole WEKTOROWE: rot wekt(A) =   | d/dx d/dy d/dz |
+                                        | A_x  A_y A_z   |
+
+
+
+1. Elektrostatyka:
+
+    Siła Coulomba:                      F = k*Qq/r²
+    Stała elektrostatyczna:             k = 1/(4π*ε_0) ≈ 8.99*10^9 Nm²/C²
+
+
+
+2. Prąd stały:
+
+    Natężenie prądu:                    i = q/t
+    Gęstość prądu:                      j = i/S
+    Koncentracja ładunku:               n = j/(e*v_u)
+    Prędkość dryfu (unoszenia):         v_u = j/ne
+    Ruchliwość elektronu:               µ = v_u/E
+
+    Prawo Ohma:                         I = U/R
+                                        R = ρ*l/S <- gdzie ρ - oporność właściwa
+
+    Praca źródła napięcia:              E = dW/dq [Volt]
+    Energia termiczna:                  E_term = i²*R*dt 
+
+    Energia zgromadzona na C:           W_c = 1/2*q²/C
+
+
+
+Nośniki ładunku:
+    Nośniki:    e swob.     e, jony+    jony + i -         półprzew.
+    skąd:         są        jonizacja   dysocjacja      wzbudzenie term
+zmiana n(T):     brak        rośnie       rośnie            rośnie
+zmiana µ(T):   b.spada      spada        spada             spada
+zmiana 1/R(T)   b.spada      rośnie       rośnie            rośnie
+
+
+
+3. Pole magnetyczne
+
+    Zasada prawej dłoni:
+            I ↑
+            B • → F
+
+    Przenikalność magnetyczna:          µ_0 = 4π*10^-7 [Tm/A]
+
+    Siła Lorentza:                      F_L = q(v×B) = I(l×B)
+    Siła elektromotoryczna:             E = ∫Fdl
+    Natężenie pola Elektrycznego:       E = k*|Q|/r²
+    Potencjał pola Elektrycznego:       V = kQ/r
+    Siła pola elektrycznego:            F_E = qE, gdzie E - natężenie pola Elektrycznego! 
+    Energia cząstki elektrycznej:       E = qU (albo eU [elektronoWolt])
+
+    Prawo Gaussa:                       ∮EdS = q_wew/ε_0 - pole elektryczne
+                                        ∮BdS = 0
+                                        ∮y(r)dS = -4πGm
+
+    Moment magnetyczny:                 µ = NI×S
+                                        gdzie:  N - liczba zwojów,
+                                                I - prąd płynący przez zwojnicę
+                                                S - pole powierzchni  
+
+    Energia potencjalna dipola mag.:E_p = -µ•B
+    Energia potencjalna dipola ele.:E_p = -p•E
+
+    Cyklotron!
+        qvB = mv²/r => r = mv/qB
+        ω = qB/m => f = qB/2πm
+        v = qBr/m
+
+    Prawo Ampera:                       ∮Bdl = µI - wirowe pole magnetyczne wywołuje przepływ prądu elektrycznego!
+    Uogólnione prawo Apera:             ∮Bdl = µi + µε*dΦ/dt
+    Prawo Biota-Savarta                 dB = µ_0/4π * dl×r/r^3
+
+
+
+4. Indukcja
+
+    Prawo indukcji Faraday'a:           ε = -dΦ_B/dt = ∮E•dl
+    Strumień pola magnetycznego:        Φ_B = ∫B•dS
+
+    Indukcja:                           L = µN²*S/l
+                                        B = µi*N/l
+                                        Φ_B = Li
+                                        E = -L*di/dt
+    
+
+
+5. Równania Maxwella
+
+    Prawo:              całkowa                 różniczkowa             dla próżni
+    
+    Gauss dla           ∮Eds = q/ε              divE = ρ/ε              divE = 0
+    elektrostatyki
+
+    Gaussa dla           ∮BdS = 0                divB = 0                divB = 0
+    magnetyczne
+
+    Ampera              ∮Bdl = µ(i+ε*dΦ/dt)     rotB = µ(j+ε*dE/dt)     rotB = µε*dE/dt
+
+    Faraday              ∮Edl = -dΦ_B/dt         rotE = -dB/dt           rotE = -dB/dt
+
+
+
+6. Fala elektromagnetyczna
+    
+    Szybkość przepływu energii Przez powierzchnię:
+                                        S = 1/µ E×B <- wektor Poyntigna
+
+
+    Równanie fali:
+                                        E(x, t) = E_m*cos(ωt-kx) 
+                                        B(x, t) = B_m*cos(ωt-kx)
+                                        wartość E jest prostopadła do B
+
+                                        1/c² = µε
+                                        c = E/B
+
+    Równania falowe (dla próżni):   
+                                        ∇²E = µε*d²E/dt²
+                                        ∇²B = µε*d²B/dt²
+        gdzie ∇² - laplasjan  = d²/dx² + d²/dy² + d²/dz²
+    
+    Bezwzględny współczynnik załamania: n = c/v = sqrt(µ_r*ε_r)
+    
+    Szybkość przepływu energii:         S = 1/µ*E×B [J/sm^2]
+    Średnia v przepływu energii:        S_śr = εcE_śr²
+        dla sinusa:                     S_śr = 1/2*εcE_0² = 1/2*c/µ*B_0² = E_0*B_0/2µ
+
+    Energia fali elektromagnetycznej:   dW = (uE + uB)A*dx    
+        Gęstość energii pola E:         uE = εE²/2
+        Gęstość energii pola B:         uB = B²/2µ
+
+    Zakres światła widzialnego:         (400-750)nm
+        światła fioletowe:              λ~400nm
+        światła czerwone:               λ~750nm
+
+
+
+7. Optyka
+
+    Prawo odbicia Snella:               n1*sinϕ1 = n2*sinϕ2
+    Współczynnik załamania:             n = c/v
+
+
+    Dla pojedynczej szczeliny:          
+        warunek na maksimum:            d*sinϕ = (m+1/2)λ       gdzie m = {1, 2, ...}
+        warunek na minimum:             d*sinϕ = mλ
+    
+    Dla doświadczenia Younga (dwie szczeliny):
+        warunek na maksimum:            d*sinϕ = nλ             gdzie n = {0, 1, 2,...}
+        warunek na minimum:            d*sinϕ = (n + 1/2)λ
+
+    Zdolność rozdzielcza siatki dyfrakcyjnej: R = λ/Δλ gdzie: λ - średnia długość fali, 
+
+
+
+8. Elementy fizyki współczesnej
+
+    Stała Plancka:                      h = 6.62*10^-34 [kg*m²/s]
+    Zredukowana stała Plancka:          ℏ = h/2π
+
+    Całkowita intensywność promieniowania: u_tot = σT^4
+    Stała Stefana-Boltzmanna:           σ = 5.68*10^-8[W/(m²K^4)]
+    Prawo przesunięć Wiena:             λmax*T = 2.9*10^-3 [mK]
+    Moc emitowana:                      P = u_tot*S
+
+    Energia cząstki:                    E = hv = hc/λ
+    Pęd cząstki:                        p = E/c = h/λ
+    
+    Energia fotonu:                     E_f = W + E_k = hv = hc/λ
+                                            gdzie:  W - praca wyjścia,
+                                                    h - stała Plancka
+                                                    v - prędkość fali
+    Długość graniczna fali:             λgr = hc/W - jest to minimalna długość fali  przy której występuje zjawisko fotoelektryczne
+
+
+    Zasada zachowania energii:          hc/λ+mc² = mc²/sqrt(1-(v/c)²1) + hc/λ'
+    Zasada zachowania pędu dla OX:      h/λ = mv/sqrt(1-(v/c)²)*cosΦ + h/λ'*cosΦ
+    Zasada zachowania pędu dla OY:      0 = mv/sqrt(1-(v/c)²)*sinΦ + h/λ'*sinΦ
+    Przesunięcie Comptonba:             Δλ = λ' - λ = h/mc*(1-cosΦ)
+
+
+    Funkcja falowa fotonu:               Ψ(x, t) = Asin(2π(x/λ-vt)) = Asin(kx-ωt) = Asin(1/ℏ*(px-Et))
+    Zasada nieoznaczoności Heisenberga: ΔpΔx ≥ ℏ/2
+                                        ΔEΔt ≥ ℏ/2
+
+
+9. Atom
+
+    Moment pędu atomu Bohra:            L = ℏ*n
+    Promień atomu Bohra:                r = 52.92*n² [pm] -> n - numer orbity
+    Energia atomu Bohra:                En = 13.6/n² [eV]
+    Prędkość atomu Bohra:               v ~ 1/n
+
+    Długość emitowanej fali przy przejściu: 1/λ = R_H(1/n²-1/m²) -> n < m
+    Stała Rydberga (at. wodoru):        R_H = 1.097*10^7 [1/m]
+
+
+
+9. Równania Schrodingera
+
+    Funkcja falowa:                      Ψ(x, t) = Ae^(i(kx-ωt)) = A(cos(ks) - i*sin(ωt))
+    Energia całkowita (dla małych prędkości): E = hv = hω/2π = ℏω
+    Energia całkowita:                  E = ℏ²k²/2m
+    Częstość falowa:                    ω = ℏk²/2m
+    
+    Uogólnione równanie Schrodingera (cząstki o stałej energii):
+                                        -ℏ²/2m*d²Ψ(x, t)/dx² = iℏ*dΨ(x, t)/dt
+
+    Uogólnione równanie Schrodingera (dla cząstki poruszającej się w potencjale V(x)):
+                                        -ℏ²/2m*d²Ψ(x, t)/dx² + V(x)Ψ(x, t) = iℏ*dΨ(x, t)/dt
+
+    Rozwiązania r.Schrodingera:         Ψ(x) = Ae^(i*sqrt(2mE/ℏ²)x) + Be^(-i*sqrt(2mE/ℏ²)x)
+
+
+10. Studnie i bariery potencjałów
+
+    Energia elektronu:                  E_n = ℏ²/2m(πn/L)²  - n numer powłoki elektronowej,
+
+    Najmniejsze wartości dla n = 1:
+         Energia:                       E_1 = ℏ²π²/2mL
+         Pęd:                           p_1 = sqrt(2mE_1) = ℏπ/L
+        
