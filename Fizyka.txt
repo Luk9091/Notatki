@@ -204,6 +204,7 @@ prom.   →\ϕ1|ϕ1/←prom.
 
     Całkowita intensywność promieniowania: u_tot = σT^4
     Stała Stefana-Boltzmanna:           σ = 5.68*10^-8[W/(m²K^4)]
+    
     Prawo przesunięć Wiena:             λmax*T = 2.9*10^-3 [mK]
     Moc emitowana:                      P = u_tot*S
 
