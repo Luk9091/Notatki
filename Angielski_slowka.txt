@@ -1,0 +1,9 @@
+English to English:
+	In the near future		=	soon
+	Further information		=	move information
+	Provide					=	give
+	Occupation				=	job
+	Cancel					=	call off
+	Due to					=	because of
+	Request					=	ask for
+	Write on behalf of sb	=	writre for sb
