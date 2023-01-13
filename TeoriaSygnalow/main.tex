@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+\usepackage{anyfontsize}
+\usepackage[margin =2cm]{geometry}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\titlelabel{\thetitle.\quad} 
+\usepackage{tabto}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{mathtools}
+
+\usepackage{csvsimple}
+\usepackage{pgfplots}
+
+\usepackage[european, americanvoltages, RPvoltages]{circuitikz}
+\usepackage{tikz}
+
+\title{\underline{Wzory, równania i zależności}\\\textbf{z teorii sygnałów}}
+\author{Łukasz Przystupa}
+\date{\today}
+\pgfplotsset{compat=1.18}
+
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+
+\DeclareMathOperator{\FT}{\xleftrightarrow[\text{ICFT}]{\text{CFT}}}
+\DeclareMathOperator{\CFT}{\xleftrightarrow[]{\text{CFT}}}
+\DeclareMathOperator{\ICFT}{\xleftrightarrow[\text{ICFT}]{}}
+
+\begin{document}
+
+    \maketitle
+    całość opara na wykładach Kohorty.
+    \newpage
+
+    \input{Chapters/wzory.tex}
+    \input{Chapters/transformaty.tex}
+    \input{Chapters/sygnalyPodstawowe.tex}
+    \input{Chapters/sygnalyOkresowe.tex}
+    \input{Chapters/sygnalJakoWektor.tex}
+    \input{Chapters/calkaPochodnaTransformat.tex}
+
+\end{document}

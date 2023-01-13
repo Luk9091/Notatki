@@ -1,0 +1,153 @@
+\section{Sygnał jako wektor}
+    Iloczyn skalarny:
+    \begin{equation*}
+        <x, y> = \int\limits_{D} x(t) \cdot \overline{y(t)} dt
+    \end{equation*}
+    Norma (długość wektora):
+    \begin{equation*}
+        ||x(t)||^2 = <x(t), x(t)>
+    \end{equation*}
+    Metryka (odległość sygnałów):
+    \begin{equation*}
+        \rho(x,y) = ||x-t|| = \sqrt{<x(t)-y(t), x(t)-y(t)>}
+    \end{equation*}
+
+    Energia sygnału:
+    \begin{equation*}
+        Energia(x(t)) = ||X(t)||^2_{L^2} = \int\limits_D |x(t)|^2dt
+    \end{equation*}
+
+    Wektory są orogonalne (czyli prostopadłem względem siebie (czyli liniowo niezależne)) jeśli:
+    \begin{equation*}
+        <x(t), y(t)> = ||x(t)|| \cdot ||y(t)|| \cdot cos(\alpha) = 0 \Leftrightarrow x\perp y
+    \end{equation*}
+
+
+    \subsection{Twierdzenie Persevala - o zachowaniu energii}
+        \begin{gather*}
+            \int\limits^{+\infty}_{-\infty}|x(t)|^2 dt\ = \int\limits^{+\infty}_{-\infty}|X(f)|^2df
+        \end{gather*}
+    \subsection{Twierdzenie o zachowaniu odległości}
+        Jeżeli:
+        \begin{gather*}
+            x(t)\circ y(t) \FT X(f)\circ Y(f)
+        \end{gather*}
+        to:
+        \begin{gather*}
+            ||x(t) - y(t)|| = ||X(f) - Y(f)||
+        \end{gather*}
+
+\section{Aproksymacja syngału}
+    Aproksymacją sygnału $x(t)$ jest:
+    \begin{equation*}
+        x(t) \approx \sum_{n=1}^{N}a_nb_n(t)
+    \end{equation*}
+    czyli:
+    \begin{align*}
+        x(t)  \textbf{+}e(t) = \sum_{n=1}^{N}a_n\cdot b_n(t)\\
+        x(t) = \sum_{n=1}^{N}a_n\cdot b_n-e(t)
+    \end{align*}
+    gdzie współczynniki $a$ i $b$ odpowiadaja macioerzom:
+    \begin{align*}
+        b = A \cdot a\\
+        % 
+        b = \left[\begin{array}{c}
+            x\circ b_1\\
+            x\circ b_2\\
+            x\circ b_3\\
+            ...\\
+            x\circ b_N
+        \end{array}\right] &&
+        A = \left[\begin{array}{c c c c}
+            b_1\circ b_1 & b_2\circ b_1 & ... & b_N\circ b_1\\
+            b_1\circ b_2 & b_2\circ b_2 & ... & b_N\circ b_2\\
+            b_1\circ b_3 & b_2\circ b_3 & ... & b_N\circ b_3\\
+            ...          & ...          & ... & ...\\
+            b_1\circ b_N & b_2\circ b_N & ... & b_N\circ b_N
+        \end{array}\right] &&
+        a = \left[\begin{array}{c}
+            a_1\\
+            a_2\\
+            a_3\\
+            ...\\
+            a_N
+        \end{array}\right]
+    \end{align*}
+
+    W gdyby wektorty byłyby ortogonalne, całość sprowadza się do prostego równania:
+    \begin{align*}
+        a_k = \frac{x\circ b_k}{||b_k||^2} && k = 1, 2, ..., N
+    \end{align*}
+
+    Kiedy nasze wektory są znormalizowane to:
+    \begin{align*}
+        ||b_k||^2 = 1\\
+        a_k = x\circ b_k  && k = 1, 2, ..., N
+    \end{align*}
+    
+\section{Baza Harra (ortonormalna)}
+    \begin{align*}
+        H_{0,0}(t) = \Pi(t-0.5) && D: t\in <0, 1>\\
+        H_{0,1} = \Pi(2\cot(t-0.25))-\Pi(2\cdot(t-0.75))\\
+        H_{k,m} = 2^{\frac{k}{2}}\cdot H(2^k\cdot (t-\frac{m-1}{2^k})) && m = 1, 2, ..., 2^k
+    \end{align*}
+
+    \begin{multicols}{2}
+        \begin{tikzpicture}
+            \begin{axis}[
+                width =0.5\textwidth,
+                xmajorgrids = true,
+                ymajorgrids = true,
+                legend style={at={(0.85, 0.25)},anchor=north,legend cell align=south east},
+                axis lines=middle,
+                axis line style={->},
+                xmax = 0.5,
+                ymin = 0,
+                ymax = 4,
+                ymin = -4
+            ]
+                \addplot[red, thick, mark=none, const plot] coordinates 
+                {(0,0) (0, 2.82) (0.0625,2.82) (0.0625, -2.82) (0.125, -2.82) (0.125, 2.82) (0.1875, 2.82) (0.1875, -2.82) (0.25, -2.82) (0.25, 2.82) (0.3125, 2.82) (0.3125, -2.82) (0.375, -2.82) (0.375, 2.82) (0.4375, 2.82) (0.4375, -2.82) (0.5, -2.82) (0.5, 0)};
+            \end{axis}
+        \end{tikzpicture}
+
+        Czyli kolejne sygnały bazy:
+        \begin{gather*}
+            b_1(t) = H_{0,0}(t)\\
+            b_2(t) = H_{0,1}(t)\\
+            b_3(t) = H_{1,1}(t)\\
+            b_4(t) = H_{1,2}(t)\\
+            b_5(t) = H_{2,1}(t)\\
+            b_6(t) = H_{2,2}(t)\\
+            ...
+        \end{gather*}
+    \end{multicols}
+
+\section{Baza Walsha}
+    \begin{align*}
+        W_{0, 0}(t) = \Pi(t-0.5) && D: t\in<0, 1>\\
+        W_{0, 1}(t) = W_{0, 0}(2t)+(-1)^1\cdot W_{0, 0}(2\cdot(t-0.5))\\\\
+        W_{k, 2m-1}(t) = W_{k-1, m}(2t)+(-1)^{m-1}\cdot W_{k-1, m}(2\cdot(t-0.5)) && dla\ k > 1\\
+        W_{k, 2m}(t)   = W_{k-1, m}(2t)+(-1)^{m}  \cdot W_{k-1, m}(2\cdot(t-0.5)) && dla\ k > 1
+    \end{align*}
+
+    \begin{multicols}{2}
+        \begin{tikzpicture}
+            \begin{axis}[
+                width =0.5\textwidth,
+                xmajorgrids = true,
+                ymajorgrids = true,
+                legend style={at={(0.85, 0.25)},anchor=north,legend cell align=south east},
+                axis lines=middle,
+                axis line style={->},
+                xmax = 0.5,
+                ymin = 0,
+                ymax = 1.25,
+                ymin = -1.25
+            ]
+                % \addplot[red, thick, mark=none, const plot] coordinates 
+                % {(0, 0)};
+            \end{axis}
+        \end{tikzpicture}
+        
+    \end{multicols}

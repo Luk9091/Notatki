@@ -1,0 +1,384 @@
+\documentclass[16pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage{polski}
+\usepackage{amsmath}
+\usepackage{listings}
+
+\author{Łukasz Przystupa}
+\title{Zrzut z wykładów z Kohordy... \\tego jebanego debila.}
+\date{}
+
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+
+\begin{document}
+    \maketitle
+    \newpage
+    \section{Podstawowe komendy}
+        \paragraph*{Czyszczenie:}
+            clc $\Rightarrow$ wyczyść terminal,\\
+            clear $\Rightarrow$ wyczyść zawartość ramu (Usuwa, zapisane wartości zmiennych)\\
+            close all $\Rightarrow$ zamyka wszystkie otwarte wykresy.
+
+        \paragraph*{Operator działania na skalarach}
+            Działanie wykonywane jest element po elemencie.
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 2 & 3
+                \end{bmatrix}
+                \textbf{$.$}+1 \Rightarrow
+                \begin{bmatrix}
+                    1 & 2 & 3
+                \end{bmatrix}
+                +
+                \begin{bmatrix}
+                    1 & 1 & 1
+                \end{bmatrix}
+                \equiv
+                \begin{bmatrix}
+                    2 & 3 & 4
+                \end{bmatrix}
+            \end{equation*}
+
+        \paragraph*{Pobieranie jednego elementu z macierzy}
+            $A(y, x)$\footnote{\textbf{Numeracja indexów zaczyna się od 1!}}
+            \begin{equation*}
+                \begin{bmatrix}
+                    1.1 & 1.2\\
+                    2.1 & 2.2
+                \end{bmatrix}
+                (1, 2) \Rightarrow 1.2
+            \end{equation*}
+
+            Można także pobrać całą kolumnę lub wiersz!\\
+            $A(y, :) \leftarrow$ pobierz wiersz 'y'\\
+            $A(:, x) \leftarrow$ pobierz kolumnę 'x'\\
+            
+
+
+        \paragraph*{Postaw wektor do pionu $\vec{a}(:)$}
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 2 & 3
+                \end{bmatrix}
+                (:) \Rightarrow
+                \begin{bmatrix}
+                    1 \\ 2 \\ 3
+                \end{bmatrix}
+            \end{equation*}
+
+        \paragraph*{Transpozycja $\vec{a}'$}
+            \begin{equation*}
+                \begin{bmatrix}
+                    1 & 2 & 3\\
+                    4 & 5 & 6\\ 
+                \end{bmatrix}
+                ' \Rightarrow
+                \begin{bmatrix}
+                    1 & 4\\
+                    2 & 5\\
+                    3 & 5
+                \end{bmatrix}
+            \end{equation*}
+
+            \textbf{UWAGA} transpozycja zmienia także liczbę urojoną na jej sprzężenie:
+            \begin{equation*}
+                (1+2i)' \Rightarrow 1-2i
+            \end{equation*}
+            \begin{equation*}
+                \begin{bmatrix}
+                    1+2i & 3+4i\\
+                    5+6i & 7+8i\\
+                \end{bmatrix}
+                \textbf{$'$}\Rightarrow
+                \begin{bmatrix}
+                    1-2i & 5-6j\\
+                    3-4i & 7-8i
+                \end{bmatrix}
+            \end{equation*}
+
+            Aby tego uniknąć należy zapisać transpozycję z kropką! Wtedy zostanie wykonana tylko transpozycja macierzy bez zmiany znaku części urojonej.
+            \begin{equation*}
+                \begin{bmatrix}
+                    1+2i & 3+4i\\
+                    5+6i & 7+8i\\
+                \end{bmatrix}
+                \textbf{$.'$}\Rightarrow
+                \begin{bmatrix}
+                    1+2i & 5+6j\\
+                    3-4i & 7+8i
+                \end{bmatrix}
+            \end{equation*}
+
+        \paragraph*{Generowanie macierzy}
+            \begin{equation*}
+                A= ones(2)
+                \Rightarrow
+                \begin{bmatrix}
+                    1 & 1\\
+                    1 & 1\\
+                \end{bmatrix}
+            \end{equation*}
+            \begin{equation*}
+                B= rand(1, 2)
+                \Rightarrow
+                \begin{bmatrix}
+                    0\div 1 & 0\div 1
+                \end{bmatrix}
+            \end{equation*}
+            \begin{equation*}
+                C= zeros(2, 1)
+                \Rightarrow
+                \begin{bmatrix}
+                    0 \\
+                    0
+                \end{bmatrix}
+            \end{equation*}
+            \begin{equation*}
+                D= eye(3) \Rightarrow
+                \begin{bmatrix}
+                    1 & 0 & 0\\
+                    0 & 1 & 0\\
+                    0 & 0 & 1
+                \end{bmatrix}
+            \end{equation*}
+    
+
+    \section{Matematyka}
+        \paragraph*{Pierwiastek n-tego stopnia liczby rzeczywistej}
+            \begin{equation*}
+                nthroot(x, n) = \sqrt[n]{x}    
+            \end{equation*}
+            
+        \subsection*{Liczby zespolone}
+            \begin{multline*}
+                \\\vec{a}= x+yi\\
+                abs(\vec{a})= a\\
+                real(\vec{a})= x\\
+                imag(\vec{a})= y\\
+                conj(\vec{a})= x-yi\\
+                angle(\vec{a})= \phi\\
+            \end{multline*}
+            Dodatkowo mamay jeszcze możliwość wyliczenia konta za pomocą arctg, jednak należy pamiętać że zwraca on wartości nalerzące tylko do pierwszej i trzeciej ćwiartki.
+            Aby zwrócić pełen kont należy urzyć \textbf{atan2(x/y)}
+
+        \subsection*{Wielomiany}
+            Definicja wielomianu:
+                \begin{equation*}
+                    a= [1, -2, 0.5]
+                \end{equation*}
+            Wielomiany tworzymy w postaci macierzy współczynników.
+            Tak podaną macierzy współczynników podajemy do funkcji:
+            \begin{equation*}
+                x= -5:5;
+                y= polyval(a, x)
+            \end{equation*}
+            mając wartości wielomianu, możemy dopasować współczynniki
+            \begin{equation*}
+                a= polyfit(x, y, n)
+            \end{equation*}
+            możemy też mając pierwiastki wielomianu stworzyć wektor współczynników
+            \begin{equation*}
+                r= 
+                \begin{bmatrix}
+                   \sqrt{2}\\ 
+                   \sqrt{2}\\ 
+                \end{bmatrix}\\
+            \end{equation*}
+            \begin{equation*}
+                a= poly(r) \Rightarrow a= [1, 0, -2]
+            \end{equation*}
+            natomiast pierwiaski same w sobie możemy uzyskać poprzez
+            \begin{equation*}
+                r= roots(a)
+            \end{equation*}
+            lub
+            \begin{equation*}
+                r= roots(polyfit(x, y, n))
+            \end{equation*}
+
+        \paragraph*{Mnoiżenie i dzielenie wielomianów.\\}
+            Mnożenie:
+            \begin{equation*}
+                u= [1, 0, 1]
+            \end{equation*}
+            \begin{equation*}
+                v= [2, 7]
+            \end{equation*}
+            \begin{equation*}
+                w= conv(u, v)
+                \Rightarrow
+                w= [2, 7, 2, 7]
+            \end{equation*}
+            Dzielenie:
+            \begin{equation*}
+                u= [2, 4, 4, 9]
+            \end{equation*}
+            \begin{equation*}
+                v= [1, 0, 1]
+            \end{equation*}
+            \begin{equation*}
+                [w, r]= deconv(u, v)
+                \Rightarrow
+                w= [2, 7], q= [0, 0, 2, 2]
+            \end{equation*}
+
+            \subsection*{Iloczyn skalarny wg. tego debila}
+                \paragraph*{Funkcja tego debila:} \footnote{NIECH WAS BÓG BRONI PRZED UŻYWANIEM WBUDOWANEJ FUKNCJI $dot(y, x)$. JEST TO ILOCZYN SKALARNY, WYNIK BEDZIE IDENTYCZNY ALE TEN DEBIL UWAŻA, ŻE TO ZŁO! I W OGÓLE NIE DZIAŁA!}
+                \begin{lstlisting}
+                    function a= il_sk(x, y, dt)
+
+                    xy= x*conj(y);
+                    a=(sum(xy(2:end-1))+(xy(1)+xy(end))/2)*dt;
+                    % w rzeczywistosci pownnismy brac czesc rzeczywista z 'a'...
+                    % ale ze to kod tego debila to nie moze dzialac...
+                    % i spelniac tego co ma w prezce
+                \end{lstlisting}
+
+                \paragraph*{Definicja iloczynu skalarnego\\}
+                \begin{enumerate}
+                    \item \textbf{Iloczyn skalarny jest przemienny, ale tylko gdy L=R}
+                    \begin{equation*}
+                        <x|y> = \overline{<y|x>} 
+                    \end{equation*}
+                    \item \textbf{Iloczyn skalarny jest liniowy}
+                    \begin{equation*}
+                        <a \otimes b \oplus y | z> = a\cdot<x|z> + b\cdot<y|z>\footnote{$\otimes - iloczyn wektorowy, \oplus - suma wektorowa$}
+                    \end{equation*}
+                    \item \textbf{Iloczyn skalarny wektora $\vec{x}$ "ze samym sobą" daje:}
+                    \begin{equation*}
+                        <x|x>\prec 0
+                    \end{equation*}
+                \end{enumerate}
+
+                \paragraph*{Iloczyn skalarny, norma, metryka\\}
+                \begin{itemize}
+                    \item Iloczyn skalarny $<a|b>$ 
+                    \item Norma $\|x\| = \sqrt{<x|x>}$ $\leftarrow$ długość wektora x
+                    \item Metryka $p(x, y) = \|x-y\|$ $\leftarrow$ różnica norm
+                \end{itemize}
+
+    \section{Wykresy}
+        \begin{lstlisting}
+        % code
+            % Nalezy pamietac o popierdolonej tabulaturze...
+            figure("numer okienka")
+                plot(x, y, "b.-") grid on; hold on;
+        \end{lstlisting}
+
+        \paragraph*{Pod wykresy:}
+            \begin{lstlisting}
+                subplot(y, x, pos)
+                    plot(x, y)
+                subplot(y, x, pos+1)
+                    plot(x, y)
+            \end{lstlisting}
+        \subsection*{Rodzaje wykresów}
+            \begin{itemize}
+                \item plot(x, y)
+                \item semilogx(x, y) $\leftarrow$ oś x wyskolowana w log
+                \item semilogy(x, y) $\leftarrow$ oś y wyskolowana w log
+                \item loglog(x, y) $\leftarrow$ obie osie są wyskalowane w log
+                \item bar(x, y, width)   
+            \end{itemize}
+
+        \subsection*{Funkcje przydatne do opracowania wykresów}
+            \begin{itemize}
+                \item axis($[min_a, max_x, min_y, max_y]$);
+                \begin{itemize}
+                    \item axis equal;
+                    \item axis tight;
+                \end{itemize}
+                \item xlim($[min_x, max_y]$) $\leftarrow$ analogicznie dla osi y
+                \item xlabel(nameOfAxis) $\leftarrow$ analogicznie dla osi y
+                \item xticks(kolejneWartości) $\leftarrow$ analogicznie dla osi y
+            \end{itemize}
+    
+    
+    
+    \section{Funkcje:}
+        \subsection*{Instrukcje warunkowe}
+            \paragraph*{IF}
+            \begin{lstlisting}
+                if warunek
+                        code_1
+                    elseif warunek_2
+                        code_2
+                    else
+                        code_3
+                end %WAZNE KONCZYC END'EM
+            \end{lstlisting}
+            \paragraph*{SWITCH}
+            \begin{lstlisting}
+                switch  wyrazenie
+                    case wartosc_1
+                        code_1
+                    case wartosc_2
+                        code_2
+                    otherwise % w przypadku kiedy zadna z powyzszych nie pasuje!
+                        code_other
+                end
+            \end{lstlisting}
+            \paragraph*{FOR}
+            \begin{lstlisting}
+                for n= 1:5
+                    code
+                end
+
+                for n= [5, 1, 25]
+                    n % OUTPUT: 5, 1, 25
+                end
+            \end{lstlisting}
+            \paragraph*{WHILE}
+            \begin{lstlisting}
+                while 1
+                    % code
+                    if warunek
+                        break;
+                    end
+                end
+            \end{lstlisting}
+        \subsection*{Funkcje własne}
+            \begin{lstlisting}
+                function returnVal = kdwadrat(argu)
+                % nazwa funkcji
+                % 
+                % opis co robi funkcja
+                %
+                % autor 
+                returnVal = argu^2
+
+            \end{lstlisting}
+        \subsection*{Funkcje wbudowane}
+            \begin{itemize}
+                \item max(A)\footnote{analoficznie działa funkcja min(A)} $\leftarrow$ zwraca wektor, największej wartości w każdej kolumnie z macierzy
+                \begin{equation*}
+                    A =\begin{bmatrix}
+                        1 & 0 & 5\\
+                        0 & 8 & 12\\
+                        3 & 6 & 7\\ 
+                    \end{bmatrix}
+                \end{equation*}
+                \begin{equation*}
+                    max(A) = [3, 8, 12]
+                \end{equation*}
+                można też rozpakować tę funkcję aby zwracała także indexy maksymalnych wartości:
+                \begin{itemize}
+                    \item $[x, index]$ = max(A)
+                    \begin{equation*}
+                        x = [3, 8, 12]
+                    \end{equation*}
+                    \begin{equation*}
+                        index = [3, 2, 2]
+                    \end{equation*}
+                \end{itemize}
+                \item log10() $\leftarrow$ logarytm o podstawie dziesiętnej
+                \item log2()
+                \item log $\leftarrow$ logarytm naturalny
+                \item sort(A) $\leftarrow$ sortuje obrębie jednej kolumny!
+                \item find(A) $\leftarrow$ znajdz wartości $\neq 0$, zwraca wektor pozycki na której znajduje się wartość
+            \end{itemize}
+\end{document}

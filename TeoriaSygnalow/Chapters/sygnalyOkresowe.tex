@@ -1,0 +1,20 @@
+\section{Sygnały okresowe:}
+    \begin{align*}
+        x(t) = x(t+n\cdot T) && Gdzie:\ T- okres\ podstawowy\\
+        n = ...-2, -1, 0, 1, 2...
+    \end{align*}
+    \begin{equation*}
+        x(t) = \sum_{n = -\infty}^{+\infty}x_0(t-n\cot T)
+    \end{equation*}
+    Gdzie $x_0(t)$ - wzorzec sygnału,
+
+    \begin{equation*}
+        x(t) = \sum_{n=-\infty}^{+\infty}x_0(t-n\cdot T) = x_0(t) * \sum_{n=-\infty}^{+\infty}\delta(t-n\cdot T) = x_0(t)*g_T(t)
+    \end{equation*}
+    Fukcja $g_T(t)$ jest to pseudo fukcja reprezentująca grzbień Diraca
+
+    \subsection*{Dla fukcji zepolonych:}
+        \begin{align*}
+            x(t) = \sum_{n=-\infty}^{+\infty} c_n \cdot e^{j2\pi n f_T t} && f_t = \frac{1}{T}\\
+            c_n = \frac{1}{T} \int\limits_{-T/2}^{+T/2} x(t)\cdot e^{-j2\pi f_nt}dt && f_n = n\cdot f_T
+        \end{align*}

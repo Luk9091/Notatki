@@ -1,0 +1,24 @@
+\section{Definicje różnych transformat}
+    \subsection{Transformata Fouruera (CFT i ICFT)}
+        \begin{multicols}{2}
+            \begin{gather*}
+                x(t) \xleftrightarrow[\text{aaa}]{\text{bbb}} X(f)\\
+                X(f) = \int\limits_{-\infty}^{+\infty} x(t) e^{-j2\pi f t}  \,dt 
+            \end{gather*}
+
+            \begin{gather*}
+                x(a t)\xleftrightarrow[\text{ICFT}]{\text{CFT}} \frac{1}{|a|} X(\frac{f}{a})\\
+                x(t - t_0)\xleftrightarrow[\text{ICFT}]{\text{CFT}} X(f)e^{-2j\pi ft_0}\\
+                \overline{x(t)} \xleftrightarrow[ICFT]{CFT} \overline{X(-f)}
+            \end{gather*}
+        \end{multicols}
+        Należy wspomnieć że iloczyn skalarny jest niezależny od wybranej dziedzieny:
+        \begin{gather*}
+            x(t)\circ(y) \xleftrightarrow[\text{ICFT}]{\text{CFT}} X(f) \circ Y(t)\\
+            \Downarrow\\
+            \int\limits^{+\infty}_{-\infty}x(t)\overline{y(t)} dt \ \textbf{=} \int\limits^{+\infty}_{-\infty}X(f)\overline{Y(f)}df
+        \end{gather*}
+
+    % \newpage
+
+        

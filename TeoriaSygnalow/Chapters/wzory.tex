@@ -1,0 +1,30 @@
+\section{Wzory Eulera}
+% 
+\begin{multicols}{2}
+    \begin{gather*}
+        e^{jx} = \cos{(x)} + j\sin{(x)}\\
+        \sin{(x)} = \frac{e^{jx}-e^{-jx}}{2j}\\
+        \cos{(x)} = \frac{e^{jx}+e^{-jx}}{2}
+    \end{gather*}
+ 
+    \begin{gather*}
+        \sin{(\alpha+\beta)} = \sin{(\alpha)}\cos{(\beta)} + \cos{(\alpha)}\sin{(\beta)}\\
+        \sin{(\alpha-\beta)} = \sin{(\alpha)}\cos{(\beta)} - \cos{(\alpha)}\sin{(\beta)}\\
+        % 
+        \cos{(\alpha+\beta)} = \cos{(\alpha)}\cos{(\beta)} - \sin{(\alpha)}\sin{(\beta)}\\
+        \cos{(\alpha+\beta)} = \cos{(\alpha)}\cos{(\beta)} + \sin{(\alpha)}\sin{(\beta)}
+    \end{gather*}
+\end{multicols}
+
+\section{Splot}
+    Definicja:
+    \begin{gather*}
+        y(t) = \int \limits _{-\infty}^{+\infty}x_1(\tau) x_2(t-\tau) \,d\tau\\
+        y(t) = x_1(t)*x_2(t) 
+    \end{gather*}
+
+    Właściwości splotu:
+    \begin{gather*}
+        x_1(t)*x_2(t)\xleftrightarrow[ICFT]{CFT} X_1(f)X_2(f)\\
+        x(t)*\delta(t-t_0) = x(t-t0)
+    \end{gather*}
