@@ -1,0 +1,65 @@
+\section{Filtry}
+    Głównym parametrem określającym filtr jest jego transmitancja:
+    \begin{equation*}
+        H(s) = \frac{b_0\cdot s^0+b_1\cdot s^1+ b_2\cdot s^2...}{1+a_1\cdot s + a_2\cdot s^2...}
+    \end{equation*}
+    Transmitancje można rozłożyć na ułamki proste, tak że miejsca zerowania licznika to ,,zera" a miejsca zerowania mianownika to ,,bieguny"
+    \begin{equation*}
+        H(s) = \frac{b}{a}\cdot \frac{(s-z_0)\cdot(s-z_1)...}{(s-p_0)\cdot(s-p_1)...}
+    \end{equation*}
+    Następnie zgodnie z zasadą na rozkładanie na ułamki proste:
+    \begin{equation*}
+        H(s) = \frac{c_0}{s-p_0}+\frac{c_1}{s-p_1}+\frac{c_3}{s-p_3}+...
+    \end{equation*}
+    Z założeniem że:
+    \begin{equation*}
+        c_k = H(s)\cdot(s-p_k)\vert _{s = p_k}
+    \end{equation*}
+
+    Dla tych biegunów których część rzeczywista jest ujemna, filtr jest stabilny.
+    Dla części leżącej na 0 układ jest meta stabilny i potrzebne są dodatkowe obliczenia aby potwierdzić jego stabilność.
+    Natomiast dla tych, których część rzeczywista jest dodatnia układ jest niestabilny.
+
+
+    \subsection{Filtr dolnoprzepustowy Butterwortha}
+        \begin{equation*}
+            |H(s)|^2 = \frac{1}{1+\left(\frac{f}{f_{gr}}\right)^{2N}} \Rightarrow |H(s)| = \frac{1}{\sqrt{1+\left(\frac{f}{f_{gr}}\right)^{2N}}}
+        \end{equation*}
+        gdzie N oznacza rząd filtru (im wyższy tym bardziej strome zbocze zaraz po $f_{gr}$
+
+        \indent Dużo łatwiej jednak wyjść z:
+        \begin{multicols}{2}
+            \indent
+            \begin{gather*}
+                H(s) = \frac{\omega_{gr}^2}{(s-p_0)(s-p_1)...} =\\ = \frac{c_0}{s-p_0} + \frac{c_1}{s-p_1}+...\\\\
+                gdy: s = j2\pi f\\
+                H(f) = \frac{c_0}{j2\pi f - p_0} + \frac{c_1}{j2\pi f -p_1}+...\\\\
+                Odpowiedz\ impulsowa:\\
+                h(t) = u(t) \sum\limits_{n = -\infty}^{\infty}c_n\cdot e^{p_n\cdot t}
+            \end{gather*}
+
+            \indent
+            \begin{center}
+                \begin{tikzpicture}
+                    \draw
+                        (0, 0) node [draw, circle, minimum width = 2cm]{}
+                        (-2.5, 0) edge[->] (2.5, 0)
+                        (0, -2.5) edge[->] (0, 2.5)
+                        (0, 2.5) node[right]{$Im[H]$}
+                        (2.5, 0) node[above]{$Re[H]$}
+
+                        (-0.71, 0.71)node[left]{$p_0$}
+                        (-0.71, 0.71) to[short, *-*] (-0.7, 0.7)
+
+                        (-0.71, -0.71)node[left]{$p_1$}
+                        (-0.71, -0.71) to[short, *-*] (-0.7, -0.7)
+                        
+                        (0, 0) edge[ultra thick, ->] (0.71, 0.71)
+                        (0.71, 0.71) node[right]{$\omega_{gr}$}
+                    ;
+                \end{tikzpicture}
+            \end{center}
+        \end{multicols}
+
+    \subsection{Filtr dolnoprzepustowy Czebyszewa}
+        

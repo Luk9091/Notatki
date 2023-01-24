@@ -17,13 +17,13 @@
         Energia(x(t)) = ||X(t)||^2_{L^2} = \int\limits_D |x(t)|^2dt
     \end{equation*}
 
-    Wektory są orogonalne (czyli prostopadłem względem siebie (czyli liniowo niezależne)) jeśli:
+    Wektory są ortogonalne (czyli prostopadłe względem siebie (czyli liniowo niezależne)) jeśli:
     \begin{equation*}
         <x(t), y(t)> = ||x(t)|| \cdot ||y(t)|| \cdot cos(\alpha) = 0 \Leftrightarrow x\perp y
     \end{equation*}
 
 
-    \subsection{Twierdzenie Persevala - o zachowaniu energii}
+    \subsection{Twierdzenie Percevala - o zachowaniu energii}
         \begin{gather*}
             \int\limits^{+\infty}_{-\infty}|x(t)|^2 dt\ = \int\limits^{+\infty}_{-\infty}|X(f)|^2df
         \end{gather*}
@@ -37,7 +37,7 @@
             ||x(t) - y(t)|| = ||X(f) - Y(f)||
         \end{gather*}
 
-\section{Aproksymacja syngału}
+\section{Aproksymacja sygnału}
     Aproksymacją sygnału $x(t)$ jest:
     \begin{equation*}
         x(t) \approx \sum_{n=1}^{N}a_nb_n(t)
@@ -47,7 +47,7 @@
         x(t)  \textbf{+}e(t) = \sum_{n=1}^{N}a_n\cdot b_n(t)\\
         x(t) = \sum_{n=1}^{N}a_n\cdot b_n-e(t)
     \end{align*}
-    gdzie współczynniki $a$ i $b$ odpowiadaja macioerzom:
+    gdzie współczynniki $a$ i $b$ odpowiadają macierzom:
     \begin{align*}
         b = A \cdot a\\
         % 
@@ -74,7 +74,7 @@
         \end{array}\right]
     \end{align*}
 
-    W gdyby wektorty byłyby ortogonalne, całość sprowadza się do prostego równania:
+    W gdyby wektory byłyby ortogonalne, całość sprowadza się do prostego równania:
     \begin{align*}
         a_k = \frac{x\circ b_k}{||b_k||^2} && k = 1, 2, ..., N
     \end{align*}
@@ -85,6 +85,7 @@
         a_k = x\circ b_k  && k = 1, 2, ..., N
     \end{align*}
     
+\newpage
 \section{Baza Harra (ortonormalna)}
     \begin{align*}
         H_{0,0}(t) = \Pi(t-0.5) && D: t\in <0, 1>\\
@@ -150,4 +151,7 @@
             \end{axis}
         \end{tikzpicture}
         
+
+        \indent
+        Analogicznie jak w bazie Harra
     \end{multicols}

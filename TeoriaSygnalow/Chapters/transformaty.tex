@@ -1,5 +1,20 @@
+\section{Szereg Fouriera}
+    Postać numeryczna:
+    \begin{gather*}
+        x_F = a_0 + \sum\limits_{n=-\infty}^{+\infty}a_n\cdot cos\left(2\pi n\right) +b_n\cdot sin\left(2\pi n\right)
+    \end{gather*}
+
+    \indent Postać okresowa:
+    \begin{align*}
+        c_n = \frac{1}{T}\cdot \int\limits_{t_0}^{t_0+T}x(t) && gdzie:\ T - okres\ x(t)\\
+% 
+        x(t) = \sum\limits_{n=-\infty}^{+\infty}c_n\cdot e^{+j2\pi nf_T t} && gdzie:\ f_T = 1/T 
+    \end{align*}
+    Sygnał musi spełniać warunki Dirichleta!!!
+
+
 \section{Definicje różnych transformat}
-    \subsection{Transformata Fouruera (CFT i ICFT)}
+    \subsection{Transformata Fouriera (CFT i ICFT)}
         \begin{multicols}{2}
             \begin{gather*}
                 x(t) \xleftrightarrow[\text{aaa}]{\text{bbb}} X(f)\\
@@ -12,13 +27,25 @@
                 \overline{x(t)} \xleftrightarrow[ICFT]{CFT} \overline{X(-f)}
             \end{gather*}
         \end{multicols}
-        Należy wspomnieć że iloczyn skalarny jest niezależny od wybranej dziedzieny:
+        Należy wspomnieć że iloczyn skalarny jest niezależny od wybranej dziedziny:
         \begin{gather*}
             x(t)\circ(y) \xleftrightarrow[\text{ICFT}]{\text{CFT}} X(f) \circ Y(t)\\
             \Downarrow\\
             \int\limits^{+\infty}_{-\infty}x(t)\overline{y(t)} dt \ \textbf{=} \int\limits^{+\infty}_{-\infty}X(f)\overline{Y(f)}df
         \end{gather*}
 
+
+    \subsection{Transformacja Dyskretna (DTFT)}
+         \begin{multicols}{2}
+            \begin{gather*}
+                x_p = \sum\limits_{n=-\infty}^{+\infty}x(n\Delta t)\cdot \delta(t-n\Delta t)
+            \end{gather*}
+
+            \begin{gather*}
+                X(f) = \sum\limits_{n = -\infty}^{+\infty}x(n\Delta t) \cdot e^{-j2 \pi \frac{f}{f_{p}}\cdot n}\\
+                gdzie:\ f_p =\ f\ probkowania
+            \end{gather*}
+         \end{multicols}
     % \newpage
 
         

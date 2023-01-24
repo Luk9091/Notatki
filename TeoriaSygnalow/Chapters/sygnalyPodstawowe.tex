@@ -1,6 +1,7 @@
-% \newpage
+\newpage
 \section{Sygnały podstawowe i ich transformaty}
     \begin{multicols}{2}
+        \indent
         \begin{gather*}
             x(t) = \sin{(2\pi ft)}\\
             x(t) = \cos{(2\pi ft)}\\
@@ -35,10 +36,10 @@
             \end{array}\right.
         \end{gather*}
 
-
+        \indent
         \begin{gather*}
             \cos{(x)} \xleftrightarrow[ICFT]{CFT} \frac{1}{2}(\delta(f+f_0) + \delta(f-f_0))\\
-            \sin{(x)} \xleftrightarrow[ICFT]{CFT} j\frac{1}{2}(\delta(f+f_0) + \delta(f-f_0))\\\\
+            \sin{(x)} \xleftrightarrow[ICFT]{CFT} j\frac{1}{2}(\delta(f+f_0) - \delta(f-f_0))\\\\
             \delta(x) \xleftrightarrow[ICFT]{CFT} 1\\\\
             \Pi(t) \xleftrightarrow[\text{ICFT}]{\text{CFT}} sinc(\pi f)\\\\
             \Lambda(x) \xleftrightarrow[ICFT]{CFT} sinc^2(\pi f)\\\\

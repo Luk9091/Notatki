@@ -1,3 +1,18 @@
+clc; clear; close all;
+
+dt = 0.001;
+t = -5:dt:5;
+
+x = xPI(t, 2, 0);
+uu= CTF(x, t);
+
+figure(1);
+    plot(t, x);
+figure(2)
+    plot(f, X);
+
+
+
 function y = lambda(t, T, t0)
     y = -1/T*abs(t-t0)+1;
     y(y <= 0) = 0;
