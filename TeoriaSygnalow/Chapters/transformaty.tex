@@ -35,6 +35,13 @@
         \end{gather*}
 
 
+    \subsection{Transformacja sygnału próbkowanego}
+        \begin{gather*}
+            x_p(t) = x(t)\cdot g_{\Delta t}(t) = \sum_{n=-\infty}^{+\infty}x(n\Delta t)\cdot\delta(t-\Delta t)\\
+            \Downarrow\\
+            X_p(f) = X(f) * G_{\Delta t}(f) = X(f) * \left[\frac{1}{\Delta t} \sum_{n=-\infty}^{+\infty}\delta(f-n\cdot f_p)\right]
+        \end{gather*}
+
     \subsection{Transformacja Dyskretna (DTFT)}
          \begin{multicols}{2}
             \begin{gather*}
@@ -46,6 +53,21 @@
                 gdzie:\ f_p =\ f\ probkowania
             \end{gather*}
          \end{multicols}
+
+    \subsection{Transformacja Hilberta}
+        \begin{multicols}{2}
+            \begin{gather*}
+                x(t) \xleftrightarrow[\text{IHT}]{HT} x^H(t)\\
+                x^H(t) = -\frac{1}{\pi}  \cdot \int\limits_{-\infty}^{+\infty}\frac{x(\tau)}{\tau-t}\ d\tau
+            \end{gather*}
+
+            \indent Czyli:
+            \begin{gather*}
+                x^H(t) = \frac{1}{\pi\cdot t}*x(t) = h_H(t)*x(t)\\
+                \Downarrow\\
+                h_H(t) \FT -j \cdot sgn(f)
+            \end{gather*}
+        \end{multicols}
     % \newpage
 
         

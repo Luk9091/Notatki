@@ -1,0 +1,30 @@
+ \section{Próbkowanie}
+    \tab Próbkujemy sygnał pseudo funkcją grzebieniową:
+    \begin{gather*}
+        x_p(t) = \sum_{n=-\infty}^{+\infty}x(t)\cdot \delta(t-n\Delta t)
+    \end{gather*}
+    W dziedzinie Fouriera odpowiada to:
+    \begin{gather*}
+        X_p(f) = \frac{1}{\Delta t} \cdot \sum_{n=-\infty}^{+\infty} X(f-n\cdot f_p)\\
+        gdzie:\ f_p = \frac{1}{\Delta t}
+    \end{gather*}
+
+    Aby odtworzyć sygnał należy:
+    \begin{multicols}{2}
+        \begin{gather*}
+            X(f) = X_p(f)\cdot H(f)
+        \end{gather*}
+        
+        Gdzie:
+        \begin{gather*}
+            H(f) = \Delta t \cdot\Pi\left(\frac{f}{f_p}\right)
+        \end{gather*}
+    \end{multicols}
+    \begin{center}
+        $H(f)$ - funkcja transmitancji idealnego filtru dolnoprzepustowego
+    \end{center}
+    Czyli, funkcja odtworzona w dziedzinie czasu ma postać:
+    \begin{gather*}
+        x_r(t) = \sum_{n=-\infty}^{+\infty} x(n\Delta t) \cdot sinc(\pi f_p \cdot
+        (t-\Delta t))
+    \end{gather*}
