@@ -1,7 +1,7 @@
 \newpage
 \section{Sygnały podstawowe i ich transformaty}
     \begin{multicols}{2}
-        \indent
+        \noindent
         \begin{gather*}
             x(t) = \sin{(2\pi ft)}\\
             x(t) = \cos{(2\pi ft)}\\
@@ -34,9 +34,13 @@
                 \frac{1}{2} & dla\ t=0\\
                 -1 & dla\ t <0
             \end{array}\right.
+\\\\%
+            Gaus(t) = e^{-at^2}
+\\\\%
+            g_{\Delta t}(t) = \sum_{n=-\infty}^{+\infty} \delta(t-n\Delta t)
         \end{gather*}
 
-        \indent
+        \noindent
         \begin{gather*}
             \cos{(x)} \xleftrightarrow[ICFT]{CFT} \frac{1}{2}(\delta(f+f_0) + \delta(f-f_0))\\
             \sin{(x)} \xleftrightarrow[ICFT]{CFT} j\frac{1}{2}(\delta(f+f_0) - \delta(f-f_0))\\\\
@@ -47,11 +51,13 @@
             u(t) \FT \frac{1}{2}\delta(f) + \left\{\begin{array}{l l}
                 -j\cdot\frac{1}{2\pi f} & dla\ f\ne 0\\
                 0 & dla\ f=0
-            \end{array}\right.\\
+            \end{array}\right.\\\\
             sgn(t) \FT \left\{\begin{array}{l l}
                 -j\cdot\frac{1}{2\pi f} & dla\ f\ne0\\
                 0 & dla\ f=0
-            \end{array}\right.
+            \end{array}\right.\\\\
+            e^{-at^2} \FT e^{-af^2}\\\\
+            G_{\Delta t}(F) = \frac{1}{\Delta t}\sum_{n=-\infty}^{+\infty} \delta(f-n \frac{1}{\Delta t})
         \end{gather*}
     \end{multicols}
 
