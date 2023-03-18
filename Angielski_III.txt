@@ -2,7 +2,7 @@ purchase		nabywać, kupować
 sort out the details 	ustalić
 go over the details	przejrzeć
 firm up a proposal 	ustalić propozycję
-pay a deposit 	== 	put down a deposit
+pay a deposit 	    ==	put down a deposit
 fixed costs 		stałe koszty
 seek a compromise	starać się osiągnąć
 reluctant		niechętnym do zrobienia czegoś
@@ -17,7 +17,37 @@ III.	if + PAST PREFECT + , + would have + PAST PARTICIPLE
 
 I + II or II + I
 
+II conditional:
+	If I knew this, I would visit him.
+	If I were to know this, I would visit him.
+	Were I to know this, I would visit him.
 
+III conditional:
+				 could\
+	If I had studied more, I would\ have passed my exam.
+				 might
+
+	* Had I studied more, I would have passed.
+	* If I were to have studied more, I would have passed.
+	* Were I have to studied more, I would have passed.
+	** If it had not been for the fog, I would have reached Cracow earlier.
+
+	If he sould call, tell him I'll be lake.
+	Sould he callm tell him I'll belate
+
+III + II conditional:
+	If I hed wore a worm coft yesterday, I wouldn't be ill now.
+
+II + III conditional:
+	If our companny operated in China, we would have been affected by the last year's crisis there
+
+Sugestie i rekomendacje:
+	recommend/suggest sth,
+	recommend/suggest sth to sb,
+	recommend/suggest (not) doing stg
+	recommend/suggest sb do sth,
+
+	Dopisać advice 131
 Zadanie 2/67
 	2) Our production manager will be willing to agree to make the changes, producting to a prototyping.
 	3) We would be reluctant to consider a lager dicount, unless you paid advance.

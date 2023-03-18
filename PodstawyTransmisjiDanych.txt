@@ -24,7 +24,7 @@ Okej a jakiś upel? Coś takiego?
 Część główna wykładu:
 	Dane - definicja z PWN,
 	Entriopia informacji - miara wykorzystania każdego z elementu ze zbioru 
-		=> H = sum ( p(i) * log_N (p(i)) )
+		=> H = abs( sum ( p(i) * log_N (p(i)) ) )
 			- N - liczność zbioru / podstawa systemu w którym kodujemy,
 			- p(x) - prawdopodobieństwo
 
@@ -63,14 +63,40 @@ Część główna wykładu:
 				P(d) => C = 4
 
 			Etap IV:	Wyznaczenie wartości dziesiętnych kodujących wartość:
-				c => 0 * 2^2 = 00   =>  0 => 0000
-				e => 0.4*2^2 = 1.6  =>  1 => 0001
-				a => 0.65*2^2 = 5.2 =>  5 => 0101
-				b => 0.8*2^2 = 12.8 => 12 => 1100
-				d => 0.9*2^2 = 14.4 => 14 => 1110
+				c => 0.00*2^2 =  0.0 =>  0 => 0000
+				e => 0.40*2^2 =  1.6 =>  1 => 0001
+				a => 0.65*2^3 =  5.2 =>  5 => 0101
+				b => 0.80*2^4 = 12.8 => 12 => 1100
+				d => 0.90*2^4 = 14.4 => 14 => 1110
 				
 				↑ widać dużo nadmirowych zer lepszy algorytm Huffmana
 					Przeczytać wikipedię! O obu
+	Kodowanie Huffmana:
+
+		Przykład:
+			Zbiór:	{a, b, c, d}
+			p(x):	0.1, 0.2, 0.3, 0.4
+
+
+				start
+			      1/     \0 ← kolejny bit informacji
+			     a|0.4    \
+			     ↑	        0
+			zakodowany   1/   \
+			    znak    c|0.3  \
+					    00
+				          1/   \0
+					d|0.2	\
+				     		a|0.1 ← prawdopodobieństwo wystąpienia znaku
+
+			i tak znakowi _ odpowiada kod:
+				'd' = 1
+				'c' = 01
+				'b' = 001
+				'a' = 000
+
+		Entropia takiego kodu: 1.85... 
+
 
 		Policzyć entropię dla tych kodów!
 
@@ -119,8 +145,10 @@ Wykład II
 			* Half Duplex
 			* Full Duplex
 		3) sposób realizacji transmisji
-			* Systemy cyfrowe - określone standardem - idealny kanał powinien nie zmieniać sygnału pierwotnego,
-			* Quasi analogowy - sygnał cyfrowy ulega znaczyn zniekształceniem - sygnał musi być reinterpretowany przez odbiornik :C
+			* Systemy cyfrowe - określone standardem - idealny kanał powinien nie 
+				zmieniać sygnału pierwotnego,
+			* Quasi analogowy - sygnał cyfrowy ulega znaczyn zniekształceniem - 
+				sygnał musi być reinterpretowany przez odbiornik :C
 				przykłąd:
 					 		 ___    ____
 				sygnał pierwotny:	 | |    |  |
@@ -146,17 +174,88 @@ Wykład II
 	
 
 
-	---------------	    ----------	  -------------	    ---------	 ------------
-	| wzma	/     |	    |	     |	  |   Flitr   |	    
-| Filtr |	 |	    |
-	| cnia /      | ->> |mieszacz|->> |  pasmowo  |	detektor->> | wideo | ->>| detektor |
-	| cz  /	filtr |	    |        |	  |przepustowy|	obwiedni    |	    |	 |	    |
-	---------------	    ----------	  -------------	    ---------	 ------------
-				↑   					      ↓
-			       VCO					      ↓
-			        ↑						
-			     generator	
-			   piłokształtny	------>>		 Wyświetlacz
+---------------	  ----------   -------------   ----------   ---------    ------------
+| wzma	/     |	  |	   |   |   Flitr   |   |	|   | Filtr |	 |	    |
+| cnia /      |->>|mieszacz|->>|  pasmowo  |->>|detektor|->>| wideo | ->>| detektor |
+| cz  /	filtr |	  |        |   |przepustowy|   |obwiedni|   |	    |	 |	    |
+---------------	  ----------   -------------   ----------   ---------    ------------
+		      ↑		   					      ↓
+		     VCO						      ↓
+		      ↑						---------------------------
+		   generator					|			  |
+		 piłokształtny			------>>	|	 Wyświetlacz	  |
+								|			  |
+								---------------------------
+
+
+
+
+Wykład III:	Charakterystyki przewodów!
+	Transmitancja przewodu:
+		H(f) = exp( j kl(1+j) sqrt(f))
+			l - długość przewodu,
+			k - dobroć przewodu,
+
+	Imedancjia linii przewodzącej:
+		Z_0 = sqrt( L/C )
+	
+	NVP - nominal velocity propagation - szbkość propagacji w przewodze / prędkość światła
+	
+	Jeśli połowa t_prop w lini jest porównywalna z czasami narastania - 
+		to należy uwględić linię dugą
+
+
+	Współczynniki odbicia:
+		R_g = (Rgen - Z_0) / (Rgen + Z_0)
+		R_L = (Rodb - Z_0) / (Rodb - Z_0)
+
+	
+		U_0 = Ugen * Z_0 / ( Rgen +Z_0 )
+			
+
+		dla Zodb = infΩ i Zgen = Z_0
+		R_g = 0			R_L = 1
+		^input		        ^out
+	      Ug|    _______	      Ug|   ________
+	   0.5Ug|____|			|   |
+		|			|___|
+		-----2tau-------→	----tau------→
+
+	
+
+		dla Zodb = Xc	i Zgen = Z_0
+		
+		
+		^input		        ^out
+	      Ug|        ___	      Ug|     ______
+	   0.5Ug|______	/		|    /czas ładowanie ~ C*Z_0
+		|     |/		|___/
+		-----2tau-------→	----tau------→
+	
+
+
+		dla Zodb = 0Ω i Zgen = Z_0
+		R_g = 0			R_L = 1
+		^input		        ^out
+	      Ug|    		      Ug|   
+	   0.5Ug|_______		|  
+		|      |________	|____________
+		-----2tau-------→	----tau------→
+
+
+
+	
+
+Wykład IV: Kodowanie kanału
+	Kod powinen być dopasowany do kanału
+
+	
+
+
+
+
+
+
 
 
 
