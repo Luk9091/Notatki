@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+\usepackage{anyfontsize}
+\usepackage[margin = 2cm]{geometry}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{tabto}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{multicol}
+
+% Dot post number of section
+\usepackage{titlesec}
+% Underline section, dot post number and span post dot
+\titleformat{\section}
+    {\Large \bfseries}
+    {\thesection.}
+    {0.5 cm}
+    {}[\titlerule]
+\titlelabel{\thetitle.\quad}
+
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdfpagemode=FullScreen,
+}
+
+\usepackage{listings}
+
+
+% \usepackage{csvsimple}
+% \usepackage{pgfplots}
+
+\usepackage[european, american currents, americanvoltages, RPvoltages]{circuitikz}
+\usepackage{tikz}
+
+\title{\underline{Wzory, równania, zależności}\\\textbf{Analogowe układy elektroniczne}}
+\author{Łukasz Przystupa}
+\date{\today}
+
+
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+\begin{document}
+    \maketitle
+    \thispagestyle{empty}
+    \newpage
+
+    \tableofcontents
+    \newpage
+    \input{Chapters/01_TranzystoryBipolarne.tex}
+
+\end{document}

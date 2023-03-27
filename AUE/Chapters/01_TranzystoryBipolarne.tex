@@ -1,0 +1,118 @@
+\section{Tranzystory bipolarne}
+    \subsection{Struktura tranzystory}
+        \begin{figure}[!h]
+            \centering
+            \begin{circuitikz}
+                \draw
+                    (0, 2) node[draw, minimum width = 2cm, minimum height = 1cm](n+){$n^{+}$}
+                    (0, 1) node[draw, minimum width = 2cm, minimum height = 1cm](p){$p$}
+                    (0, 0) node[draw, minimum width = 2cm, minimum height = 1cm](n){$n$}
+
+                    (n+) ++ (1.25, 0) node[]{C}
+                    (p)  ++ (1.25, 0) node[]{B}
+                    (n)  ++ (1.25, 0) node[]{E}
+
+                    (n+) -- ++ (0, 0.5) to[short, i< =$I_C$] ++ (0, 0.5) -- ++ (2, 0) to[I, invert, l=$U_{CE}$] ++ (0, -4) node[ground]{}
+                    (p)  -- ++ (-1,0) to[short, i<_=$I_B$] ++ (-1, 0) to[I, invert, a=$U_{BE}$] ++ (0, -2) node[ground]{}
+                    (n)  -- ++ (0, -0.75) to[short, i>_=$I_E$] ++ (0, -0.25) node[ground]{}
+                ;
+                \draw
+                    (8, 1) node[npn](Q){}
+                    (Q.C) to[short, i< =$I_C$] ++ (0, 1) -- ++ (2, 0) to[I, invert, l=$U_{CE}$] ++ (0, -3.25) node[ground]{}
+                    (Q.B) to[short, i<_=$I_B$] ++ (-1, 0) to[I, invert, a=$U_{BE}$] ++ (0, -1.5) node[ground]{}
+                    (Q.E) to[short, i>_=$I_E$] ++ (0, -0.75) node[ground]{}
+                    
+                    (Q.C) node[right]{C}
+                    (Q.B) node[above]{B}
+                    (Q.E) node[right]{E}
+
+                ;
+            \end{circuitikz}
+            \caption{Struktura wewnętrzna tranzystora NPN, schemat tranzystory}
+        \end{figure}
+
+        \textbf{\underline{Stało-prądowa}} zależności między prądami:
+        \begin{gather}
+            I_C \approx I_E\\
+            I_C = I_{ES} \cdot (e^{\frac{U_{BE}}{U_T}}-1) \approx I_{ES} \cdot e^{\frac{U_{BE}}{U_T}}
+        \end{gather}
+        Dla prostych obliczeń można wykorzystać stało-prądowy współczynnik wzmocnienia $\beta$:
+        \begin{equation}
+            I_C = \beta \cdot I_B
+        \end{equation}
+
+    \subsection{Schemat mało-sygnałowy}
+        \tab Układ mało-sygnałowy rozpatrujemy przy zwartych źródłach napięcia \underline{stałego} oraz rozwartych źródłach prądu \underline{stałego}!
+        \begin{figure}[!h]
+            \centering
+            \begin{circuitikz}
+                \draw
+                    (0, 0) node[above]{$B$}
+                    (0, 0) to[short, o-, i=$i_b$] ++ (2, 0) to[R, a=$r_d$, -*] ++ (0, -2) 
+                    
+                    (8, 0) node[above]{$C$}
+                    (8, 0) to[short, i=$i_c$, o-] (6, 0)
+                    (6, 0) to[R, l=$r_{CE}$, *-*] ++ (0, -2)
+                    (6, 0) to[short] ++ (-2, 0) coordinate(I_c0) to [I, -*] ++ (0, -2) coordinate(I_C1)
+                    (I_c0) to[rmeter, /tikz/circuitikz/bipoles/length=1.75cm] ++ (0, -2)
+                    (I_c0) ++ (-0.75, -1) node[rotate = 90]{$g_m\cdot i_b$}
+                    
+                    (0, -2) to[short, o-] ++(6, 0)
+                    (6, -2) to[short, -o, i=$i_e$] ++(2, 0)
+                ;
+            \end{circuitikz}
+            \caption{Schemat mało-sygnałowy, tranzystora NPN}
+        \end{figure}
+        Parametry układu:
+        \begin{align}
+            g_m = \frac{I_C}{U_T} && r_d = \frac{\beta}{g_m}
+        \end{align}
+        \begin{equation*}
+            r_{CE} = \frac{U_A}{I_C}
+        \end{equation*}
+        Wzmocnienie napięciowe tranzystory:
+        \begin{equation}
+            k_u = \frac{dU_o}{dU_i} = -g_m\cdot r_{CE}
+        \end{equation}
+        Wzmocnienie prądowe:    
+        \begin{equation}
+            k_i = \beta
+        \end{equation}
+    
+    \subsection{Układ ze wspólnym emiterem (OE)}
+        \begin{figure}[!h]
+            \centering
+            \begin{circuitikz}
+                \draw
+                    (0, 0) node[npn](Q){}
+
+                    (Q.B) -- ++ (-1, 0) to[sV, a=$u_g$] ++ (0, -2) node[ground]{}
+                    (Q.E) -- ++ (0, -1.25) node[ground]{}
+
+                    (Q.C) to[short, *-o] ++ (1, 0) node[above]{$U_{out}$}
+                    (Q.C) to[R, l=$R_C$] ++ (0, 2) -- ++ (2.5, 0) to[I, invert, l=$U_{CC}$] ++ (0, -2) node[ground]{}
+                ;
+                \draw
+                    (6, 0) node[above]{$B$}
+                    (6, 0) to[short, o-, i=$i_b$] ++ (2, 0) to[R, a=$r_d$, -*] ++ (0, -2) 
+                    
+                    (13, 0) node[above]{$C$}
+                    (14, 0) to[short, i=$i_c$, o-] (13, 0)
+                    (11, 0) to[R, *-*] ++ (0, -2)
+                    (10.8,-1) node[above, rotate = 90]{$r_{CE}$}
+                    (13, 0) -- ++(-2, 0)
+                    (12, 0) to[R, l=$R_C$, *-*] ++ (0, -2) 
+                    (11.5, 0) to[short] ++ (-2, 0) coordinate(I_c0) to [I, -*] ++ (0, -2) coordinate(I_C1)
+                    (I_c0) to[rmeter, /tikz/circuitikz/bipoles/length=1.75cm] ++ (0, -2)
+                    (I_c0) ++ (-0.75, -1) node[rotate = 90]{$g_m\cdot i_b$}
+                    
+                    (6, -2) to[short, o-] ++(8, 0)
+                    (13, -2) to[short, -o, i=$i_e$] ++(1, 0)
+                ;
+            \end{circuitikz}
+            \caption{Schemat wzmacniacza OE i model mało-sygnałowy}
+        \end{figure}
+        \begin{gather}
+            k_u = -g_m\cdot (R_C || r_{CE}) \approx -g_m \cdot R_C = \frac{I_C\cdot R_C}{U_T}\\
+            k_{u_{max}} = -g_m \cdot r_{CE}
+        \end{gather}
