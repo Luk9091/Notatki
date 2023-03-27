@@ -1,0 +1,87 @@
+\section{Wzory Eulera}
+% 
+\begin{multicols}{2}
+    \begin{gather*}
+        e^{jx} = \cos{(x)} + j\sin{(x)}\\
+        \sin{(x)} = \frac{e^{jx}-e^{-jx}}{2j}\\
+        \cos{(x)} = \frac{e^{jx}+e^{-jx}}{2}\\\\
+        % 
+        \cosh{(x)} = \frac{e^x+e^{-x}}{2}
+    \end{gather*}
+
+    \begin{gather*}
+        \sin{(\alpha+\beta)} = \sin{(\alpha)}\cos{(\beta)} + \cos{(\alpha)}\sin{(\beta)}\\
+        \sin{(\alpha-\beta)} = \sin{(\alpha)}\cos{(\beta)} - \cos{(\alpha)}\sin{(\beta)}\\
+        % 
+        \cos{(\alpha+\beta)} = \cos{(\alpha)}\cos{(\beta)} - \sin{(\alpha)}\sin{(\beta)}\\
+        \cos{(\alpha-\beta)} = \cos{(\alpha)}\cos{(\beta)} + \sin{(\alpha)}\sin{(\beta)}
+        \\\\
+        \sinh{(x)}=\frac{e^x-e^{-x}}{2}
+    \end{gather*}
+\end{multicols}
+
+
+\section{Sygnał jako wektor}
+    Iloczyn skalarny:
+    \begin{equation*}
+        <x, y> = \int\limits_{D} x(t) \cdot \overline{y(t)} dt
+    \end{equation*}
+    Norma (długość wektora):
+    \begin{equation*}
+        ||x(t)||^2 = <x(t), x(t)>
+    \end{equation*}
+    Metryka (odległość sygnałów):
+    \begin{equation*}
+        \rho(x,y) = ||x-t|| = \sqrt{<x(t)-y(t), x(t)-y(t)>}
+    \end{equation*}
+
+    \noindent
+    Korelacja (jak bardzo sygnały są podobne):
+    \begin{equation*}
+        R_{xy}(t) = \int\limits_{-\infty}^{+\infty}x(\tau)\cdot \overline{x(\tau-t)}\ d\tau
+    \end{equation*}
+
+    \noindent
+    Energia sygnału:
+    \begin{equation*}
+        Energia(x(t)) = ||X(t)||^2_{L^2} = \int\limits_D |x(t)|^2dt
+    \end{equation*}
+
+    \noindent
+    Wektory są ortogonalne (czyli prostopadłe względem siebie (czyli liniowo niezależne)) jeśli:
+    \begin{equation*}
+        <x(t), y(t)> = ||x(t)|| \cdot ||y(t)|| \cdot cos(\alpha) = 0 \Leftrightarrow x\perp y
+    \end{equation*}
+
+
+    \subsection{Twierdzenie Percevala - o zachowaniu energii}
+        \begin{gather*}
+            \int\limits^{+\infty}_{-\infty}|x(t)|^2 dt\ = \int\limits^{+\infty}_{-\infty}|X(f)|^2df
+        \end{gather*}
+    \subsection{Twierdzenie o zmianie skali}
+        \begin{gather*}
+            \delta(a\cdot t) \FT \frac{1}{|a|}\cdot\delta(f)
+        \end{gather*}
+    \subsection{Twierdzenie o zachowaniu odległości}
+        Jeżeli:
+        \begin{gather*}
+            x(t)\circ y(t) \FT X(f)\circ Y(f)
+        \end{gather*}
+        to:
+        \begin{gather*}
+            ||x(t) - y(t)|| = ||X(f) - Y(f)||
+        \end{gather*}
+
+    \subsection{Splot}
+        Definicja:
+        \begin{gather*}
+            y(t) = \int \limits _{-\infty}^{+\infty}x_1(\tau) x_2(t-\tau) \,d\tau\\
+            y(t) = x_1(t)*x_2(t) 
+        \end{gather*}
+
+        \noindent
+        Właściwości splotu:
+        \begin{gather*}
+            x_1(t)*x_2(t)\xleftrightarrow[ICFT]{CFT} X_1(f)X_2(f)\\
+            x(t)*\delta(t-t_0) = x(t-t0)
+        \end{gather*}

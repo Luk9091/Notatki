@@ -1,0 +1,71 @@
+\newpage
+\section{Sygnały podstawowe i ich transformaty}
+    \begin{multicols}{2}
+        \noindent
+        \begin{gather*}
+            x(t) = \sin{(2\pi ft)}\\
+            x(t) = \cos{(2\pi ft)}\\
+\\% 
+            \Pi(t) = \left\{\begin{array}{l l}
+                1 & dla\ |t| < 1/2\\
+                1/2 & dla\ |t| = 1/2\\
+                0 & dla\ |t| > 1/2
+            \end{array} \right.\\
+\\%  
+            sinc(t) = \left\{\begin{array}{l l}
+                \frac{\sin{(2\pi f)}}{2\pi f} & dla\ t \neq 1\\
+                1 &\ dla\ t = 0
+            \end{array}\right.\\
+\\% 
+            \Lambda(t) = \left\{\begin{array}{l l}
+                t+1 & dla\ -1 \leq t \leq 0\\
+                -t+1 & dla\ 0 < t \leq 1\\
+                0 & dla\ pozostalych\ t
+            \end{array}\right.\\
+\\%
+            u(t) = \left\{\begin{array}{l l}
+                1 & dla\ t>0\\
+                \frac{1}{2} & dla\ t=0\\
+                0 & dla\ t <0
+            \end{array}\right.
+\\%
+            sgn(t) = \left\{\begin{array}{l l}
+                1 & dla\ t>0\\
+                \frac{1}{2} & dla\ t=0\\
+                -1 & dla\ t <0
+            \end{array}\right.
+\\\\%
+            Gaus(t) = e^{-at^2}
+\\\\%
+            g_{\Delta t}(t) = \sum_{n=-\infty}^{+\infty} \delta(t-n\Delta t)
+        \end{gather*}
+
+        \noindent
+        \begin{gather*}
+            \cos{(x)} \xleftrightarrow[ICFT]{CFT} \frac{1}{2}(\delta(f+f_0) + \delta(f-f_0))\\
+            \sin{(x)} \xleftrightarrow[ICFT]{CFT} j\frac{1}{2}(\delta(f+f_0) - \delta(f-f_0))\\\\
+            \delta(x) \xleftrightarrow[ICFT]{CFT} 1\\\\
+            \Pi(t) \xleftrightarrow[\text{ICFT}]{\text{CFT}} sinc(\pi f)\\\\
+            \Lambda(x) \xleftrightarrow[ICFT]{CFT} sinc^2(\pi f)\\\\
+            g_T(t) = \sum \frac{1}{T} e^{j2\pi f_n t} \xleftrightarrow[ICFT]{CFT} G_T(f) = \sum \delta(f-\frac{n}{T})\\\\
+            u(t) \FT \frac{1}{2}\delta(f) + \left\{\begin{array}{l l}
+                -j\cdot\frac{1}{2\pi f} & dla\ f\ne 0\\
+                0 & dla\ f=0
+            \end{array}\right.\\\\
+            sgn(t) \FT \left\{\begin{array}{l l}
+                -j\cdot\frac{1}{2\pi f} & dla\ f\ne0\\
+                0 & dla\ f=0
+            \end{array}\right.\\\\
+            e^{-at^2} \FT e^{-af^2}\\\\
+            G_{\Delta t}(F) = \frac{1}{\Delta t}\sum_{n=-\infty}^{+\infty} \delta(f-n \frac{1}{\Delta t})
+        \end{gather*}
+    \end{multicols}
+
+
+% \subsection*{Twierdzenia pomocniczne}
+%     \begin{gather*}
+%         x(t)\xleftrightarrow[ICFT]{CFT}X(f)\\
+%         \overline{x(t)}\xleftrightarrow[ICFT]{CFT}\overline{X(-f)}\\
+%         % Do przemyślenia
+%         % x(t)\xleftrightarrow[ICFT]{CFT} \frac{1}{2\pi}X(\omega)
+%     \end{gather*}

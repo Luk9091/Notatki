@@ -249,8 +249,127 @@ Wykład III:	Charakterystyki przewodów!
 Wykład IV: Kodowanie kanału
 	Kod powinen być dopasowany do kanału
 
+	Kod NRZ - not return to zero
+		'1' - High voltage level
+		'0' - Low voltage level
+
+		^VL
+		|__   ___ <- '1'
+		| |   |
+		| |___|	 <- '0'
+		--|---|------> t
+		 clk clk
+
+		Właściwości:
+			- prostota (+)
+			- Składowa stała zależy od treści (--)
+			- Pierwszy listek widma sięga f_clk (+)
+			- Przy długich ciągach zer brak możliwości zboczy zegara (--)
 	
 
+	Kod RZ - return to zero
+		'1' - High voltage level
+		'0' - Low voltage level
+
+		^VL
+		| ___    <- '1'
+		| | | 
+		|_| |___ <- '0'
+		--|---|------> t
+		 clk clk
+
+		Właściwości:
+			- prostota (+)
+			- Składowa stała zależy od treści (--)
+			- Pierwszy listek widma sięga 2*f_clk - większe pasmo (-)
+			- Występują prążki zegara - możliwość odtworzenia zegara z widma (+)
+			- Przy długich ciągach zer brak możliwości zboczy zegara (+)
+
+	
+
+
+	Kod AMI (Alternate Mark Inversion)
+
+		^   _____
+	     V+ |   |	|   clk
+		|___|	|_____	  ________________
+	     0V	|---|--------|----|----|-------------->
+		|  clk	     |	  |   clk
+	     V-	|	     |____|
+
+		
+		in1 o-NOT--R--|
+			      |
+			      *----------o out
+			      |
+		in2 o-NOT--R--|
+		
+		Naprzemiennie raz '1' pojawia się na in1 raz na in2
+
+		
+
+		Właściwości:
+			- Prostota (+)
+			- Pierwszy listek widma sięga 2*f_clk - większe pasmo (-)
+			- Składowa stała nie zależy od treści danych (+)
+			- Przy długich ciągach zer brak możliwości zboczy zegara (+)
+
+	Kod MANCHESTER
+		Właściwości:
+			- Skłądowa się zeruje w obrembie jednego bitu (+)
+			- Pierwszy listek widma sięga 2*f_clk - większe pasmo (-)
+			- W sygnale zawsze występują zbocza
+
+	Kod CMI (Coded Mark Inversion)
+		Właściwości:
+			- Składowa stała dla długiego ciągu nie zależy od treści (++)
+			- Pierwszy listek widma sięga 2*f_clk - większe pasmo (-)
+			- W sygnale zawsze występują zbocza
+			- Występuje prążek zegara
+			- Dogodny kształ widma
+
+	Kod MLT3 (Multi link Transimit 3)
+		   1
+		V+ → 	0
+
+	      1 ↑	↓ 1
+
+		0    ←	V-
+		      1
+
+		Jak nadajemy '1' to zmieniamy stan.
+		Jak '0' to zostajemy w tym samym stanie
+		
+		Kod nadmiarowy, dodatkowy bit który dla samych zer zawsze jest jedynka
+
+		Właściwości:
+			- Małe widmo -- pierwszy listek widma sięga f_clk (+)
+			- Dogodny kształ widma
+			- Część składowej stałej przenosi się
+
+
+
+	Kodowanie różnicowe:
+		Właściwości:
+			- funkcje realizują XOR
+			- prostota
+			- Nie zwiększa strumienia danych
+			- Dane są kodowane niezależnie od tego czy kanał odwraca fazę
+			- Modyfikuje długi ciąg '1'
+			- Nie modyfikuje ciągu '0'
+
+	
+
+		Skrambling: 
+			y_n = a_n xor p_n
+			- technika kodowania, oprata na sumowaniu ciągu znkanów
+			
+			- dodajemy dwókrotnie sygnał losowy do sygnału
+
+		
+		* Generator pseudolosowy: PRBS
+			https://pl.wikipedia.org/wiki/PRBS
+		
 
 
 
