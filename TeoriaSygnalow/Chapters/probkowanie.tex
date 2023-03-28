@@ -29,4 +29,12 @@
         x_r(t) = \sum_{n=-\infty}^{+\infty} x(n\Delta t) \cdot sinc(\pi f_p \cdot
         (t-\Delta t))
     \end{gather*}
+    % 
+    Zgodnie z twierdzeniem \textbf{Niquista-Shannona} poprawnie spróbkowany sygnał zawsze jesteśmy w stanie odtworzyć!
+    Zgodnie z w/w twierdzeniem, częstotliwość sygnału próbkującego powinna spełniać zależność:
+    \begin{equation*}
+        f_{sampling} \ge 2\cdot f_{\text{sygnału}}
+    \end{equation*}
+    W przypadku nie spełnienia tej zależności powstanie tak zwany \textit{aliasing} -- czyli sygnał o częstotliwości mniejszej od $\frac{f_{sampling}}{2}$!\\
+    Dodatkowo jeśli częstotliwość sygnału będzie: $f_{\text{sygnału}} == \frac{f_{sampling}}{2}$ to wystąpi próbkowanie krytyczne, które wynik zależy od różnicy faz sygnału głównego i próbkującego.
     

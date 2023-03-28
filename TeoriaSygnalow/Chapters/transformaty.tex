@@ -49,21 +49,83 @@
         \end{gather*}
 
     \subsection{Transformacja Dyskretna (DTFT)}
-         \begin{multicols}{2}
-            \begin{gather*}
-                x_p = \sum\limits_{n=-\infty}^{+\infty}x(n\Delta t)\cdot \delta(t-n\Delta t)
-            \end{gather*}
-
-            \begin{gather*}
+        \begin{align*}
+                x_p = \sum\limits_{n=-\infty}^{+\infty}x(n\Delta t)\cdot \delta(t-n\Delta t) &&
+%
                 X(f) = \sum\limits_{n = -\infty}^{+\infty}x(n\Delta t) \cdot e^{-j2 \pi \frac{f}{f_{p}}\cdot n}\\
-                gdzie:\ f_p =\ f\ probkowania
-            \end{gather*}
-         \end{multicols}
+                &&gdzie:\ f_p =\ f\ probkowania\\
+                &&n = 0, 1, 2, ..., N-1
+        \end{align*}
 
-    \subsection{Transformacja Laplaca}
+         Dla sygnałów okienkowanych można przyjąć wzór:
+        \begin{align*}
+            X(k) = \sum_{n=0}^{N-1}x(n)\cdot e^{-2j\pi \frac{k}{N}\cdot n} &&
+            x(n) = \sum_{k=0}^{N-1}X(k)\cdot e^{ 2j\pi \frac{k}{N}\cdot n}\\
+            k =\ 0,\ 1,\ ...,\ N-1 && n =\ 0,\ 1,\ ...,\ N-1
+        \end{align*}
+
+        \newpage
+        \subsubsection{Sposób obliczania poprzez wskaz}
+        \begin{multicols}{2}
+            \begin{tikzpicture}
+                \draw
+                    (0, 0) node [draw, circle, minimum width = 2cm]{}
+                    (-2.5, 0) edge[->] (2.5, 0)
+                    (0, -2.5) edge[->] (0, 2.5)
+                    (0, 2.5) node[right]{$Im$}
+                    (2.5, 0) node[above]{$Re$}
+
+                    (1.25, 0.25)node[]{$p_0$}
+                    (1, 0) to[short, *-*] (1, 0)
+
+                    (-0.25, 1.25)node[]{$p_1$}
+                    (0, 1) to[short, *-*] (0, 1)
+
+                    (-1.25, -0.25)node[]{$p_2$}
+                    (-1, 0) to[short, *-*] (-1, 0)
+
+                    (0.25, -1.25)node[]{$p_4$}
+                    (0, -1) to[short, *-*] (0, -1)
+                ;
+            \end{tikzpicture}
+            % \hfill
+
+            \begin{gather*}
+                X(k) = \sum_{n= 0}^{N-1} x(n) \cdot w^{kn}\\
+                w ^{kn} = e^{-j \frac{2\pi}{N}kn}\\
+                \phi(n) = -\frac{2\pi}{N}\cdot kn
+            \end{gather*}
+        \end{multicols}
+        I tak przykładowo dla N = 4:
+        \begin{equation*}
+            \left[
+            \begin{array}{c}
+                X_0\\
+                X_1\\
+                X_2\\
+                X_3
+            \end{array}
+            \right]
+            =\left[
+            \begin{array}{c c c c}
+                w^{0, 0} & w^{0, 1} & w^{0, 2} & w^{0, 3}\\
+                w^{1, 0} & w^{1, 1} & w^{1, 2} & w^{1, 3}\\
+                w^{2, 0} & w^{2, 1} & w^{2, 2} & w^{2, 3}\\
+                w^{3, 0} & w^{3, 1} & w^{3, 2} & w^{3, 3} 
+            \end{array}\right]
+            \left[
+            \begin{array}{c}
+                x_0\\
+                x_1\\
+                x_2\\
+                x_3
+            \end{array}\right]
+        \end{equation*}
+
+    % \subsection{Transformacja Laplaca}
          
 
-    \newpage
+    % \newpage
     \subsection{Transformacja Hilberta}
         \begin{multicols}{2}
             \begin{gather*}
@@ -86,20 +148,17 @@
         \end{equation*}
         $w(t)$ - funkcja okienkowa. Funkcja, która poza przedziałem osiąga 0!
 
+    % \newpage
     \subsection{Transformacja Gabora}
         \tab To specjalny rodzaj transmitancji okienkowej, w której okno jest funkcją Gausa.
-        \begin{multicols}{2}
-            \begin{gather*}
-                x(t) = \int \limits_{-\infty}^{+\infty} X^G(f, t)\cdot e^{+j2\pi \cdot f \cdot t}\ df\\
-                 X(f) = \int \limits_{-\infty}^{+\infty} X^G(f, t)\ dt
-            \end{gather*}\hfill\noindent
-            \noindent
-            \begin{gather*}
-                X^G(f, t) = \int \limits_{-\infty}^{+\infty}x(\tau)\cdot w(\tau-t)\cdot e^{-j2\pi\cdot f\cdot t}\ d\tau\\
-                gdzie:\ w(t) = e^{-\pi\cdot f^2}
-            \end{gather*}
-        \end{multicols}
-
+        \begin{align*}
+                x(t) &= \int \limits_{-\infty}^{+\infty} X^G(f, t)\cdot e^{+j2\pi \cdot f \cdot t}\ df &
+                X^G(f, t) &= \int \limits_{-\infty}^{+\infty}x(\tau)\cdot w(\tau-t)\cdot e^{-j2\pi\cdot f\cdot t}\ d\tau\\
+            % 
+                X(f) &= \int \limits_{-\infty}^{+\infty} X^G(f, t)\ dt &
+                &gdzie:\ w(t) = e^{-\pi\cdot f^2}
+        \end{align*}
+    
     \subsection{Transformacja falkowa}
     \begin{gather*}
         X_\psi(a, t) = \frac{1}{\sqrt{a}}\int\limits_{-\infty}^{+\infty}x(\tau)\cdot h_\psi\left(\frac{t-\tau}{a}\right)\ d\tau\\
