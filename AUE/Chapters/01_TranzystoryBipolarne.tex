@@ -48,7 +48,7 @@
             \begin{circuitikz}
                 \draw
                     (0, 0) node[above]{$B$}
-                    (0, 0) to[short, o-, i=$i_b$] ++ (2, 0) to[R, a=$r_d$, -*] ++ (0, -2) 
+                    (0, 0) to[short, o-, i=$i_b$] ++ (2, 0) to[R, a=$r_{BE}$, -*] ++ (0, -2) 
                     
                     (8, 0) node[above]{$C$}
                     (8, 0) to[short, i=$i_c$, o-] (6, 0)
@@ -65,7 +65,7 @@
         \end{figure}
         Parametry układu:
         \begin{align}
-            g_m = \frac{I_C}{U_T} && r_d = \frac{\beta}{g_m}
+            g_m = \frac{I_C}{U_T} && r_{BE} = \frac{\beta}{g_m}
         \end{align}
         \begin{equation*}
             r_{CE} = \frac{U_A}{I_C}
@@ -94,7 +94,7 @@
                 ;
                 \draw
                     (6, 0) node[above]{$B$}
-                    (6, 0) to[short, o-, i=$i_b$] ++ (2, 0) to[R, a=$r_d$, -*] ++ (0, -2) 
+                    (6, 0) to[short, o-, i=$i_b$] ++ (2, 0) to[R, a=$r_{BE}$, -*] ++ (0, -2) 
                     
                     (13, 0) node[above]{$C$}
                     (14, 0) to[short, i=$i_c$, o-] (13, 0)
@@ -114,5 +114,67 @@
         \end{figure}
         \begin{gather}
             k_u = -g_m\cdot (R_C || r_{CE}) \approx -g_m \cdot R_C = \frac{I_C\cdot R_C}{U_T}\\
-            k_{u_{max}} = -g_m \cdot r_{CE}
+            k_{u_{max}} = -g_m \cdot r_{CE}\\
+            k_i = \beta % o to też warto dopytać
         \end{gather}
+        Niezwykle ważnymi parametrami są rezystancję:\\
+        wejściowa: -- dopytać bo nie jestem pewien :C
+        \begin{equation}
+            r_{in} = \frac{u_{in}}{i_{in}} = r_{BE}
+        \end{equation}
+        wyjściowa:
+        \begin{equation}
+            r_{out} = \frac{i_{out}}{u_{out}} = R_C || r_{CE}
+        \end{equation}
+
+    \newpage
+    \subsection{Układ ze wspólną bazą (OB)}
+        \tab Dużo rzadziej spotykaną konfiguracją tranzystora, jest połączenie ze wspólną bazą.
+        \begin{figure}[!h]
+            \centering
+            \begin{circuitikz}
+                \draw
+                    (0, 0) node[npn, rotate = 90, yscale = -1](Q){}
+
+                    (Q.B) to[short, i=$i_b$] (0, -2) node[ground]{}
+                
+                    (Q.E) to[short, i=$I_E$] ++ (-1, 0) coordinate(in)
+                    (in) to[R, a=$r_G$] ++ (-2, 0) to[sV, a=$u_{in}$] ++(0, -2) node[ground]{}
+
+                    (in) to[short, *-o] ++(0, -0.5) coordinate(in)
+                    (in) ++ (0, -1.5) node[ground]{} to[short, o-] ++ (0, 0) 
+                    (in) ++ (0, -0.75) node[left]{$U_{in}$}
+
+                    (Q.C) to[short, *-o] ++ (1, 0) coordinate(out)
+                    (Q.C) to[R, l=$R_C$] ++ (0, 2) node[vcc]{$V_{CC}$}
+                
+                    (out) ++ (0, -2) node[ground]{} to[short, o-] ++ (0, 0)
+                    (out) ++ (0, -1) node[right]{$U_{out}$}
+                ;
+                \draw [latex-, thick] (in) ++ (0, -0.25) -- ++ (0, -1);
+                \draw [latex-, thick] (out)++ (0, -0.25) -- ++ (0, -1.5);
+
+                \draw
+                    (8, 0) coordinate (B) to[R, a=$r_{BE}$, *-, i=$i_b$] ++ (0, -2) node[ground]{}
+                    (B) to[short, i=$I_E$] ++ (-1, 0) coordinate(in) to[R, l=$r_G$] ++ (-2, 0) to[sV, a=$u_{in}$] ++ (0, -2) node[ground]{}
+                    (B) to[short] ++ (1, 0) coordinate(out) --++(0, -1) to[R, l=$R_C$] ++(2, 0) to[short, -*] ++ (0, 1)
+                    (out) to[short, *-] ++(0, 1) coordinate(I_c0) to[I, invert] ++ (2, 0) 
+                    (I_c0) to[rmeter, /tikz/circuitikz/bipoles/length=1.75cm, l=$g_mi_b$] ++ (2, 0) -- ++ (0, -1) coordinate(out)
+                    
+                    (out) to[short, *-o] ++ (1, 0) node[above]{$U_{out}$}
+                    (out) ++(0.5, 0) to[R, l=$R_C$, *-] ++ (0, -2) node[ground]{}
+                ;
+            \end{circuitikz}
+            \caption{Schemat ideowy oraz model mało-sygnałowy tranzystora ze wspólną bazą}
+        \end{figure}
+        
+        Układ w tej konfiguracji może wydawać się bezużyteczny, ponieważ wzmocnienie napięciowe:
+        \begin{equation}
+            k_u = \frac{u_{oout}}{u_{in}} = \frac{(g_m r_o)R_c}{R_C+r_o} \approx g_m\cdot R_C
+        \end{equation}
+        W zasadzie dokładnie takie samo jak w układzie OE\dots
+        \begin{equation}
+            k_i = \frac{}{}
+        \end{equation}
+
+    \subsection{Układ ze wspólnym kolektorem (OC) - wtórnik emiterowy}
