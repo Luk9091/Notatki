@@ -360,7 +360,7 @@ Wykład IV: Kodowanie kanału
 
 	
 
-		Skrambling: 
+	Skrambling: 
 			y_n = a_n xor p_n
 			- technika kodowania, oprata na sumowaniu ciągu znkanów
 			
@@ -370,6 +370,41 @@ Wykład IV: Kodowanie kanału
 		* Generator pseudolosowy: PRBS
 			https://pl.wikipedia.org/wiki/PRBS
 		
+
+Wykład V:
+	Odtwarzanie szegerowego zegara:
+		w kodach RZ, CMI tworząc filtr na odpowiednią częstotliwość (zegarową) da się
+		odzyskać sinusa o częstotliwości zegara. 
+		W kodzie NRZ, nie da się otworzyć zegara - aby dało sie odzyskać sygnał musi 
+		istnieć prążek zegarowy w widmie.
+
+	Układ odwarzania sygnału cyfrowego z sygnału z szumem:
+		ustalenie prógu komparacji ustawiony w połowie - logiczne ale czy na pewno?
+		Na wyjściu komparatora, dodajemu przerzutnik D i synchinizujemy go z zegarem 
+		dostsowaym do kodu
+		
+			Stosunek sygnał szum:
+				SNR = P_sygnał/P_szum = ((V1-V0)/odchylenie std)^2
+			Bit error rate
+				BER = ilość bitów błędu/ilość wszystkich bitów
+					- dla bardzo długiego syngału BER => SNR 
+
+		Twierdzenie Neqquista
+			R <= 2W
+				* R - szybkość transmisji [b/s]
+				* W - szerokość pasma
+		
+Część z dr Kołodziejem
+
+
+
+
+
+
+
+
+
+
 
 
 

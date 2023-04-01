@@ -157,7 +157,7 @@
                 \draw
                     (8, 0) coordinate (B) to[R, a=$r_{BE}$, *-, i=$i_b$] ++ (0, -2) node[ground]{}
                     (B) to[short, i=$I_E$] ++ (-1, 0) coordinate(in) to[R, l=$r_G$] ++ (-2, 0) to[sV, a=$u_{in}$] ++ (0, -2) node[ground]{}
-                    (B) to[short] ++ (1, 0) coordinate(out) --++(0, -1) to[R, l=$R_C$] ++(2, 0) to[short, -*] ++ (0, 1)
+                    (B) to[short] ++ (1, 0) coordinate(out) --++(0, -1) to[R, l=$r_{CE}$] ++(2, 0) to[short, -*] ++ (0, 1)
                     (out) to[short, *-] ++(0, 1) coordinate(I_c0) to[I, invert] ++ (2, 0) 
                     (I_c0) to[rmeter, /tikz/circuitikz/bipoles/length=1.75cm, l=$g_mi_b$] ++ (2, 0) -- ++ (0, -1) coordinate(out)
                     
@@ -170,11 +170,48 @@
         
         Układ w tej konfiguracji może wydawać się bezużyteczny, ponieważ wzmocnienie napięciowe:
         \begin{equation}
-            k_u = \frac{u_{oout}}{u_{in}} = \frac{(g_m r_o)R_c}{R_C+r_o} \approx g_m\cdot R_C
+            k_u = \frac{u_{oout}}{u_{in}} = \frac{(g_m r_O)R_c}{R_C+r_O} \approx g_m\cdot R_C
         \end{equation}
         W zasadzie dokładnie takie samo jak w układzie OE\dots
         \begin{equation}
-            k_i = \frac{}{}
+            k_i \approx 1
+        \end{equation}
+        Rezystancja wejściowymi:
+        \begin{equation}
+            r_{in} = \frac{1}{g_m} \approx \frac{r_{BE}}{\beta}
+        \end{equation}
+        Rezystancja wyjściowa:
+        \begin{equation}
+            r_{out} = R_C||r_{CE} \left(1 + \beta \frac{r_G}{r_{BE} + r_G}\right) = R_C || r_{CE}
         \end{equation}
 
+        Mała wartość impedancji wejściowej sprawia, że układ jest rzadko stosowany w układach mało-sygnałowych. -- generalnie układ gówniany
+
+    \newpage
     \subsection{Układ ze wspólnym kolektorem (OC) - wtórnik emiterowy}
+        \begin{figure}[!h]
+            \centering
+            \begin{circuitikz}
+                \draw
+                    (0, 0) node[npn](Q){}
+
+                    (Q.C) to[short, i<=$i_C$] ++ (0, 1) node[vcc]{$V_{CC}$}
+                    (Q.B) to[R, l=$r_G$, i<=$i_B$] ++(-2, 0) to[sV, a=$u_G$] ++ (0, -2) node[ground]{}
+                    (Q.E) to[R, *-, l=$R_E$] ++ (0, -2) node[ground]{}
+                    (Q.E) to[short, -o] ++ (1, 0) node[right]{$u_{out}$}
+                ;
+
+                \draw
+                    (4, 2) to[R, l=$r_g$] ++ (2, 0) to[R, l=$r_{BE}$] ++ (0, -2) coordinate(E)
+                    (4, 2) to[sV, l=$u_{in}$] ++ (0, -2) node[ground]{}
+                    (E) to[short, -*, i=$i_b$] ++ (1, 0) coordinate(E)
+                    (E) to[short, -*, i=$i_e$] ++ (0, -1) coordinate(out) 
+                    (out) to[short, -o] ++ (1, 0) node[right]{$u_{out}$}
+                    (out) to[R, l=$R_E$] ++ (0, -2) node[ground]{}
+
+                    (E) to[short, i<=$i_c$] ++(1, 0) coordinate(I_c0) to [I, invert] ++ (0, 2) coordinate(I_C1)
+                    (I_c0) to[rmeter, /tikz/circuitikz/bipoles/length=1.75cm] ++ (0, 2)
+                    to[short] ++ (2, 0) to[R, l=$r_{CE}$] ++(0, -2) node[ground]{}
+                ;
+            \end{circuitikz}
+        \end{figure}
