@@ -54,7 +54,7 @@ zmiana 1/R(T)   b.spada      rośnie       rośnie            rośnie
 
     Zasada prawej dłoni:
             I ↑
-            B • → F
+            B • > F
 
     Przenikalność magnetyczna:          µ_0 = 4π*10^-7 [Tm/A]
 
@@ -154,11 +154,11 @@ zmiana 1/R(T)   b.spada      rośnie       rośnie            rośnie
 7. Optyka
         Normalna
             ↓
-prom.   →\ϕ1|ϕ1/←prom.
+prom.   >\ϕ1|ϕ1/<prom.
  padajacy \ | / odbity
-    ------------------ ← lustro
+    ------------------ < lustro
             |\
-            |ϕ2\ ←prom.załamany
+            |ϕ2\ <prom.załamany
 
     Prawo odbicia Snella:               n1*sinϕ1 = n2*sinϕ2
     Współczynnik załamania:             n = c/v

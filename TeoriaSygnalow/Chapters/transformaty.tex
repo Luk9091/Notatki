@@ -160,11 +160,17 @@
         \end{align*}
     
     \subsection{Transformacja falkowa}
-    \begin{gather*}
-        X_\psi(a, t) = \frac{1}{\sqrt{a}}\int\limits_{-\infty}^{+\infty}x(\tau)\cdot h_\psi\left(\frac{t-\tau}{a}\right)\ d\tau\\
-        \Updownarrow\\
-        x(t) = \frac{1}{c_\psi}\cdot \int\limits_{0}^{+\infty}\frac{1}{a^2\cdot\sqrt{a}}\cdot \int\limits_{-\infty}^{+\infty}X_\psi(a, \tau)h_\psi\left(\frac{\tau-t}{a}\right)\ d\tau\ da\\
-        przy\ czym:\ c_\psi 2\cdot \int\limits_{0}^{+\infty}\frac{|H_\psi(f)|^2}{f}df < +\infty
-    \end{gather*}
-    $h_\psi(t)$ - falka sygnału. Funkcja, która poza przedziałem dąży do 0
+        \begin{gather*}
+            X_\psi(a, t) = \frac{1}{\sqrt{a}}\int\limits_{-\infty}^{+\infty}x(\tau)\cdot h_\psi\left(\frac{t-\tau}{a}\right)\ d\tau\\
+            \Updownarrow\\
+            x(t) = \frac{1}{c_\psi}\cdot \int\limits_{0}^{+\infty}\frac{1}{a^2\cdot\sqrt{a}}\cdot \int\limits_{-\infty}^{+\infty}X_\psi(a, \tau)h_\psi\left(\frac{\tau-t}{a}\right)\ d\tau\ da\\
+            przy\ czym:\ c_\psi 2\cdot \int\limits_{0}^{+\infty}\frac{|H_\psi(f)|^2}{f}df < +\infty
+        \end{gather*}
+        $h_\psi(t)$ - falka sygnału. Funkcja, która poza przedziałem dąży do 0
+
+
+    \subsection{Transformacja $\mathcal{Z} $}
+        \begin{align*}
+            X(z) = \sum_{n=-\infty}^{+\infty}x(n)\cdot z^{-n}
+        \end{align*}
     

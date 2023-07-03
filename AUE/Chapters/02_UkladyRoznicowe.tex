@@ -1,0 +1,35 @@
+\section{Układ różnicowy}
+    \tab Układ różnicowy, jest jednym z najczęściej spotykanych układów w elektronice, głównie przez to że jest to pierwszy stopień wzmacniaczy operacyjnych.
+    \begin{figure}[!h]
+        \centering
+        \begin{circuitikz}
+            \draw
+                (0, 0) node[npn](Q1){}
+                (4, 0) node[npn, xscale=-1](Q2){}
+
+                (Q1.B) to[short, -o] ++(0, 0) node[left]{$\frac{u_R}{2}$}
+                (Q2.B) to[short, -o] ++(0, 0) node[right]{$\frac{-u_R}{2}$}
+
+                (Q1.C) to[R, i<^=$i_{C_1}$, l = $R_1$] ++ (0, 2) coordinate(C1)
+                (Q2.C) to[R, i<_=$i_{C_2}$, l = $R_2$] ++ (0, 2) coordinate(C2)
+
+                (Q1.C) to[short, *-o] ++( 0.5, 0) node[right]{$u_{o_1}$}
+                (Q2.C) to[short, *-o] ++(-0.5, 0) node[left]{$u_{o_2}$}
+
+                (C1) to[short] ++ (2, 0) coordinate(Vcc)
+                (C2) to[short] ++ (-2,0)
+                (Vcc) to[short, *-] ++(0, 1) node[vcc]{$V_{CC}$}
+
+                (Q1.E) -- ++ (2, 0) coordinate(Vee)
+                (Q2.E) -- ++ (-2,0)
+                (Vee) to[I, *-] ++ (0,-2) node[ground]{}
+                (Vee) to[rmeter, /tikz/circuitikz/bipoles/length=1.75cm, l=$i_{EE}$] ++ (0,-2)
+            ;
+        \end{circuitikz}
+        \caption{Układ wzmacniacza różnicowego na tranzystorach NPN.}
+    \end{figure}
+% 
+    \begin{gather}
+        |u_{be_1}| = |u_{be_2}| = |u_{be}| = |\frac{u_R}{2}|\\
+        i_{C_1} = i_{C_2} = I_S\cdot e^{\frac{u_{be}}{U_T}}
+    \end{gather}

@@ -1,0 +1,29 @@
+Sprzerzenia zwrotne:
+    
+Przerzenie poprawia:
+    szerokość pasma,
+    stabilność temperaturową
+    
+    
+    S_out = k * Se
+    Se = S_in - S_F = S_in - B * S_out
+    
+    K = S_out/S_in = k/(1+kB) ~ 1/B
+
+        kB - skuteczność sprzężenia zwrotnego
+        B  - współczynnik (wzmocnienie) pętli sprzerzenia zwrotnego
+        k  - wzmocnienie układu z otwardtą petlą
+
+
+    dK/dk = 1/(1+kB)^2
+    
+    dK/K  = (dk/k)/(1+kB)
+
+    Wzmocnienie układu z szeregowym sprzerzeniem zwrotnym:
+
+        Uo/Ui = k/(1 + kB)
+        Zi = zi(1+kB)
+            Zi - impedancja wejsciowa układu
+            zi - impedancja wejsciowa wzmacniacza
+        
+        Zo = zo/(1+kB)

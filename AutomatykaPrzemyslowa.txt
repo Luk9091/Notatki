@@ -1,82 +1,82 @@
 Jak czytać:
-	++ - zaleta
-	-- - wada
+    ++ - zaleta
+    -- - wada
 
 
 
 Wykład 1:
-	Automatyka - dziedzina nauki zajmująca się automatyzacją i sterowaniem procesami.
-		Procesy:
-			naturalne - występujące samoinstnie w przyrodzie,
-			technologiczne - realizowane przez człowieka,
-			ciągłe - inaczej analogowe
-			dyskretne - w szczególności binarne,
-		
-	Sygnał:
-		- ze względu na miejsce w procesie:
-			* wejściowy
-			* wyjściowy
-		- ze względu na naturę zjawiska:
-			* ciśnieniowe,
-			* napięciowe,
-			* prądowe,
-			itd...
-	Zakłócenie - czynnik o charakterze przypadkowym
-	
-	Układ automatyki - zbiór elemetów, wzajemnie powiązanych, biorącu udział w sterowaniu czymś,
-		- układ sterowania = układ otwarty,
-		- układ regulacji = układ zamknięty,
-	Inny podział:
-		- układy ciągłe - sterowane sygnałami analogowymi,
-		- układy dyskretne - sterowane sygnałami dyskretnymi,
-		- układy przerywane - sterowane impulsami,
-	Jeszcze inny:
-		- liniowe - WSZYSTKIE elementy wchodzące w cały układ są liniowe
-		- nieliniowe - układy, w których co najmniej element nie jest liniowy
+    Automatyka - dziedzina nauki zajmująca się automatyzacją i sterowaniem procesami.
+        Procesy:
+            naturalne - występujące samoinstnie w przyrodzie,
+            technologiczne - realizowane przez człowieka,
+            ciągłe - inaczej analogowe
+            dyskretne - w szczególności binarne,
+        
+    Sygnał:
+        - ze względu na miejsce w procesie:
+            * wejściowy
+            * wyjściowy
+        - ze względu na naturę zjawiska:
+            * ciśnieniowe,
+            * napięciowe,
+            * prądowe,
+            itd...
+    Zakłócenie - czynnik o charakterze przypadkowym
+    
+    Układ automatyki - zbiór elemetów, wzajemnie powiązanych, biorącu udział w sterowaniu czymś,
+        - układ sterowania = układ otwarty,
+        - układ regulacji = układ zamknięty,
+    Inny podział:
+        - układy ciągłe - sterowane sygnałami analogowymi,
+        - układy dyskretne - sterowane sygnałami dyskretnymi,
+        - układy przerywane - sterowane impulsami,
+    Jeszcze inny:
+        - liniowe - WSZYSTKIE elementy wchodzące w cały układ są liniowe
+        - nieliniowe - układy, w których co najmniej element nie jest liniowy
 
-		- układy stabilizujące - wartość zadana jest stała,
-		- układy nadążne - układ śledzi wartość zadaną i próbuje ją dogonić,
-		- układy programowane - wartość zadana zależy od programu
-		- układy ekstremalne - wielkość regulowana ma osiągnąć ekstremem (max luib min)
+        - układy stabilizujące - wartość zadana jest stała,
+        - układy nadążne - układ śledzi wartość zadaną i próbuje ją dogonić,
+        - układy programowane - wartość zadana zależy od programu
+        - układy ekstremalne - wielkość regulowana ma osiągnąć ekstremem (max luib min)
 
-		- układy adaptacyjne - samoczynnie reagujące na zmianę warunków zewnętrznych,
-		- układy zwykłe - bez możliwości adaptacji
+        - układy adaptacyjne - samoczynnie reagujące na zmianę warunków zewnętrznych,
+        - układy zwykłe - bez możliwości adaptacji
 
-	Regulator - układ porónujący sygnał wejściowy i wyjściowy. I na tej podstawie sterujący sygnałem wejściowym
-	
+    Regulator - układ porónujący sygnał wejściowy i wyjściowy. I na tej podstawie sterujący sygnałem wejściowym
+    
 
 Silniki:
-	Asynchroniczny:
-		- rotacja pola magnetycznego != rotacji wirnika
-		- poślizg s=(n1-n)/n
-			gdzie: 
-				n1 - prędkość wirowania pola,
-				n  - prędkość wirowania wirnika
-		- regulacja przedkości obrotowej:
-			n = n1(1-s)
+    Asynchroniczny:
+        - rotacja pola magnetycznego != rotacji wirnika
+        - poślizg s=(n1-n)/n
+            gdzie: 
+                n1 - prędkość wirowania pola,
+                n  - prędkość wirowania wirnika
+        - regulacja przedkości obrotowej:
+            n = n1(1-s)
 
-	Indukcyjne jednofazowe:
-		- drgające pole magnetyczne,
-		- silnik nie jest w stanie sam ruszyć,
-		
-		Silnik kondesatorowy:
-			- moment rozruchowy w granichach 200-400% momentu nominalnego,
-			- prąd rozruchowy od 4 do 6 razy większy od prądu nominalnego,
-			++ duży moment obrotowy,
-			-- drogi
+    Indukcyjne jednofazowe:
+        - drgające pole magnetyczne,
+        - silnik nie jest w stanie sam ruszyć,
+        
+        Silnik kondesatorowy:
+            - moment rozruchowy w granichach 200-400% momentu nominalnego,
+            - prąd rozruchowy od 4 do 6 razy większy od prądu nominalnego,
+            ++ duży moment obrotowy,
+            -- drogi
 
-		Silnik ze zwartą fazą rozruchową:
-			-- mały moment rozruchowy od 25% do 75% nominalnego,
-			-- mała sprawność ~20%
-			-- poślizg rzędu 7-10%
-			++ tania produkcja
-			++ odporne na zablokowanie
+        Silnik ze zwartą fazą rozruchową:
+            -- mały moment rozruchowy od 25% do 75% nominalnego,
+            -- mała sprawność ~20%
+            -- poślizg rzędu 7-10%
+            ++ tania produkcja
+            ++ odporne na zablokowanie
 
-		Silnik z dołączanym uzwojeniem rozruchowym:
-			- dołączone uzwojenie ma mniej zwojów, co powoduje różnicę faz,
-			++ moment rozruchowy 100-175%
-			-- najwiekszy prad rozruchowy
+        Silnik z dołączanym uzwojeniem rozruchowym:
+            - dołączone uzwojenie ma mniej zwojów, co powoduje różnicę faz,
+            ++ moment rozruchowy 100-175%
+            -- najwiekszy prad rozruchowy
 
-	Silniki synchroniczne:
-		-- silnik nie jest w stanie sam ruszyć,
-		
+    Silniki synchroniczne:
+        -- silnik nie jest w stanie sam ruszyć,
+        

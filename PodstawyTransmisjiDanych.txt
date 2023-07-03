@@ -1,4 +1,4 @@
-3 część zdalnie prawdopodonie równolegele z 1-szą częścią.
+3 część zdalnie prawdopodobnie równolegle z 1-szą częścią.
 Prawdopodobnie laby też zdalnie, dostajesz zadanie robisz,
 do tygodnia oddajesz i kolejne (5 razy)
 
@@ -8,397 +8,535 @@ Laby - 4 części - 3 grupy będą, bo mniej osób - od jutra (2 marca) info
 od 13 marca do 3 kwietnia
 
 Zasady zaliczeń:
-	 !!! UWAGA !!!
-	Będą wejścówki!
-	   na labach
-	   1/3 oceny
+     !!! UWAGA !!!
+    Będą wejściówki!
+        na labach
+        1/3 oceny
 
 Egzamin:
-	I tem - pis,
-	II, III term - ustnie
+    I tem - pis,
+    II, III term - ustnie
 
 Okej a jakiś upel? Coś takiego?
-	brak :C
+        brak :C
 
 
 Część główna wykładu:
-	Dane - definicja z PWN,
-	Entriopia informacji - miara wykorzystania każdego z elementu ze zbioru 
-		=> H = abs( sum ( p(i) * log_N (p(i)) ) )
-			- N - liczność zbioru / podstawa systemu w którym kodujemy,
-			- p(x) - prawdopodobieństwo
+    Dane - definicja z PWN,
+    Entropia informacji - miara wykorzystania każdego z elementu ze zbioru 
+        => H = abs( sum ( p(i) * log_N (p(i)) ) )
+            - N - liczność zbioru / podstawa systemu w którym kodujemy,
+            - p(x) - prawdopodobieństwo
 
-		Do domu:
-			Zbiór:	{a, b, c, d}
-			p(x):	1/2, 1/4, 1/8, 1/8
-			H = 1 3/4
+        Do domu:
+            Zbiór:      {a, b, c, d}
+            p(x):       1/2, 1/4, 1/8, 1/8
+            H   =       1 3/4
 
-		Inaczej mówiąc entropia pozwala zmaksymalizować ilość danych 
-		na najmniejszej ilości bitów
+            Inaczej mówiąc entropia pozwala zmaksymalizować ilość danych 
+            na najmniejszej ilości bitów
 
-	
-	Kodowanie Shannona:
-		entropia + 1 bit
-		
-		Przykład:
-			Zbiór:	{a, b, c, d, e}
-			p(x):	0.15, 0.1, 0.4, 0.1, 0.25
+    
+    Kodowanie Shannon'a:
+        entropia + 1 bit
+        
+        Przykład:
+            Zbiór:    {a, b, c, d, e}
+            p(x):    0.15, 0.1, 0.4, 0.1, 0.25
 
-			Etap I:		Sortowanie:
-				x' = {c, e, a, b, d}
-				p' = {0.4, 0.25, 0.15, 0.1, 0.1}
-			Etap II:	Suma prawdopodobieństwa:
-				P_s(c) = 0 - z definicji
-				P_s(b) = 0 + 0.4 = 0.4
-				P_s(a) = 0.4 + 0.25 = 0.65
-				P_s(b) = 0.65 + 0.15 = 0.8
-				P_s(d) = 0.8 + 0.1 = 0.9
+            Etap I:        Sortowanie:
+                x' = {c, e, a, b, d}
+                p' = {0.4, 0.25, 0.15, 0.1, 0.1}
+            Etap II:    Suma prawdopodobieństwa:
+                P_s(c) = 0 - z definicji
+                P_s(b) = 0 + 0.4 = 0.4
+                P_s(a) = 0.4 + 0.25 = 0.65
+                P_s(b) = 0.65 + 0.15 = 0.8
+                P_s(d) = 0.8 + 0.1 = 0.9
 
-			Etap III:	Wyznaczenie długości Shannona:
-				C_i = ceil( -log_2 sum(P_i) )
-				P(c) => C = 2
-				P(e) => C = 2
-				P(a) => C = 3
-				P(b) => C = 4
-				P(d) => C = 4
+            Etap III:    Wyznaczenie długości Shannon'a:
+                C_i = ceil( -log_2 sum(p'_i) )
+                P(c) => C = 2
+                P(e) => C = 2
+                P(a) => C = 3
+                P(b) => C = 4
+                P(d) => C = 4
 
-			Etap IV:	Wyznaczenie wartości dziesiętnych kodujących wartość:
-				c => 0.00*2^2 =  0.0 =>  0 => 0000
-				e => 0.40*2^2 =  1.6 =>  1 => 0001
-				a => 0.65*2^3 =  5.2 =>  5 => 0101
-				b => 0.80*2^4 = 12.8 => 12 => 1100
-				d => 0.90*2^4 = 14.4 => 14 => 1110
-				
-				↑ widać dużo nadmirowych zer lepszy algorytm Huffmana
-					Przeczytać wikipedię! O obu
-	Kodowanie Huffmana:
+            Etap IV:    Wyznaczenie wartości dziesiętnych kodujących wartość:
+                                znak => floor( P_s(znaku) * 2^C_znaku )
 
-		Przykład:
-			Zbiór:	{a, b, c, d}
-			p(x):	0.1, 0.2, 0.3, 0.4
+                c => 0.00*2^2 =  0.0 =>  0 => 0000
+                e => 0.40*2^2 =  1.6 =>  1 => 0001
+                a => 0.65*2^3 =  5.2 =>  5 => 0101
+                b => 0.80*2^4 = 12.8 => 12 => 1100
+                d => 0.90*2^4 = 14.4 => 14 => 1110
+                
+                ↑ widać dużo nadmiarowych zer lepszy algorytm Huffmana
+                    Przeczytać wikipedię! O obu
 
-
-				start
-			      1/     \0 ← kolejny bit informacji
-			     a|0.4    \
-			     ↑	        0
-			zakodowany   1/   \
-			    znak    c|0.3  \
-					    00
-				          1/   \0
-					d|0.2	\
-				     		a|0.1 ← prawdopodobieństwo wystąpienia znaku
-
-			i tak znakowi _ odpowiada kod:
-				'd' = 1
-				'c' = 01
-				'b' = 001
-				'a' = 000
-
-		Entropia takiego kodu: 1.85... 
+    Kodowanie Huffmana:
+        Przykład:
+            Zbiór:    {a, b, c, d}
+            p(x):    0.1, 0.2, 0.3, 0.4
 
 
-		Policzyć entropię dla tych kodów!
+                start
+                  1/     \0 <- kolejny bit informacji
+                 a|0.4    \
+                 ↑            0
+            zakodowany   1/   \
+                znak    c|0.3  \
+                        00
+                          1/   \0
+                    d|0.2    \
+                             a|0.1 <- prawdopodobieństwo wystąpienia znaku
 
-	Ograniczenia dotyczące pojemności kanału:
-		W - szerokość kanału
-		N_0 - widmowa gęstość sygnału
-		N_0 *W - Moc szumu
-		P_syg - Moc sygnału
-		
-		C - pojemność kanału
-		C = W * log_2 ( 1 + P_syg/(N_0*W) )
+            i tak znakowi _ odpowiada kod:
+                'd' = 1
+                'c' = 01
+                'b' = 001
+                'a' = 000
 
-	
+        Entropia takiego kodu: 1.85... 
 
-	System transmisyjny:
-	
-					    ---------------To nas obchodzi--------
-					    |
-	----------	-----------------	-------------	  -----------	
-	|  Dane	 |	| Kodowanie	|	| Kodowanie |	  |  Kanał  |
-	|źródłowe| ==>	|źródła z	| ===>	| kanału    | ==> |  trans  | ===
-	|	 |	|uwzględnieniem	|	|	    |	  | misyjny |
-	---------- <<-	| charakteru	|	------------- ->> -----------
-			-----------------		       ↑
-							Sepcjalne kodowanie zależne
-							od wybranego kanału
 
---------------------
-		   |
-	---------	---------	----------
-	|Dekoder|	|Dekoder|	|  Dane	 |
-===> 	|kanału	| ==>	|źródła	| ==>	|źródłowe|
-	|	|	|	|	|	 |
-	---------	---------	----------
+        Policzyć entropię dla tych kodów!
+
+    Ograniczenia dotyczące pojemności kanału:
+        W - szerokość kanału
+        N_0 - widmowa gęstość sygnału
+        N_0 *W - Moc szumu
+        P_syg - Moc sygnału
+        
+        C - pojemność kanału
+        C = W * log_2 ( 1 + P_syg/(N_0*W) )
+
+    
+
+    System transmisyjny:
+    
+                                        ---------------To nas obchodzi----------------------------
+                                        |                                                        |
+    ----------        -----------------       -------------      -----------            ---------       ---------       ----------
+    |  Dane     |        | Kodowanie        |       | Kodowanie |      |  Kanał  |            |Dekoder|        |Dekoder|       |  Dane     |
+    |źródłowe| ==>    |źródła z       | ===>    | kanału    | ==> |  trans  | ======>     |kanału    | ==>    |źródła    | ==>    |źródłowe|
+    |        |      |uwzględnieniem    |       |           |      | misyjny |           |       |       |       |       |        |
+    ---------- <<-    | charakteru    |       ------------- ->> -----------           ---------       ---------       ----------
+                    -----------------               ↑
+                            Specjalne kodowanie zależne
+                            od wybranego kanału
+
+
+
+
+
+
 
 
 
 Wykład II
-	Podział systemów transmisji danych:
-		1) wykorzystywana wielkość fizyczna
-			* sygnał elektryczny,
-			* sugnały radiowe
-			* transmisja światła 
-		2) podziału czasu
-			* Simplex
-			* Half Duplex
-			* Full Duplex
-		3) sposób realizacji transmisji
-			* Systemy cyfrowe - określone standardem - idealny kanał powinien nie 
-				zmieniać sygnału pierwotnego,
-			* Quasi analogowy - sygnał cyfrowy ulega znaczyn zniekształceniem - 
-				sygnał musi być reinterpretowany przez odbiornik :C
-				przykłąd:
-					 		 ___    ____
-				sygnał pierwotny:	 | |    |  |
-							_| |____|  |----
-							   _	  _
-				sygnał po przejściu:	  / \    / \
-							_/   \__/   \__
+    Podział systemów transmisji danych:
+        1) wykorzystywana wielkość fizyczna
+            * sygnał elektryczny,
+            * sygnały radiowe
+            * transmisja światła 
+        2) podziału czasu
+            * Simplex
+            * Half Duplex
+            * Full Duplex
+        3) sposób realizacji transmisji
+            * Systemy cyfrowe - określone standardem - idealny kanał powinien nie 
+                zmieniać sygnału pierwotnego,
+            * Quasi analogowy - sygnał cyfrowy ulega znacznym zniekształceniem - 
+                sygnał musi być reinterpretowany przez odbiornik :C
+                przykład:
+                              ___    ____
+                sygnał pierwotny:     | |    |  |
+                            _| |____|  |----
+                               _      _
+                sygnał po przejściu:      / \    / \
+                            _/   \__/   \__
 
-			* modulacje
-			* ze wzglęu na użycie sygnału zegarowego
-				- transmisja synchroniczna
-				- transmisja asynchroniczna
-				Sposób uzyskiwania zegara
-					|
-					|-> transmisja plezjochroniczna -- sygnały zegarowe 
-						nie są połączone, ale mają tę samą częstotliwość
+            * modulacje
+            * ze względu na użycie sygnału zegarowego
+                - transmisja synchroniczna
+                - transmisja asynchroniczna
+                Sposób uzyskiwania zegara
+                    |
+                    |-> transmisja plezjochroniczna -- sygnały zegarowe 
+                        nie są połączone, ale mają tę samą częstotliwość
 
-	
+    
 
-	Parametry szumu:
-		wartość średnia - wartość oczekiwana w rezkładzie normalnym
-		wartość skuteczka - odchylenie standardowe
-	
-
-
----------------	  ----------   -------------   ----------   ---------    ------------
-| wzma	/     |	  |	   |   |   Flitr   |   |	|   | Filtr |	 |	    |
-| cnia /      |->>|mieszacz|->>|  pasmowo  |->>|detektor|->>| wideo | ->>| detektor |
-| cz  /	filtr |	  |        |   |przepustowy|   |obwiedni|   |	    |	 |	    |
----------------	  ----------   -------------   ----------   ---------    ------------
-		      ↑		   					      ↓
-		     VCO						      ↓
-		      ↑						---------------------------
-		   generator					|			  |
-		 piłokształtny			------>>	|	 Wyświetlacz	  |
-								|			  |
-								---------------------------
+    Parametry szumu:
+        wartość średnia - wartość oczekiwana w rozkładzie normalnym
+        wartość skuteczna - odchylenie standardowe
+    
 
 
-
-
-Wykład III:	Charakterystyki przewodów!
-	Transmitancja przewodu:
-		H(f) = exp( j kl(1+j) sqrt(f))
-			l - długość przewodu,
-			k - dobroć przewodu,
-
-	Imedancjia linii przewodzącej:
-		Z_0 = sqrt( L/C )
-	
-	NVP - nominal velocity propagation - szbkość propagacji w przewodze / prędkość światła
-	
-	Jeśli połowa t_prop w lini jest porównywalna z czasami narastania - 
-		to należy uwględić linię dugą
-
-
-	Współczynniki odbicia:
-		R_g = (Rgen - Z_0) / (Rgen + Z_0)
-		R_L = (Rodb - Z_0) / (Rodb - Z_0)
-
-	
-		U_0 = Ugen * Z_0 / ( Rgen +Z_0 )
-			
-
-		dla Zodb = infΩ i Zgen = Z_0
-		R_g = 0			R_L = 1
-		^input		        ^out
-	      Ug|    _______	      Ug|   ________
-	   0.5Ug|____|			|   |
-		|			|___|
-		-----2tau-------→	----tau------→
-
-	
-
-		dla Zodb = Xc	i Zgen = Z_0
-		
-		
-		^input		        ^out
-	      Ug|        ___	      Ug|     ______
-	   0.5Ug|______	/		|    /czas ładowanie ~ C*Z_0
-		|     |/		|___/
-		-----2tau-------→	----tau------→
-	
-
-
-		dla Zodb = 0Ω i Zgen = Z_0
-		R_g = 0			R_L = 1
-		^input		        ^out
-	      Ug|    		      Ug|   
-	   0.5Ug|_______		|  
-		|      |________	|____________
-		-----2tau-------→	----tau------→
+---------------      ----------   -------------   ----------   ---------    ------------
+| wzma  /     |      |        |   |   Flirt   |   |        |   | Filtr |    |          |
+| cnia /      |   ->>|mieszacz|->>|  pasmowo  |->>|detektor|->>| wideo | ->>| detektor |
+| cz  / filtr |      |        |   |przepustowy|   |obwiedni|   |       |    |          |
+---------------      ----------   -------------   ----------   ---------    ------------
+                                    ↑                                            ↓
+                                   VCO                                           ↓
+                                    ↑                                -----------------------
+                                generator                            |                     |
+                                piłokształtny    ------>>            |     Wyświetlacz     |
+                                                                     |                     |
+                                                                     -----------------------
 
 
 
-	
+
+Wykład III:    Charakterystyki przewodów!
+    Transmitancja przewodu:
+        H(f) = exp( j kl(1+j) sqrt(f))
+            l - długość przewodu,
+            k - dobroć przewodu,
+
+    Impedancji linii przewodzącej:
+        Z_0 = sqrt( L/C )
+    
+    NVP - nominal velocity propagation - szybkość propagacji w przewodzie / prędkość światła
+    
+    Jeśli połowa t_prop w lini jest porównywalna z czasami narastania - 
+        to należy uwzględnić linię długą
+
+
+    Współczynniki odbicia:
+        R_g = (Rgen - Z_0) / (Rgen + Z_0)
+        R_L = (Rodb - Z_0) / (Rodb - Z_0)
+
+    
+        U_0 = Ugen * Z_0 / ( Rgen +Z_0 )
+            
+
+        dla Zodb = infΩ i Zgen = Z_0
+        R_g = 0            R_L = 1
+        ^input                ^out
+      Ug|    _______      Ug|   ________
+   0.5Ug|____|                |   |
+        |                    |___|
+        -----2tau------->    ----tau------>
+
+    
+
+        dla Zodb = Xc    i Zgen = Z_0
+        
+        
+        ^input              ^out
+      Ug|        ___      Ug|     ______
+   0.5Ug|______ /           |    /czas ładowanie ~ C*Z_0
+        |     |/            |___/
+        -----2tau------->    ----tau------>
+    
+
+
+        dla Zodb = 0Ω i Zgen = Z_0
+        R_g = 0            R_L = 1
+        ^input                ^out
+      Ug|                  Ug|   
+   0.5Ug|_______            |  
+        |      |________    |____________
+        -----2tau------->    ----tau------>
+
+
+
+    
 
 Wykład IV: Kodowanie kanału
-	Kod powinen być dopasowany do kanału
+    Kod powinien być dopasowany do kanału
 
-	Kod NRZ - not return to zero
-		'1' - High voltage level
-		'0' - Low voltage level
+    Kod NRZ - not return to zero
+        '1' - High voltage level
+        '0' - Low voltage level
 
-		^VL
-		|__   ___ <- '1'
-		| |   |
-		| |___|	 <- '0'
-		--|---|------> t
-		 clk clk
+        ^VL
+        |__   ___ <- '1'
+        | |   |
+        | |___|     <- '0'
+        --|---|------> t
+         clk clk
 
-		Właściwości:
-			- prostota (+)
-			- Składowa stała zależy od treści (--)
-			- Pierwszy listek widma sięga f_clk (+)
-			- Przy długich ciągach zer brak możliwości zboczy zegara (--)
-	
+        Właściwości:
+            - prostota (+)
+            - Składowa stała zależy od treści (--)
+            - Pierwszy listek widma sięga f_clk (+)
+            - Przy długich ciągach zer brak możliwości zboczy zegara (--)
+    
 
-	Kod RZ - return to zero
-		'1' - High voltage level
-		'0' - Low voltage level
+    Kod RZ - return to zero
+        '1' - High voltage level
+        '0' - Low voltage level
 
-		^VL
-		| ___    <- '1'
-		| | | 
-		|_| |___ <- '0'
-		--|---|------> t
-		 clk clk
+        ^VL
+        | ___    <- '1'
+        | | | 
+        |_| |___ <- '0'
+        --|---|------> t
+         clk clk
 
-		Właściwości:
-			- prostota (+)
-			- Składowa stała zależy od treści (--)
-			- Pierwszy listek widma sięga 2*f_clk - większe pasmo (-)
-			- Występują prążki zegara - możliwość odtworzenia zegara z widma (+)
-			- Przy długich ciągach zer brak możliwości zboczy zegara (+)
+        Właściwości:
+            - prostota (+)
+            - Składowa stała zależy od treści (--)
+            - Pierwszy listek widma sięga 2*f_clk - większe pasmo (-)
+            - Występują prążki zegara - możliwość odtworzenia zegara z widma (+)
+            - Przy długich ciągach zer brak możliwości zboczy zegara (+)
 
-	
-
-
-	Kod AMI (Alternate Mark Inversion)
-
-		^   _____
-	     V+ |   |	|   clk
-		|___|	|_____	  ________________
-	     0V	|---|--------|----|----|-------------->
-		|  clk	     |	  |   clk
-	     V-	|	     |____|
-
-		
-		in1 o-NOT--R--|
-			      |
-			      *----------o out
-			      |
-		in2 o-NOT--R--|
-		
-		Naprzemiennie raz '1' pojawia się na in1 raz na in2
-
-		
-
-		Właściwości:
-			- Prostota (+)
-			- Pierwszy listek widma sięga 2*f_clk - większe pasmo (-)
-			- Składowa stała nie zależy od treści danych (+)
-			- Przy długich ciągach zer brak możliwości zboczy zegara (+)
-
-	Kod MANCHESTER
-		Właściwości:
-			- Skłądowa się zeruje w obrembie jednego bitu (+)
-			- Pierwszy listek widma sięga 2*f_clk - większe pasmo (-)
-			- W sygnale zawsze występują zbocza
-
-	Kod CMI (Coded Mark Inversion)
-		Właściwości:
-			- Składowa stała dla długiego ciągu nie zależy od treści (++)
-			- Pierwszy listek widma sięga 2*f_clk - większe pasmo (-)
-			- W sygnale zawsze występują zbocza
-			- Występuje prążek zegara
-			- Dogodny kształ widma
-
-	Kod MLT3 (Multi link Transimit 3)
-		   1
-		V+ → 	0
-
-	      1 ↑	↓ 1
-
-		0    ←	V-
-		      1
-
-		Jak nadajemy '1' to zmieniamy stan.
-		Jak '0' to zostajemy w tym samym stanie
-		
-		Kod nadmiarowy, dodatkowy bit który dla samych zer zawsze jest jedynka
-
-		Właściwości:
-			- Małe widmo -- pierwszy listek widma sięga f_clk (+)
-			- Dogodny kształ widma
-			- Część składowej stałej przenosi się
+    
 
 
+    Kod AMI (Alternate Mark Inversion)
 
-	Kodowanie różnicowe:
-		Właściwości:
-			- funkcje realizują XOR
-			- prostota
-			- Nie zwiększa strumienia danych
-			- Dane są kodowane niezależnie od tego czy kanał odwraca fazę
-			- Modyfikuje długi ciąg '1'
-			- Nie modyfikuje ciągu '0'
+        ^   ______
+     V+ |   |    |   clk
+        |___|    |____    ________________
+     0V |---|--------|----|----|-------------->
+        |  clk       |    |   clk
+     V- |            |____|
 
-	
+        
+        in1 o-NOT--R--|
+                      |
+                      *----------o out
+                      |
+        in2 o-NOT--R--|
+        
+        Naprzemiennie raz '1' pojawia się na in1 raz na in2
 
-	Skrambling: 
-			y_n = a_n xor p_n
-			- technika kodowania, oprata na sumowaniu ciągu znkanów
-			
-			- dodajemy dwókrotnie sygnał losowy do sygnału
+        
 
-		
-		* Generator pseudolosowy: PRBS
-			https://pl.wikipedia.org/wiki/PRBS
-		
+        Właściwości:
+            - Prostota (+)
+            - Pierwszy listek widma sięga 2*f_clk - większe pasmo (-)
+            - Składowa stała nie zależy od treści danych (+)
+            - Przy długich ciągach zer brak możliwości zboczy zegara (+)
+
+    Kod MANCHESTER
+        Właściwości:
+            - Składową się zeruje w obrębie jednego bitu (+)
+            - Pierwszy listek widma sięga 2*f_clk - większe pasmo (-)
+            - W sygnale zawsze występują zbocza
+
+    Kod CMI (Coded Mark Inversion)
+        Właściwości:
+            - Składowa stała dla długiego ciągu nie zależy od treści (++)
+            - Pierwszy listek widma sięga 2*f_clk - większe pasmo (-)
+            - W sygnale zawsze występują zbocza
+            - Występuje prążek zegara
+            - Dogodny kształt widma
+
+    Kod MLT3 (Multi link Transmit 3)
+           1
+        V+ >     0
+
+      1 ↑        ↓ 1
+
+        0    <    V-
+              1
+
+        Jak nadajemy '1' to zmieniamy stan.
+        Jak '0' to zostajemy w tym samym stanie
+        
+        Kod nadmiarowy, dodatkowy bit który dla samych zer zawsze jest jedynka
+
+        Właściwości:
+            - Małe widmo -- pierwszy listek widma sięga f_clk (+)
+            - Dogodny kształt widma
+            - Część składowej stałej przenosi się
+
+
+
+    Kodowanie różnicowe:
+        Właściwości:
+            - funkcje realizują XOR
+            - prostota
+            - Nie zwiększa strumienia danych
+            - Dane są kodowane niezależnie od tego czy kanał odwraca fazę
+            - Modyfikuje długi ciąg '1'
+            - Nie modyfikuje ciągu '0'
+
+    
+
+    Scrambling: 
+            y_n = a_n xor p_n
+            - technika kodowania, oparta na sumowaniu ciągu znaków
+            
+            - dodajemy dwukrotnie sygnał losowy do sygnału
+
+        
+        * Generator pseudolosowy: PRBS
+            https://pl.wikipedia.org/wiki/PRBS
+        
 
 Wykład V:
-	Odtwarzanie szegerowego zegara:
-		w kodach RZ, CMI tworząc filtr na odpowiednią częstotliwość (zegarową) da się
-		odzyskać sinusa o częstotliwości zegara. 
-		W kodzie NRZ, nie da się otworzyć zegara - aby dało sie odzyskać sygnał musi 
-		istnieć prążek zegarowy w widmie.
+    Odtwarzanie szeregowego zegara:
+        w kodach RZ, CMI tworząc filtr na odpowiednią częstotliwość (zegarową) da się
+        odzyskać sinusa o częstotliwości zegara. 
+        W kodzie NRZ, nie da się otworzyć zegara - aby dało sie odzyskać sygnał musi 
+        istnieć prążek zegarowy w widmie.
 
-	Układ odwarzania sygnału cyfrowego z sygnału z szumem:
-		ustalenie prógu komparacji ustawiony w połowie - logiczne ale czy na pewno?
-		Na wyjściu komparatora, dodajemu przerzutnik D i synchinizujemy go z zegarem 
-		dostsowaym do kodu
-		
-			Stosunek sygnał szum:
-				SNR = P_sygnał/P_szum = ((V1-V0)/odchylenie std)^2
-			Bit error rate
-				BER = ilość bitów błędu/ilość wszystkich bitów
-					- dla bardzo długiego syngału BER => SNR 
+    Układ dowarzania sygnału cyfrowego z sygnału z szumem:
+        ustalenie progu komparacji ustawiony w połowie - logiczne ale czy na pewno?
+        Na wyjściu komparatora, dodajemy przerzutnik D i synchronizujemy go z zegarem 
+        dostosowanym do kodu
+        
+            Stosunek sygnał szum:
+                SNR = P_sygnał/P_szum = ((V1-V0)/odchylenie std)^2
+            Bit error rate
+                BER = ilość bitów błędu/ilość wszystkich bitów
+                    - dla bardzo długiego sygnału BER => SNR 
 
-		Twierdzenie Neqquista
-			R <= 2W
-				* R - szybkość transmisji [b/s]
-				* W - szerokość pasma
-		
+        Twierdzenie Nyquista
+            R <= 2W
+                * R - szybkość transmisji [b/s]
+                * W - szerokość pasma
+        
 Część z dr Kołodziejem
+    Zaliczenie: wykonanie zadania przesłanego na upelu tej części
+    3 - 4 wykłady,
+    4 laby - zaliczenie poprzez aktywność, oraz wykonywanie zadań
+    
+
+
+Wykład II: Systemy telekomutacyjne:
+    Przepustowość łącza to gwarantowana przez operatora maksymalna szybkość transmisji wewnątrz sieci wewnętrznej operatora
+
+    rlag - zgłoszenie na jednostkę czasu - miara rzeczywistego zużycia sieci
+    elank [E] - ilość zgłoszeń na minutkę- miara obciążenia sieci
+    QoS  - Quality of Service - jakość sygnału
+
+    Maksymalna szybkość bitowa kanału C: (linia 109)
+    C = W log2 (1 + Psyg/N)
+
+        W           - szerokość pasma
+            Psyg        - moc sygnału
+        N           - moc szumu
+        
+
+Układ oddzielający sygnał nadawany od sygnału odbieranego
+
+                ------------------------
+                |                          | Nadajnik |
+                L*--------------L*------
+                    ------------
+--------*-------L*-------    ---L*-------
+        |               |    |        |
+    Impedancja          |    |    Impedancja kompensująca
+      Lini              |    |        == Z_lini
+        |               |    |        |
+--------*-------L*-------    ---*L-------
+                    -------------
+                L*--------------L*------
+                |                        | Odbiornik |
+                ------------------------
+
+    Błąd apertury:
+        wyższe składowe częstotliwościowe są bardziej tłumione
+
+    Dynamika sygnału:
+        W jakim zakresie zmienia sie sygnał
+    
+    Jakość przetwarzania:
+        stosunek amplitudy sygnału do błędu kwantyzacji
+
+
+Wykład III:
+    Sygnalizacja - wspólnokanałowy system stosowany w sieciach pozwalający na zestawianie i nadzorowanie połączeń
+        Tryby pracy:
+            IN BAND - sygnalizacja połączona z wiadomością
+            OUT BAND- sygnał danych oddzielony jest od sygnalizacji
+
+
+    TLV - type length value
+        W ramce 
+
+Wiedza na egzamin:
+    Struktura warstwowa
+        
 
 
 
 
+
+
+
+
+
+Cześć dr Stępnia:
+Wykład I:
+    Model warstwowy sieci:
+        1. Warstwa aplikacji
+            -- interfejs użytkownika
+        2. Warstwa prezentacji
+            -- na przykład system operacyjny, taki tłumacz między użytkownikiem a maszyną
+        3. Warstwa sesji
+            -- dialog między komputerami, nawiązywanie połączenia, sterowanie i sygnalizacja
+        4. Warstwa transportowa
+            -- przenosi informacje. Zamienia ciągi bitów w paczki
+        5. Warstwa sieci
+            -- dobiera trasę i odpowiada za przesyłanie informacji wewnątrz sieci
+        6. Warstwa łącza danych
+            -- zabezpiecza transmisję, synchronizuje i ramkuje dane. Wykrywa i koryguje błędy
+        7. Warstwa fizyczna
+            -- fizyczny wygląd sieci. Rodzaj zastosowanych złączek, kabli, etc.
+
+        Każda z warstw w sposób przeźroczysty przenosi informację, dodając tylko własne nagłówki.
+
+
+
+    Rodzaje sieci:
+        WAN -- sieć światowa (globalna), łącząca mniejsze sieci LAN
+        MAN -- sieć miejsca
+        LAN -- sieć lokalna
+        vLAN-- wirtualna sieć lokalna - nie musi być powiązana geograficznie z danym obszarem, może występować wewnątrz firmy
+        PAN -- sieć prywatna (personalna)
+
+Wykład II:
+    Topologie fizyczne sieci:
+        - topologia gwizdy (lub rozszerzonej gwizdy) -- od punktu centralnego, w dowolnym kierunku wychodzi jedno połączenie do jednego użytkownika
+        - topologia pierścienia - wszystkie urządzenia połączone są razem, a wewnątrz sieci krąży token, który pozwala danemu użytkownikowi mówić
+        - topologia magistrali - każde urządzenie połączone jest do wspólnej magistrali,
+        - topologia wielokrotne - każde urządzenie połączone jest do przynajmniej dwóch punktów
+
+    Topologie logiczne:
+        - sieć CSMA -- topologia podobna do topologii magistrali
+        - sieć Ethernet
+
+
+
+
+    RAMKA DANYCH SIECI ETHERNET
+        | Preambuła | SFD | DA | SA | DFL | Data | Padding | FCS
+        |  7 bajtów | 1B  | 6B | 6B | 2B  |    46-1500B    | 4B
+
+    Preambuła -- pole synchronizacji o wartości 101010...
+    SFD (Start Frame Delimiter) -- znacznik początku ramki 10101011
+    DA  (Destination Address)   -- adres sprzętowy (MAC) stacji docelowej
+    SA  (Source Address)        -- adres sprzętowy (MAC) stacji źródłowej
+    DFL (Data Field Length)     -- (opcjonalnie) liczba oktetów danych
+    Data                        -- dane użyteczne
+    Padding                     -- część pola danych uzupełniająca do minimalnej długości pola danych
+    FCS (Frame CheckSum)        -- suma kontrolna - be preambuły i SFD
+
+
+Wykład III:
+    TCP     - Transmission Control Protocol
+    IP      - Internet Protocol
+    ICMP    - Internet Control Message Protocol
+    ARP     - Address Resolution Protocol
+    RARP    - Reverse Address Resolution Protocol
+
+    Adresy specjalne:
+        xxx.xxx.0.0 -- adres sieci
+        127.0.0.1   -- localhost
+
+
+    Przesyłanie danych w internecie TCP/IP
+        1. Podzielenie danych na pakiety,
+        2. Adresacja danych
 
 
 

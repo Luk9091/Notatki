@@ -1,0 +1,15 @@
+1.
+    transmisja asynchroniczna    -- transmisja sychronizowana jest przez bity początku (i końca) ramki
+    transmisja sychroniczna        -- urzadzenie nadawcze przesyła dodtkowo zegar synchronizujacy wiacdomosc
+    transmisja plezjochroniczna    -- każde urządzenie zawiera własny zegar, co jakiś czas synchronizując pracę
+
+2. 
+    Entropia - miara wykorzystania każdego z elemetów ze zbioru
+
+    H = abs( sum ( p(i) * log_N (p(i)) ) )
+        - p(i)     -- prawdopodobieństwo wystapienia i-tego elementu
+        - N     -- liczebnosc zbioru
+
+3. 
+    Pojemność kanału tranmisyjnego 
+    

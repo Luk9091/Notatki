@@ -48,11 +48,11 @@
             \begin{circuitikz}
                 \draw
                     (0, 0) node[above]{$B$}
-                    (0, 0) to[short, o-, i=$i_b$] ++ (2, 0) to[R, a=$r_{BE}$, -*] ++ (0, -2) 
+                    (0, 0) to[short, o-, i=$i_b$] ++ (2, 0) to[R, a=$r_{be}$, -*] ++ (0, -2) 
                     
                     (8, 0) node[above]{$C$}
                     (8, 0) to[short, i=$i_c$, o-] (6, 0)
-                    (6, 0) to[R, l=$r_{CE}$, *-*] ++ (0, -2)
+                    (6, 0) to[R, l=$r_{ce}$, *-*] ++ (0, -2)
                     (6, 0) to[short] ++ (-2, 0) coordinate(I_c0) to [I, -*] ++ (0, -2) coordinate(I_C1)
                     (I_c0) to[rmeter, /tikz/circuitikz/bipoles/length=1.75cm] ++ (0, -2)
                     (I_c0) ++ (-0.75, -1) node[rotate = 90]{$g_m\cdot i_b$}
@@ -65,14 +65,14 @@
         \end{figure}
         Parametry układu:
         \begin{align}
-            g_m = \frac{I_C}{U_T} && r_{BE} = \frac{\beta}{g_m}
+            g_m = \frac{I_C}{U_T} && r_{be} = \frac{\beta}{g_m}
         \end{align}
         \begin{equation*}
-            r_{CE} = \frac{U_A}{I_C}
+            r_{ce} = \frac{U_A}{I_C}
         \end{equation*}
         Wzmocnienie napięciowe tranzystory:
         \begin{equation}
-            k_u = \frac{dU_o}{dU_i} = -g_m\cdot r_{CE}
+            k_u = \frac{dU_o}{dU_i} = -g_m\cdot r_{ce}
         \end{equation}
         Wzmocnienie prądowe:    
         \begin{equation}
@@ -86,20 +86,21 @@
                 \draw
                     (0, 0) node[npn](Q){}
 
-                    (Q.B) -- ++ (-1, 0) to[sV, a=$u_g$] ++ (0, -2) node[ground]{}
+                    % (Q.B) to[R, l=$r_G$, i<=$i_b$] ++ (-2, 0) to[sV, a=$u_g$] ++ (0, -2) node[ground]{}
+                    (Q.B) to[short, -o] ++ (-1, 0) node[above]{$u_{IN}$}
                     (Q.E) -- ++ (0, -1.25) node[ground]{}
 
-                    (Q.C) to[short, *-o] ++ (1, 0) node[above]{$U_{out}$}
+                    (Q.C) to[short, *-o] ++ (1, 0) node[above]{$u_{OUT}$}
                     (Q.C) to[R, l=$R_C$] ++ (0, 2) -- ++ (2.5, 0) to[I, invert, l=$U_{CC}$] ++ (0, -2) node[ground]{}
                 ;
                 \draw
                     (6, 0) node[above]{$B$}
-                    (6, 0) to[short, o-, i=$i_b$] ++ (2, 0) to[R, a=$r_{BE}$, -*] ++ (0, -2) 
+                    (6, 0) to[short, o-, i=$i_b$] ++ (2, 0) to[R, a=$r_{be}$, -*] ++ (0, -2) 
                     
                     (13, 0) node[above]{$C$}
                     (14, 0) to[short, i=$i_c$, o-] (13, 0)
                     (11, 0) to[R, *-*] ++ (0, -2)
-                    (10.8,-1) node[above, rotate = 90]{$r_{CE}$}
+                    (10.8,-1) node[above, rotate = 90]{$r_{ce}$}
                     (13, 0) -- ++(-2, 0)
                     (12, 0) to[R, l=$R_C$, *-*] ++ (0, -2) 
                     (11.5, 0) to[short] ++ (-2, 0) coordinate(I_c0) to [I, -*] ++ (0, -2) coordinate(I_C1)
@@ -113,18 +114,18 @@
             \caption{Schemat wzmacniacza OE i model mało-sygnałowy}
         \end{figure}
         \begin{gather}
-            k_u = -g_m\cdot (R_C || r_{CE}) \approx -g_m \cdot R_C = \frac{I_C\cdot R_C}{U_T}\\
-            k_{u_{max}} = -g_m \cdot r_{CE}\\
+            k_u = -g_m\cdot (R_C || r_{ce}) \approx -g_m \cdot R_C = \frac{I_C\cdot R_C}{U_T}\\
+            k_{u_{max}} = -g_m \cdot r_{ce}\\
             k_i = \beta % o to też warto dopytać
         \end{gather}
         Niezwykle ważnymi parametrami są rezystancję:\\
         wejściowa: -- dopytać bo nie jestem pewien :C
         \begin{equation}
-            r_{in} = \frac{u_{in}}{i_{in}} = r_{BE}
+            r_{in} = \frac{u_{in}}{i_{in}} = r_{be}
         \end{equation}
         wyjściowa:
         \begin{equation}
-            r_{out} = \frac{i_{out}}{u_{out}} = R_C || r_{CE}
+            r_{out} = \frac{i_{out}}{u_{out}} = R_C || r_{ce}
         \end{equation}
 
     \newpage
@@ -136,13 +137,13 @@
                 \draw
                     (0, 0) node[npn, rotate = 90, yscale = -1](Q){}
 
-                    (Q.B) to[short, i=$i_b$] (0, -2) node[ground]{}
+                    (Q.B) to[short, i=$I_b$] (0, -2) node[ground]{}
                 
-                    (Q.E) to[short, i=$I_E$] ++ (-1, 0) coordinate(in)
-                    (in) to[R, a=$r_G$] ++ (-2, 0) to[sV, a=$u_{in}$] ++(0, -2) node[ground]{}
+                    (Q.E) to[short, i=$I_e$, -o] ++ (-1, 0) coordinate(in)
+                    % (in) to[R, a=$r_G$] ++ (-2, 0) to[sV, a=$u_{in}$] ++(0, -2) node[ground]{}
 
-                    (in) to[short, *-o] ++(0, -0.5) coordinate(in)
-                    (in) ++ (0, -1.5) node[ground]{} to[short, o-] ++ (0, 0) 
+                    % (in) to[short, *-o] ++(0, -0.5) coordinate(in)
+                    (in) ++ (0, -2) node[ground]{} to[short, o-] ++ (0, 0) 
                     (in) ++ (0, -0.75) node[left]{$U_{in}$}
 
                     (Q.C) to[short, *-o] ++ (1, 0) coordinate(out)
@@ -151,13 +152,14 @@
                     (out) ++ (0, -2) node[ground]{} to[short, o-] ++ (0, 0)
                     (out) ++ (0, -1) node[right]{$U_{out}$}
                 ;
-                \draw [latex-, thick] (in) ++ (0, -0.25) -- ++ (0, -1);
+                \draw [latex-, thick] (in) ++ (0, -0.25) -- ++ (0, -1.5);
                 \draw [latex-, thick] (out)++ (0, -0.25) -- ++ (0, -1.5);
 
                 \draw
-                    (8, 0) coordinate (B) to[R, a=$r_{BE}$, *-, i=$i_b$] ++ (0, -2) node[ground]{}
-                    (B) to[short, i=$I_E$] ++ (-1, 0) coordinate(in) to[R, l=$r_G$] ++ (-2, 0) to[sV, a=$u_{in}$] ++ (0, -2) node[ground]{}
-                    (B) to[short] ++ (1, 0) coordinate(out) --++(0, -1) to[R, l=$r_{CE}$] ++(2, 0) to[short, -*] ++ (0, 1)
+                    (8, 0) coordinate (B) to[R, a=$r_{be}$, *-, i=$i_b$] ++ (0, -2) node[ground]{}
+                    (B) to[short, -o] ++(-1, 0) node[above]{$u_{in}$}
+                    % (B) to[short, i=$i_e$] ++ (-1, 0) coordinate(in) to[R, l=$r_G$] ++ (-2, 0) to[sV, a=$u_{in}$] ++ (0, -2) node[ground]{}
+                    (B) to[short] ++ (1, 0) coordinate(out) --++(0, -1) to[R, l=$r_{ce}$] ++(2, 0) to[short, -*] ++ (0, 1)
                     (out) to[short, *-] ++(0, 1) coordinate(I_c0) to[I, invert] ++ (2, 0) 
                     (I_c0) to[rmeter, /tikz/circuitikz/bipoles/length=1.75cm, l=$g_mi_b$] ++ (2, 0) -- ++ (0, -1) coordinate(out)
                     
@@ -168,9 +170,9 @@
             \caption{Schemat ideowy oraz model mało-sygnałowy tranzystora ze wspólną bazą}
         \end{figure}
         
-        Układ w tej konfiguracji może wydawać się bezużyteczny, ponieważ wzmocnienie napięciowe:
+        % Układ w tej konfiguracji może wydawać się bezużyteczny, ponieważ wzmocnienie napięciowe:
         \begin{equation}
-            k_u = \frac{u_{oout}}{u_{in}} = \frac{(g_m r_O)R_c}{R_C+r_O} \approx g_m\cdot R_C
+            k_u = \frac{u_{out}}{u_{in}} \approx g_m\cdot R_C
         \end{equation}
         W zasadzie dokładnie takie samo jak w układzie OE\dots
         \begin{equation}
@@ -178,11 +180,11 @@
         \end{equation}
         Rezystancja wejściowymi:
         \begin{equation}
-            r_{in} = \frac{1}{g_m} \approx \frac{r_{BE}}{\beta}
+            r_{in} = \frac{1}{g_m} \approx \frac{r_{be}}{\beta}
         \end{equation}
         Rezystancja wyjściowa:
         \begin{equation}
-            r_{out} = R_C||r_{CE} \left(1 + \beta \frac{r_G}{r_{BE} + r_G}\right) = R_C || r_{CE}
+            r_{out} = R_C||r_{ce} \left(1 + \beta \frac{r_G}{r_{be} + r_G}\right) = R_C || r_{ce}
         \end{equation}
 
         Mała wartość impedancji wejściowej sprawia, że układ jest rzadko stosowany w układach mało-sygnałowych. -- generalnie układ gówniany
@@ -196,14 +198,15 @@
                     (0, 0) node[npn](Q){}
 
                     (Q.C) to[short, i<=$i_C$] ++ (0, 1) node[vcc]{$V_{CC}$}
-                    (Q.B) to[R, l=$r_G$, i<=$i_B$] ++(-2, 0) to[sV, a=$u_G$] ++ (0, -2) node[ground]{}
+                    % (Q.B) to[R, l=$r_G$, i<=$i_B$] ++(-2, 0) to[sV, a=$u_G$] ++ (0, -2) node[ground]{}
+                    (Q.B) to[short, -o, i<=$i_B$] ++ (-1, 0) node[above]{$u_{IN}$}
                     (Q.E) to[R, *-, l=$R_E$] ++ (0, -2) node[ground]{}
-                    (Q.E) to[short, -o] ++ (1, 0) node[right]{$u_{out}$}
+                    (Q.E) to[short, -o] ++ (1, 0) node[right]{$u_{OUT}$}
                 ;
 
                 \draw
-                    (4, 2) to[R, l=$r_g$] ++ (2, 0) to[R, l=$r_{BE}$] ++ (0, -2) coordinate(E)
-                    (4, 2) to[sV, l=$u_{in}$] ++ (0, -2) node[ground]{}
+                    (6, 2) node[above]{$u_{in}$} to[short, o-] ++ (2, 0) to[R, l=$r_{be}$] ++ (0, -2) coordinate(E)
+                    % (6, 2) to[sV, l=$u_{in}$] ++ (0, -2) node[ground]{}
                     (E) to[short, -*, i=$i_b$] ++ (1, 0) coordinate(E)
                     (E) to[short, -*, i=$i_e$] ++ (0, -1) coordinate(out) 
                     (out) to[short, -o] ++ (1, 0) node[right]{$u_{out}$}
@@ -211,7 +214,14 @@
 
                     (E) to[short, i<=$i_c$] ++(1, 0) coordinate(I_c0) to [I, invert] ++ (0, 2) coordinate(I_C1)
                     (I_c0) to[rmeter, /tikz/circuitikz/bipoles/length=1.75cm] ++ (0, 2)
-                    to[short] ++ (2, 0) to[R, l=$r_{CE}$] ++(0, -2) node[ground]{}
+                    to[short] ++ (2, 0) to[R, l=$r_{ce}$] ++(0, -2) node[ground]{}
                 ;
             \end{circuitikz}
         \end{figure}
+
+        \begin{gather}
+            k_u    = \frac{u_{out}}{u_{in}} = \frac{u_{in}-i_b\cdot r_{be}}{u_{in}} \approx 1\\
+            k_i    = \frac{i_{out}}{i_{in}} = \frac{i_{out}}{i_{in}} = \frac{i_e}{i_b} = \beta+1 \approx \beta\\
+            r_{in} = \frac{u_{in}}{i_{in}} = \frac{i_b r_{be} + i_eR_E}{i_b} = r_{be}+(\beta+1)R_E \approx \beta R_E\\
+            r_{out} = \frac{u_{out}}{i_{out}} = R_E || \frac{r_{be}}{\beta+1}
+        \end{gather}

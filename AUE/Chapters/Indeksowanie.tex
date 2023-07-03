@@ -1,0 +1,43 @@
+\section*{Indeksy i ich znaczenie!}
+    \tab W świecie inżynierów niezwykłą wagę przykłada sie do jasności i jednoznaczności oznaczeń. 
+    Także i w tym skrypcie postaram się abyś Ty drogi czytelniku, nigdy nie miał wątpliwości, o co mi chodziło!
+    Dlatego na wstępie muszę zapoznać Cię z kilkoma podstawowymi zasadami:
+
+    \begin{enumerate}
+        \item Oznaczenia napięć i prądów na elementach aktywnych:
+            \begin{figure}[!h]
+                \centering
+                \begin{circuitikz}
+                    \draw
+                        (0, 0) to[I, i=$I_{V_0}$, v=$U_{V_0}$, l=$V_0$] ++ (3, 0)
+                    ;
+                \end{circuitikz}
+            \end{figure}
+        \item Oznaczenia prądów i napięć na elementach odbiorczych:
+            \begin{figure}[!h]
+                \centering
+                \begin{circuitikz}
+                    \draw
+                        (0, 0) to[R, i=$I_{R_0}$, v=$U_{R_0}$, l=$R_0$] ++ (3, 0)
+                    ;
+                \end{circuitikz}
+                % \caption{}
+            \end{figure}
+        \item Prądu i napięcia stałe:
+            \begin{align*}
+                &\text{Napięcie: }  &U_{\text{S}}\\
+                &\text{Prąd: }      &I_{\text{S}}
+            \end{align*}
+        \item Prądy i napięcia zmienne:
+            \begin{align*}
+                &\text{Napięcie: }  &u_{\text{z}}\\
+                &\text{Prąd: }      &i_{\text{z}}
+            \end{align*}
+        \item Prądy i napięcia o składowej stałej i zmiennej:
+            \begin{align*}
+                &\text{Napięcie: }  &u_{\text{S}}\\
+                &\text{Prąd: }      &i_{\text{S}}
+            \end{align*}
+    \end{enumerate}
+
+\newpage

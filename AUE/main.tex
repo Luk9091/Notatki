@@ -35,8 +35,10 @@
 % \usepackage{csvsimple}
 % \usepackage{pgfplots}
 
-\usepackage[european, american currents, americanvoltages, RPvoltages]{circuitikz}
+% \usepackage[european, american currents, americanvoltages, RPvoltages]{circuitikz}
+\usepackage[european, american currents, RPvoltages]{circuitikz}
 \usepackage{tikz}
+    
 
 \title{\underline{Wzory, równania, zależności}\\\textbf{Analogowe układy elektroniczne}}
 \author{Łukasz Przystupa}
@@ -54,6 +56,9 @@
 
     \tableofcontents
     \newpage
+    \input{Chapters/Indeksowanie.tex}
     \input{Chapters/01_TranzystoryBipolarne.tex}
+    \newpage
+    \input{Chapters/02_UkladyRoznicowe.tex}
 
 \end{document}
