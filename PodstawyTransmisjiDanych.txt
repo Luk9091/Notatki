@@ -63,7 +63,7 @@ Część główna wykładu:
                 P(d) => C = 4
 
             Etap IV:    Wyznaczenie wartości dziesiętnych kodujących wartość:
-                                znak => floor( P_s(znaku) * 2^C_znaku )
+                znak => floor( P_s(znaku) * 2^C_znaku )
 
                 c => 0.00*2^2 =  0.0 =>  0 => 0000
                 e => 0.40*2^2 =  1.6 =>  1 => 0001
@@ -80,16 +80,16 @@ Część główna wykładu:
             p(x):    0.1, 0.2, 0.3, 0.4
 
 
-                start
+                    start
                   1/     \0 <- kolejny bit informacji
                  a|0.4    \
-                 ↑            0
+                 ↑          0
             zakodowany   1/   \
                 znak    c|0.3  \
-                        00
-                          1/   \0
-                    d|0.2    \
-                             a|0.1 <- prawdopodobieństwo wystąpienia znaku
+                               00
+                             1/   \0
+                          d|0.2    \
+                                   a|0.1 <- prawdopodobieństwo wystąpienia znaku
 
             i tak znakowi _ odpowiada kod:
                 'd' = 1
@@ -115,16 +115,16 @@ Część główna wykładu:
 
     System transmisyjny:
     
-                                        ---------------To nas obchodzi----------------------------
-                                        |                                                        |
-    ----------        -----------------       -------------      -----------            ---------       ---------       ----------
-    |  Dane     |        | Kodowanie        |       | Kodowanie |      |  Kanał  |            |Dekoder|        |Dekoder|       |  Dane     |
-    |źródłowe| ==>    |źródła z       | ===>    | kanału    | ==> |  trans  | ======>     |kanału    | ==>    |źródła    | ==>    |źródłowe|
-    |        |      |uwzględnieniem    |       |           |      | misyjny |           |       |       |       |       |        |
-    ---------- <<-    | charakteru    |       ------------- ->> -----------           ---------       ---------       ----------
-                    -----------------               ↑
-                            Specjalne kodowanie zależne
-                            od wybranego kanału
+                                            ---------------To nas obchodzi----------------------------
+                                            |                                                        |
+    ----------        ------------------       -------------      -----------          ---------       ---------       ----------
+    |  Dane  |        |    Kodowanie   |       | Kodowanie |      |  Kanał  |          |Dekoder|       |Dekoder|       |  Dane  |
+    |źródłowe| ==>    |    źródła z    | ===>  | kanału    | ==>  |  trans  | ======>  |kanału | ==>   |źródła | ==>   |źródłowe|
+    |        |        | uwzględnieniem |       |           |      | misyjny |          |       |       |       |       |        |
+    ---------- <<-    |  charakteru    |       ------------- ->> -----------           ---------       ---------       ----------
+                      ------------------              ↑
+                                          Specjalne kodowanie zależne
+                                              od wybranego kanału
 
 
 
@@ -150,12 +150,13 @@ Wykład II
             * Quasi analogowy - sygnał cyfrowy ulega znacznym zniekształceniem - 
                 sygnał musi być reinterpretowany przez odbiornik :C
                 przykład:
-                              ___    ____
+                                      ___    ____
                 sygnał pierwotny:     | |    |  |
-                            _| |____|  |----
-                               _      _
+                                     _| |____|  |----
+
+                                           _      _
                 sygnał po przejściu:      / \    / \
-                            _/   \__/   \__
+                                        _/   \__/   \__
 
             * modulacje
             * ze względu na użycie sygnału zegarowego
@@ -179,11 +180,11 @@ Wykład II
 | cnia /      |   ->>|mieszacz|->>|  pasmowo  |->>|detektor|->>| wideo | ->>| detektor |
 | cz  / filtr |      |        |   |przepustowy|   |obwiedni|   |       |    |          |
 ---------------      ----------   -------------   ----------   ---------    ------------
-                                    ↑                                            ↓
-                                   VCO                                           ↓
-                                    ↑                                -----------------------
-                                generator                            |                     |
-                                piłokształtny    ------>>            |     Wyświetlacz     |
+                         ↑                                                        ↓
+                        VCO                                                       ↓
+                         ↑                                           -----------------------
+                      generator                                      |                     |
+                    piłokształtny    ------------------>>            |     Wyświetlacz     |
                                                                      |                     |
                                                                      -----------------------
 
@@ -215,9 +216,9 @@ Wykład III:    Charakterystyki przewodów!
 
         dla Zodb = infΩ i Zgen = Z_0
         R_g = 0            R_L = 1
-        ^input                ^out
-      Ug|    _______      Ug|   ________
-   0.5Ug|____|                |   |
+        ^input               ^out
+      Ug|    _______       Ug|   ________
+   0.5Ug|____|               |   |
         |                    |___|
         -----2tau------->    ----tau------>
 
@@ -254,7 +255,7 @@ Wykład IV: Kodowanie kanału
         '0' - Low voltage level
 
         ^VL
-        |__   ___ <- '1'
+        |__   ___   <- '1'
         | |   |
         | |___|     <- '0'
         --|---|------> t
@@ -264,7 +265,7 @@ Wykład IV: Kodowanie kanału
             - prostota (+)
             - Składowa stała zależy od treści (--)
             - Pierwszy listek widma sięga f_clk (+)
-            - Przy długich ciągach zer brak możliwości zboczy zegara (--)
+            - Przy długich ciągach zer/jedynek brak możliwości zboczy zegara (--)
     
 
     Kod RZ - return to zero
@@ -315,12 +316,32 @@ Wykład IV: Kodowanie kanału
             - Przy długich ciągach zer brak możliwości zboczy zegara (+)
 
     Kod MANCHESTER
+        Wykrywane jest zbocze w połowie taktu zegara.
+            '1' -> Zbocze opadające
+            '0' -> Zbocze narastajace
+
+        Zegar:     __  __  __  __  __  __
+                   ||  ||  ||  ||  ||  ||
+                ___||__||__||__||__||__||_
+                                        
+        Dane:      _____       _________
+                 0 | 1 | 0   0 | 1   1 |
+                ___|   |_______|       |_
+                                                 
+        Kod:    __   _____ ___   ___ ___
+                 |   |   | | |   | | | |
+                 |___|   |_| |___| |_| |_
+                 0   1   0   0   1   1
+
+
         Właściwości:
             - Składową się zeruje w obrębie jednego bitu (+)
             - Pierwszy listek widma sięga 2*f_clk - większe pasmo (-)
             - W sygnale zawsze występują zbocza
 
     Kod CMI (Coded Mark Inversion)
+        Połaczenie kodu AMI i Manchester.
+
         Właściwości:
             - Składowa stała dla długiego ciągu nie zależy od treści (++)
             - Pierwszy listek widma sięga 2*f_clk - większe pasmo (-)
@@ -378,7 +399,7 @@ Wykład V:
         W kodzie NRZ, nie da się otworzyć zegara - aby dało sie odzyskać sygnał musi 
         istnieć prążek zegarowy w widmie.
 
-    Układ dowarzania sygnału cyfrowego z sygnału z szumem:
+    Układ odzyskiwania sygnału cyfrowego z sygnału z szumem:
         ustalenie progu komparacji ustawiony w połowie - logiczne ale czy na pewno?
         Na wyjściu komparatora, dodajemy przerzutnik D i synchronizujemy go z zegarem 
         dostosowanym do kodu
@@ -408,11 +429,11 @@ Wykład II: Systemy telekomutacyjne:
     elank [E] - ilość zgłoszeń na minutkę- miara obciążenia sieci
     QoS  - Quality of Service - jakość sygnału
 
-    Maksymalna szybkość bitowa kanału C: (linia 109)
+    Maksymalna szybkość bitowa kanału C:
     C = W log2 (1 + Psyg/N)
 
         W           - szerokość pasma
-            Psyg        - moc sygnału
+        Psyg        - moc sygnału
         N           - moc szumu
         
 
@@ -421,14 +442,14 @@ Układ oddzielający sygnał nadawany od sygnału odbieranego
                 ------------------------
                 |                          | Nadajnik |
                 L*--------------L*------
-                    ------------
+               -------------------
 --------*-------L*-------    ---L*-------
-        |               |    |        |
+        |               |    |          |
     Impedancja          |    |    Impedancja kompensująca
       Lini              |    |        == Z_lini
-        |               |    |        |
+        |               |    |          |
 --------*-------L*-------    ---*L-------
-                    -------------
+               ------------------
                 L*--------------L*------
                 |                        | Odbiornik |
                 ------------------------
@@ -453,9 +474,11 @@ Wykład III:
     TLV - type length value
         W ramce 
 
-Wiedza na egzamin:
-    Struktura warstwowa
-        
+    DDI - Direct Dial In - usługa pozwalająca na bezpośrednie zadzwonienie na numer wewnętrzny
+        Wykorzystuje sygnalizacje DSS1
+
+    DIAS - pozwala na bezpośrednie zadzwonienie na numer wewnętrzny
+        Wyskorzystuje sygnalizację DTMF -- wybieranie tonowe
 
 
 
@@ -467,23 +490,33 @@ Wiedza na egzamin:
 
 Cześć dr Stępnia:
 Wykład I:
-    Model warstwowy sieci:
-        1. Warstwa aplikacji
+    Model warstwowy sieci (OSI):
+        7. Warstwa aplikacji
             -- interfejs użytkownika
-        2. Warstwa prezentacji
+        6. Warstwa prezentacji
             -- na przykład system operacyjny, taki tłumacz między użytkownikiem a maszyną
-        3. Warstwa sesji
+        5. Warstwa sesji
             -- dialog między komputerami, nawiązywanie połączenia, sterowanie i sygnalizacja
         4. Warstwa transportowa
-            -- przenosi informacje. Zamienia ciągi bitów w paczki
-        5. Warstwa sieci
+            -- zamienia ciągi bitów w paczki
+        3. Warstwa sieci
             -- dobiera trasę i odpowiada za przesyłanie informacji wewnątrz sieci
-        6. Warstwa łącza danych
+        2. Warstwa łącza danych
             -- zabezpiecza transmisję, synchronizuje i ramkuje dane. Wykrywa i koryguje błędy
-        7. Warstwa fizyczna
+        1. Warstwa fizyczna
             -- fizyczny wygląd sieci. Rodzaj zastosowanych złączek, kabli, etc.
 
         Każda z warstw w sposób przeźroczysty przenosi informację, dodając tylko własne nagłówki.
+
+    Model warstowoy sieci (TCP/IP):
+        1. Warstwa aplikacji
+            -- interfejsy użytnownika
+        2. Warstwa transportu
+            -- transport informacji oraz podział na pakiety
+        3. Warstwa internetowa
+            -- wyznaczenie najoptymalniejszej trasy
+        4. Warstwa dostępu do sieci
+            -- najniższa warstwa kodująca pakiety na zbiór zer i jedynek
 
 
 
@@ -519,7 +552,7 @@ Wykład II:
     DFL (Data Field Length)     -- (opcjonalnie) liczba oktetów danych
     Data                        -- dane użyteczne
     Padding                     -- część pola danych uzupełniająca do minimalnej długości pola danych
-    FCS (Frame CheckSum)        -- suma kontrolna - be preambuły i SFD
+    FCS (Frame CheckSum)        -- suma kontrolna - bez preambuły i SFD
 
 
 Wykład III:
@@ -530,15 +563,34 @@ Wykład III:
     RARP    - Reverse Address Resolution Protocol
 
     Adresy specjalne:
-        xxx.xxx.0.0 -- adres sieci
         127.0.0.1   -- localhost
 
+    Adres sieci:
+        adres hosta && adres maski
+
+    Adres rozgłoszeniowy:
+        ~(maska) + adres sieci
+
+    Maksymalna liczba hostów w sieci:
+        2^(liczba bitów adresu IP - skrócony zapis maski)-2
+        Dla IPv4 i maski 255.255.255.0 liczba hostów wynosi:
+        2^(32-24)-2 = 254
 
     Przesyłanie danych w internecie TCP/IP
         1. Podzielenie danych na pakiety,
         2. Adresacja danych
 
+    Klasy adresów IP:
 
+        A:      0.0.0.0 - 127.255.255.255 <- sieci duże
+        B:  128.0.0.0.0 - 191.255.255.255 <- sieci średnie
+        C:  192.0.0.0.0 - 223.255.255.255 <- sieci małe
+        D:  224.0.0.0.0 - 239.255.255.255 <- sieci do transmisji grupowych
+        E:  240.0.0.0.0 - 255.255.255.255 <- przeznaczona do celów badawczych
+
+
+    NAT
+        transjacja adresów z prywatnych na publiczne i odwrotnie
 
 
 
