@@ -55,7 +55,7 @@ Wykład I:
         2d sin(fi) = m lambda_1
                                                                 ---------------------
         d - średnica rdzenia światłowodu                          /\  / /
-        m - liczba całkowita                                    /  \/ /
+        m - liczba całkowita                                     /  \/ /
         fi - kąt odbicia wewnętrznego w światłowodzie           ----------------------
                                                                      ^ mody odbiły się pod różnymi kątami
         
