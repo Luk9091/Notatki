@@ -1,0 +1,31 @@
+\section{Wzmacniacze operacyjne}
+    \begin{figure}[!h]
+        \centering
+        \begin{circuitikz}
+            \draw
+                (0, 0) node[op amp]{$k_0$}
+            ;
+        \end{circuitikz}
+        \label{Wzmacniacz operacyjny}
+    \end{figure}
+    \subsection{Parametry}
+    \begin{itemize}[label = -]
+        \item $k_0$ -- wzmocnienie wzmacniacza w otwartej pętli sprzężenia zwrotnego
+        \item PSRR -- współczynnik odrzucenia wpływu zasilania
+            \begin{equation}
+                PSRR = \frac{\Delta U_{out}}{\Delta U_{supply}}
+            \end{equation}
+        \item Slew rate -- szybkość narastania zboczy
+            \begin{equation}
+                SR = \left| \right|
+            \end{equation}
+        \item Wide bandwidth -- pole wzmocnienie
+            \begin{equation}
+                bandwidth = Gain\cdot Band
+            \end{equation}
+            Jeśli w nocie katalogowej znajduję się informacja o nominalnym polu wzmocnienia to należy rozumieć je jako iloczyn:
+            \begin{equation}
+                bandwidth = 1\frac{V}{V}\cdot Band
+            \end{equation}
+    \end{itemize}
+    

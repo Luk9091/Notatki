@@ -8,6 +8,7 @@
 \usepackage{amsmath}
 \numberwithin{equation}{section} % numeracja równań z uwzględnieniem sekcji
 \usepackage{multicol}
+\usepackage{enumitem}
 
 % Dot post number of section
 \usepackage{titlesec}
@@ -56,9 +57,9 @@
 
     \tableofcontents
     \newpage
-    \input{Chapters/Indeksowanie.tex}
-    \input{Chapters/01_TranzystoryBipolarne.tex}
-    \newpage
-    \input{Chapters/02_UkladyRoznicowe.tex}
+    \include{Chapters/Indeksowanie.tex}
+    \include{Chapters/01_TranzystoryBipolarne.tex}
+    \include{Chapters/02_UkladyRoznicowe.tex}
+    \include{Chapters/03_OpAmp.tex}
 
 \end{document}

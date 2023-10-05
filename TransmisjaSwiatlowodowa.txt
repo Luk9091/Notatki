@@ -1,0 +1,96 @@
+Zadanie domowe:
+    na jakiej zasadzie wykonywane są połączenia światłowodów
+    - na najbliższym labie zapoznanie ze światłowodem
+
+
+Warunki zaliczenia:
+    Na labach odpytanie na wejsciu
+
+
+Laboratorium co 2 tygodnie
+
+
+Wykład I:
+    Zasada Sneliusa: n1 sin(fi_p) = n2 sin(fi_2)
+    Apertura numeryczna- liczba mówiąca o maksymalnym kącie pod jakim można wprowadzić światło 
+        (im więcej tym lepiej - ale też nie za dużo bo im większy współczynnik załamania rdzenia tym większe rozpraszanie Rayileya)
+        NA = n2/n1 * sin(fi_in) ~ sqrt(n1^2-n2^2)
+
+        n - współczynnik załamania
+
+    Rodzaje światłowodów:
+        - włókniste / o przekroju kołowym
+                 ___
+                /   \<-- n1
+                | O<---- n2
+                \___/
+
+        - światłowód planarny:
+            __________________
+            |  n1  \_n2_/    |
+            |________________|
+
+            n - współczynnik załamania światła
+
+        - światłowody skokowe - o skokowej granicy między n1 a n2
+        - światłowody gradientowe - o płynnej zmianie między współczynnika załamania
+
+        - światłowód jednomodowy - powstaje jeden mod (w środku) idący wzdłuż osi światłowodu - brak dyspersji międzymodowej
+            m = 2d sin(fi)/lambda_0 n1 ≤ 1 => d ≤ 0.77 lambda/NA
+                - średnica rdzenia ≤ 10µm
+
+        - światłowody wielomodowe
+
+
+
+        - światłowody z szkła kwarcowego
+        - światłowody plastikowe - generalnie okropne ale tanie
+            - duże tłumienie (~200 dB/km)
+            + izolacja galwaniczna
+
+
+
+    Wiązka światła propagując w światłowodzie ulega rozpadowi - powstają tak zwane mody.
+    Mody mogą nakładać się na siebie i interferując. Aby mody nie znosiły się należy spełnić równanie:
+        2d sin(fi) = m lambda_1
+                                                                ---------------------
+        d - średnica rdzenia światłowodu                          /\  / /
+        m - liczba całkowita                                    /  \/ /
+        fi - kąt odbicia wewnętrznego w światłowodzie           ----------------------
+                                                                     ^ mody odbiły się pod różnymi kątami
+        
+        
+    Dyspersja modowa - przez różną drogę/prędkość propagacji krótkie impulsy zostają rozciągnięte w czasie
+        Usuwanie dyspersji odbywa się przez wykorzystanie światłowodów gradientowych, w których światło porusza się z różną prędkość zależnie od odległości od środka
+            c_w_ośrodku = c/n
+
+
+    Tłumienie w światłowodzie:
+        tłumienie = absorpcja + rozproszenie
+            - absorpcja - światłowód się grzeje i wytraca energię
+            - rozproszenie (Rayleigha) - ucieczka świtała ze światłowodu - światłowód nie jest idealnym kryształem i cząsteczki w nim ułożone są idealnie rozłożone
+
+        
+
+
+
+Wykład II Spawanie światłowodów:
+    Fazy spawania światłowodu:
+        ^                   _____________
+        |    odległość      |           | <- prąd łuku
+        |\ <- włókien       | spawanie  |_____
+        | \__________   ____|                |
+        |    ____    \__|___            odprężanie
+        |    |  |       |   \                |
+        |--------------------\----------------------------> czas
+           pre-spaw       ^   \____________________________ <- zmniejszenie odległości bo spawarka wpycha oba światłowody
+                          |
+                        nagrzewanie
+
+
+        pre-spaw - wyczyszczenie końcówek światłowodu - w celu usunięcia materiałów organicznych
+
+
+
+
+

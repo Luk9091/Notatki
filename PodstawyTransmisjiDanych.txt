@@ -237,8 +237,8 @@ Wykład III:    Charakterystyki przewodów!
 
         dla Zodb = 0Ω i Zgen = Z_0
         R_g = 0            R_L = 1
-        ^input                ^out
-      Ug|                  Ug|   
+        ^input              ^out
+      Ug|                 Ug|   
    0.5Ug|_______            |  
         |      |________    |____________
         -----2tau------->    ----tau------>
