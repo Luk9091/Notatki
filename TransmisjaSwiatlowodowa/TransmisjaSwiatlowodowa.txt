@@ -1,0 +1,267 @@
+Warunki zaliczenia:
+    Na labach odpytanie na wejsciu
+
+
+Laboratorium co 2 tygodnie
+
+
+Wykład I:
+    Zasada Sneliusa: n1 sin(fi_p) = n2 sin(fi_2)
+    Apertura numeryczna- liczba mówiąca o maksymalnym kącie pod jakim można wprowadzić światło 
+        (im więcej tym lepiej - ale też nie za dużo bo im większy współczynnik załamania rdzenia tym większe rozpraszanie Rayileya)
+        (Z drugiej strony powinna być mała, ze względu na dyspersję modową)
+        NA = n2/n1 * sin(fi_in) ~ sqrt(n1^2-n2^2)
+
+        n - współczynnik załamania
+
+    Rodzaje światłowodów:
+        - włókniste / o przekroju kołowym
+                 ___
+                /   \<-- n1
+                | O<---- n2
+                \___/
+
+        - światłowód planarny:
+            __________________
+            |  n1  \_n2_/    |
+            |________________|
+
+            n - współczynnik załamania światła
+
+        - światłowody skokowe - o skokowej granicy między n1 a n2
+        - światłowody gradientowe - o płynnej zmianie między współczynnika załamania (głównie światłowody gradientowe)
+
+        - światłowód jednomodowy - powstaje jeden mod (w środku) idący wzdłuż osi światłowodu - brak dyspersji międzymodowej
+            m = 2d sin(fi)/λ_0 n1 ≤ 1 => d ≤ 0.77 λ/NA
+                - średnica rdzenia ≤ 10µm - średnica rdzenia w przybliżeniu równa długości fali,
+                - w tym świtłowodze dla danej częstotliwości fali istnieje tylko jedno rozwiązanie równań Maxwella (tylko jeden mod nie ulega interferencji destrutywnej)
+
+        - światłowody wielomodowe 
+            OM (optical multimod) - np. OM1 -> 33m, OM4 -> 400m
+            im mniejsza OM tym większa dyspersja
+
+
+        - światłowody z szkła kwarcowego
+        - światłowody plastikowe - generalnie okropne ale tanie
+            - duże tłumienie (~200 dB/km)
+            + izolacja galwaniczna
+
+
+
+    Wiązka światła propagując w światłowodzie ulega rozpadowi - powstają tak zwane mody.
+    Mody mogą nakładać się na siebie i interferując. Aby mody nie znosiły się należy spełnić równanie:
+        2d sin(fi) = m λ_1
+                                                                ---------------------
+        d - średnica rdzenia światłowodu                          /\  / /
+        m - liczba całkowita                                     /  \/ /
+        fi - kąt odbicia wewnętrznego w światłowodzie           ----------------------
+                                                                     ^ mody odbiły się pod różnymi kątami
+    Tłumienie w światłowodzie:
+        tłumienie = absorpcja + rozproszenie
+            - absorpcja - światłowód się grzeje i wytraca energię
+            - rozproszenie (Rayleigha) - ucieczka świtała ze światłowodu - światłowód nie jest idealnym kryształem i cząsteczki w nim ułożone są idealnie rozłożone
+        
+        
+    Dyspersja międzymowa / modowa - przez różną drogę/prędkość propagacji krótkie impulsy zostają rozciągnięte w czasie
+        Usuwanie dyspersji odbywa się przez wykorzystanie światłowodów gradientowych, w których światło porusza się z różną prędkość zależnie od odległości od środka
+            c_w_ośrodku = c/n
+
+            światłowód skokowy: dt_MOD = z/(2n_1*c) * (NA)²
+            światłowód gradientowy: dt_MOD = z/(8n_1³*c) * (NA)^4
+                - chociaż wspłóczynnik dyspersji podaje się jako:
+                D_MOD = dt_mod/z
+
+            z - długość światłowodu [km]
+
+    Dyspersja chromatyczna- różnica w czasie dotarcia impulsu do odbiornika wynikające z kolorem (długością fali/częstotliwością fali)
+
+        D_materiałowa - dyspersja materiałowa - wynikająca z użytego materiału
+            d(t_grupowa) = z D_materiałowa d(labda)
+
+        Dyspersja falowodowa - wyspępuje praktycznie tylko w światłowodach jednomodowych
+            (część światła propaguje się także w niewielkim stopniu w płaszczu światłowodu)
+            w transmisji bierze udział zarówno rdzeń jak i płasz.
+
+        Całkowita dyspersja chromatyczna w światłowodzie:
+                D_chroma = D_materiałowa + D_falowodowa [ps/(nm*km)]
+                d(t_chroma) ≈ z * D_chroma d(λ) 
+
+
+    Modyfikowanie dyspersji:
+        D_materiałowa - nie da się ruszyć.
+        D_falowodowa - można modyfikować modyfikując profil poprzeczny widma falowego światłowodu
+
+           ____                          _____
+        ___|  |___       __/\__       __ |   | __
+        Widmo std                      |-|   |-|
+        
+    
+    łączny wpływ dyspersji na czas trwania impulsu:     d(t) ≈ sqrt(d(t_MOD)² + d(t_chroma)²)
+    poszerzanie transmitowanego impulsu:                t_out ≈ sqrt(t_in² + d(t)²)
+    pasmo modulacji światłowodowej:                     B_3db ≈ 0.44/d(t)
+
+
+
+    W transmisji światłowodowej wyróżniamy trzy okna transmisyjne
+                                        długość |  tłumienie
+                                          fali  | na kilimetr
+        - pierwsze okno o długości fali ≈0.85µm |  0.85dB      - dziś nie używane. Bo dla tej długości fali w światłowodach jednomodowych powstają dwa mody
+        - drugie okno o długości fali   ≈1.30µm |  0.33dB
+        - trzecie okno o długości fali  ≈1.55µm |  0.17dB
+
+
+
+Spawanie światłowodów:
+    Fazy spawania światłowodu:
+        ^                   _____________
+        |    odległość      |           | <- prąd łuku
+        |\ <- włókien       | spawanie  |_____
+        | \__________   ____|                |
+        |    ____    \__|___            odprężanie
+        |    |  |       |   \                |
+        |--------------------\----------------------------> czas
+           pre-spaw       ^   \____________________________ <- zmniejszenie odległości bo spawarka wpycha oba światłowody
+                          |
+                        nagrzewanie
+
+
+        pre-spaw - wyczyszczenie końcówek światłowodu - w celu usunięcia materiałów organicznych
+
+
+Wykład III: Fotodiody
+    
+
+
+Wykład V: Lasery półprzewodnikowe
+    
+    Postanie fotonu w złączu półprzewodnikowym:
+
+    absorbcja           emisja          emisja
+                      samoistna       wymuszona
+
+        *                 *               *
+    ----------       ----------       ---------
+                                            ~> <- wolny foton
+     ~>↑                 ↓ ~>           ~>↓ 
+                                            ~>
+    ----------       ----------       ---------
+        o                 o               o
+
+
+    W połprzewodniku samoistnie występują wszystkie trzy zjawiska <- zgodnie z twierdzeniami Einstaina.
+
+        d(N_2)
+        ------  = R_absorbcyjna - R_sponaniczna - R_wymuszona = 0 <- dla stanu ustalonego
+        d(t)
+
+        R_spontaniczna  = A_21 * N_2, A_21  - współczynnik przejścia elektronu z drugiej powłoki do pierwszej
+        R_wymuszona  = B_21 * N_2 * ę, A_21 - współczynnik przejścia elektronu z drugiej powłoki do pierwszej, ę - gęstość fotonu
+        R_absorcyjna = B_12 * N1 * ę
+
+                A_21/B_12                           const
+        ę = --------------- ≈ rozkład planka ≈ -------------- ≈ (?)
+            N1/N2 - B21/B12                    exp(hv/kT) - 1
+
+        N1/N2 = exp(hv/kT) - rozkład boltzmana
+
+
+    Akcja laserowa:
+        R_wymuszona > R_absorbcyjna
+        N2 > N1                         - inwersja obsadzeń
+
+        dla wcześniej założonych warunków akcja laserowa nigdy nie nastąpi :C
+        
+
+    Rezonator Fabry-Perot:
+
+        |                       |
+        |       ~>              |
+        |                       |
+        ↑                       ↑
+          Dwa równoległe lustra 
+
+        Żeby laser był laserem ten układ musi być niestabilny!
+        W laserze tym muszą wystąpić dwa okresy fali stojącej!!!
+
+        | /\       /\     |
+        |/  \     /  \    |
+        -------------------
+        |     \  /    \  /|
+        |      \/      \/ |
+
+
+        Warunki działa lasera:
+            1. Warunek amplitudy - warunek ten oznacza że należy pompować tak dużo energi
+                aby zawsze laser miał nadmiar energi z emisji wymuszonej 
+                
+            Moc optyczna
+                ^
+                |        /
+                |       /
+                |______/
+                |-----|---------->
+                |   I_th - prąd progowy - minimalny prąd który trzeba dostarczyć do lasera, aby laser w ogóle świecił
+
+
+          2. Warunek fazowy: oznacza to że przesunięcie fazowe musi być =2π
+                A więc w rezonatorze musi wystąpić fala stojąca
+
+    Jak działa laser - tak w skrócie jest to wzmacniacz o dodatnim sprzężeniu zwrotnym
+
+        Emisja
+     spontaniczna
+          |
+          |
+          |       |\
+         / \      | \
+        | + |->---| / --*-
+         \ /      |/    |
+          |             |
+          |-------------|
+        część sygnału wraca
+            na wejeście
+
+
+    Porównanie z diodą LED:
+             Widmo diody led!                           Widmo lasera jedmomodowego
+        ^                                       |  ^
+        |           /\                          |  |        ^
+        |          /  \                         |  |       | |
+        |         /    \                        |  |      |   |
+        |        /      \                       |  |      |   |
+        |       /        \                      |  |     /     \
+        |------|----------|------> długość fali |  |----|---|---|------
+              640        720                           630     650 <- szerokość widmowa pojedyńczego modu lasera zależy od szumu fazowego.
+                                                                        Nawet dla laserów wielomodowych szerokość widma jest dużo mniejsza niż szerokość widma diody
+
+
+
+
+Wykład VI: Laserowe układy nadawcze (z pespośrednią modulacją)
+    - modulacja bezpośrednia czyli regulacja prądu płynącego przez laser
+    
+
+Wykład VII: Elementry sieci światłowodowej
+    Wzmacniacze światłowodowe - zazwyczaj domieszkowane erbe,
+        - poprawiają stosunek sygnał szum
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
