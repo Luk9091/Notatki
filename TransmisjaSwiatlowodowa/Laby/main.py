@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
 def fit_func(x, a, b):
-    return a*np.exp(x*b)
+    return a*np.exp(x*b) - 8.35
 
 
 dataFrame = pd.read_csv("data.csv")
@@ -32,16 +32,17 @@ for i in range(4):
     line.append(ax.plot(I[i], P[i], label=f"{10+15*i}C"))
 
     for j in range(1, len(P[i])):
-        if (P[i][j] >= 2.5*1e-6):
+        # if (P[i][j] >= 2.5e-6):
+        if (P[i][j] >= 3e-6):
             x.append(I[i][j])
             y.append(P[i][j])
             print(f"x: {I[i][j]}, y: {P[i][j]}")
             break
 
 ax.scatter(x, y)
-popt, pcov = curve_fit(fit_func, x, y)
-print(popt)
-ax.plot(I[0], fit_func(I[0], *popt))
+params, _ = curve_fit(fit_func, x, y)
+print(params)
+ax.plot(I[0], fit_func(I[0], *params))
             
 
 
