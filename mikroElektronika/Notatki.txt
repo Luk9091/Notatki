@@ -11,7 +11,7 @@
         zalezy od długości tranzystora, domieszkowania półprzewodnika, pojemności występujących w złączach
 
         V_TH0 = fi_MS + 2Fi_F + Q_dep/C_ox
-        V_TH = V_TH0 + y (sqrt(2FI_F + V_SB) - sqrt(|2Fi_F|)
+        V_TH = V_TH0 + y (sqrt(2FI_F + V_SB)) - sqrt(|2Fi_F|)
         
         V_DSsat = V_GS - V_TH
 
