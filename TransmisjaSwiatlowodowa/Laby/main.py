@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
 def fit_func(x, a, b):
-    return a*np.exp(x*b) - 8.35
+    return a*np.exp(x*b) - 11.04
 
 
 dataFrame = pd.read_csv("data.csv")
