@@ -1,0 +1,237 @@
+1. Tranzystory MOS
+
+    N MOS - Podłoże typu P,
+    P MOS - Podłoże typu N
+
+    Zasada działania:
+        Spolaryzowanie zaporowo Gata powoduje odepchnięcie nośników większościowych występując w podłożu.
+        I utworzenie wolnego kanału, którym mogą przemieszczać się nośniki mniejszościowe
+
+    Napięcie progowe:
+        zalezy od długości tranzystora, domieszkowania półprzewodnika, pojemności występujących w złączach
+
+        V_TH0 = fi_MS + 2Fi_F + Q_dep/C_ox
+        V_TH = V_TH0 + y (sqrt(2FI_F + V_SB) - sqrt(|2Fi_F|)
+        
+        V_DSsat = V_GS - V_TH
+
+        I_D = ½µ C W/L (V_GS-V_TH)²
+
+        Przy uwzględnieniu efektu modulacji kanału dochodzi odchylenie charakterystyki U_D(V_DS)
+        Przez co prąd drenu wyraża się jako:
+        I_D = ½µ C W/L (V_GS-V_TH)²·(1+lambda· V_DS)
+        
+
+    Model wielkosygnałowy dodaje do modelu małosygnałowego pojemności złączowe, oraz pojemności
+    występujące miedzy Gate'em a kanałem.
+
+        Dodatkowo powstaje częstotliwość f_T (przy której samoistne wzmocnienie tranzystora spada do 1)
+        f_T = gm/(2πC_GS) = V_sat/(2πL)
+            * z jednej strony duże L jest dobre bo unikamy wpływu modulacji kanału a z drugiej jest be bo obniża maksymalną częstotliwość pracy
+
+
+    Zależność pojemności od napięcia:
+    C
+    ^      C_GS
+    |   |  _____________|
+    |   | /             \
+    |   |/              |>------
+    |-------------------/
+    |   |               |
+    |________________________________> V_GS
+      I |    II         |  III
+      V_TH          V_DS+V_TH
+
+    I. zakres zatkania tranzystora - C = C_GD
+    II. zakres liniowy (nasycenia) - C = G_GD + C_GS
+    III. zakres aktywny (triodowy) - C = 
+
+
+
+    Słaba inwersja - silna inwersja
+
+    I_D
+    ^
+    |                 |
+    |                /
+    |               /
+    | Słaba        /  <- silna inwersja
+    | inwersja    /
+    |____________/
+    |------------|--------------------->V_GS
+                V_TH
+
+    Słaba inwersja: I_D ≈ W/L I_t · exp((V_GS-V_TH) / (NV_T))
+    Silna inwersja: I_D ≈ 0.5µC W/L (V_GS-V_YH)²
+
+
+Efekt krótkiego kanału
+    -- im krótszy kanał tym mniejsze napięcie progowe - dla zbyt krótkiego kanału może być niemożliwe zamknięcie kanału
+    Rozwiązanie: znużyć D i S w osobnych studniach o domieszkowaniu podłoża+
+
+
+
+
+
+Przekrój technologi
+    ---------------------------------------------------------------------
+    |            |         |         |      |      |      |      |      |
+    | Technology |  Drain  |   W/L   | C_GS | C_GD | C_SB | C_DB | C_GB |
+    |            | current | [µm/µm] | [fF] | [fF] | [fF] | [fF] | [fF] |
+    ---------------------------------------------------------------------
+    |            |  100µA  |         |  55  |  44  | 2.1  | 103  |  32  |
+    |   130nm    |    ÷    | 100/0.2 |      |      |      |      |      |
+    |            |   10µA  |         |  45  |  44  | 0.16 | 106  |  25  |
+    ---------------------------------------------------------------------
+    |            |  100µA  |         |  77  |  15  | 2.1  |0.048 |  19  |
+    |    45nm    |    ÷    | 100/0.2 |      |      |      |      |      |
+    |            |   10µA  |         |  34  |  15  | 0.16 |0.026 |  25  |
+    ---------------------------------------------------------------------
+    |            |  100µA  |         | 0.181| 0.071| 0.637|0.540 |0.008 |
+    |   130nm    |    ÷    | 100/0.13|      |      |      |      |      |
+    |            |   10µA  |         | 0.103| 0.072| 0.627|0.565 |0.018 |
+    ---------------------------------------------------------------------
+    |            |  100µA  |         | 0.042| 0.002| ---- | ---- | ---- |
+    |    45nm    |    ÷    | 100/0.04|      |      |      |      |      |
+    |            |   10µA  |         | 0.028| 0.019| ---- | ---- | ---- |
+    ---------------------------------------------------------------------
+
+
+Rezystancję wejściową badamy dla rozwartego wyjecia
+Rezystancję wyjściową badamy dla zwartego wejścia
+
+
+
+Wspólne źródło
+    Ku = -gm R_D
+    Ro = r_ds || R_D
+
+Wspólne źródło z degeneracją (rezystorem źródłowym)
+    Ku = - R_D/R_S
+
+
+
+
+2. Kłeczek      
+                                                                                                                                                        |   Czas     |  Czas  |
+    1. Typy układów scalonych:                                                                                                                          | projektowy | testów | Cena
+                                                                                                                                                        |------------|--------|------
+        full-custom - reczne tworzenie elementów oraz umiejscawiania ich na layoucie,                                                                  |Bardzo długi| Długi  | Drogo
+        macro-cell  - samodzielne zbudowanie gotowych bloków, modułów (np. wzmacniaczy, negatorów, etc.) i następnie ręcznie rozmieszczenie modów       | Długi      | Długi  | Drogo
+        std-cell    - skorzystanie z gotowych bibliotek modułów/tranzystorów, wykorzystując biblioteki standardowe, i ręczne umieszczenie na layoucie   | Średni     | Długi  | Drogo
+        GALL        - macierze programowanych bramek logicznych, tranzystorów i przerzutników, które należy zaprogramować                               | Średni     | Średni | Taniej
+        FPGA        - wielokrotne złożenie układów typu GAL zbudowanych z pamięci, LUT, do zaprogramowania, oraz stworzenia połączeń między subukładami | Szybko     | Szybko | Relatywnie tanio
+
+    2. Tworzenie układów:
+        Do roztopionego krzemu, wkłada się zarodek monokryształu, następnie zarodek delikatnie wyciąga się, cały czas obracając,
+        Tak uzyskany walec krzemu, następnie jest cięty na pojedynczy dyski, które następnie trafiają do fabryki,
+        
+        Fotolitografia - na wafel krzemowy, nakładana jest maska z fotorezyst (typu positive lub negative), następnie wafel z maską naświetla się i w zależności od fotorezystu, na waflu zostają wytrawione zabezpieczone lub odkryte elementy
+        Implementacja jonowa - metoda domieszkowania, przez strzelanie na danym obszarze atomami domieszki skupionymi w formie plazmy (proces wstrzykiwania odbywa się pod pewnym kątem)
+        Dyfuzja - proces samoistnego mieszania się materiałów, można go kontrolować poprzez kontrole warunków w jakich zachodzi (np. podnieść temperaturę lub ciśnienie),
+        Depozycja - proces wystawienia na chmurę gazów metali, atomy domieszki osiadają na waflu krzemowym nadbudowując go. Z tego powodu proces powinien być powolny (zachodzić w niskiej temperaturze oraz niskim ciśnieniu) tak aby nowo powstała struktura też była monokryształem, oraz nie zachodził proces dyfuzji
+        Planaryzacja - proces polerowania wafla w celu wyrownania poszczególnych warstw metali.
+        
+
+    3. Technologie poprzeczne
+
+        N-Well                                Gate
+                                            |-----|
+            _____________NMOS_______________|_____|__________
+            |   |   | Podłoże MOSa |    | P |     | P | |   |
+            |   |   \_____N+_______/    \___/     \___/ |   |
+            |   | Studnia typu N                        |   |
+            |    \_____________________________________/    |
+            |   Podłoże typu P                              |
+             \_____________________________________________/
+
+        
+        Twin-Well                                Gate                                Gate
+                                            |-----|                 Podłoże         |---|
+            _____________NMOS_______________|_____|__________________PMOS___________|___|____________
+            |   |   | Podłoże MOSa |    | P |     | P | |       |   | P+ |      | N |   | N |   |   |
+            |   |   \_____N+_______/    \___/     \___/ |       |    \__/       \___/   \___/   |   |
+            |   | Studnia typu N                        |       |   Podłoże typu P              |   |
+            |    \_____________________________________/         \_____________________________/    |
+            |   Podłoże typu P albo N                                                               |
+             \_____________________________________________________________________________________/
+
+
+        Triple-Well                                Gate                                Gate
+                                            |-----|                 Podłoże         |---|
+            _____________NMOS_______________|_____|__________________PMOS__________|___|____________
+            |   |   | Podłoże MOSa |    | P |     | P |         |   | P+ |      | N |   | N |   | | |
+            |   |   \_____N+_______/    \___/     \___/         |    \__/       \___/   \___/   | | |
+            |   | Studnia typu N                                |   Podłoże typu P              | | |
+            |   |                                                \_____________________________/  | |
+            |    \_______________________________________________________________________________/  |
+            |   Podłoże typu P                                                                      |
+             \_____________________________________________________________________________________/
+
+
+    4. Skalowanie parametrów planarnych (skalowanie z rozmiarem)
+        Maleje czas przełączania tranzystorów,
+        Wzrastają pojemności złączowe,
+        Spada ruchliwość nośników
+        Spada napięcie progowe
+        Spada maksymalne napięcie zasilania
+        Spada napięcie Earliego (wzrasta nachylenie w zakresie nasycenia)
+        Wzrasta pojemność kanału
+
+    5. Technologie w layoucie
+        1. Zawijanie elementów (zamiast jednego długiego bloku, można podzielić tranzystor na dwa mniejsze, łącząc ze sobą wyprowadzenia)
+        2. Stosowanie szerokich tranzystorów,
+        3. Tworzenie struktur wielopalczastych,
+        4. Tworzenie bloków symetrycznych,
+        5. Równomierne rozmieszczenie względem źródeł ciepła
+        6. Otaczanie serii tranzystorów tranzystorami "dummy", których zadaniem jest zniwelowanie rozrzutu produkcyjnego na początku i na końcu serii
+
+    6. Rezystory
+        Rezystory możemy wykonać z:
+        Studni      : ~1kΩ/²    : są mocno nieliniowe, i pływają w zależności od T
+        Dyfuzyjnie  : ~100Ω/²   : są mocno nieliniowe, i pływają w zależności od T
+        PolySi      : ~10Ω/²    : mają lepsze parametry ale nadal nie są idealne
+        Metalowe    : ~1mΩ/²    : duże ale stabilne i liniowe
+        Hi-Res-PolySi:~1k-10kΩ/²: stabilne i liniowe
+
+
+    7. Kondensatory
+        Zbudowane na pojemnościach MOSa i efekcie Millera : > 10fF/µm² - nieliniowe i pływają w funkcji T
+        PiP lub MiM : zwykłe kapki : 1-10fF/µm², fajne dobre
+        
+
+
+
+3. Kmon
+    1. Zjawisko antenowania
+        Niezakryte wyprowadzenia układu mają tendencję do zbierania ładunków statycznych, które mogą prowadzić do uszkodzeń układu
+        
+        Zapobieganie:
+        1. Zaporowe spolaryzowanie diod w celu odprowadzenia ładunków
+        2. Przełamywanie ścieżek mostami - zamiast ciągnąć długą ścieżkę dobrze jest co jakiś dystans przejść do górnej warstwy,
+        3. Wykorzystywanie tranzystorów dummy
+
+    2. Latch up
+        Zjawisko zwarcia szyn zasilających, powstaje przez stworzenie pasozytniczego, tranzystora bipolarnego (lub triaka)
+        Latch-up powstaje w momencie falowania napięcia zasilania, lub przy portach IO
+
+        Metody przeciwdziałania:
+            1. Rozsunięcie tranzystorów jak najdalej
+            2. Redukcja rezystancji podłożona
+            3. Otoczenie tranzystora pierścieniem ochronnym
+            4. Zamknięcie tranzystorów w osobnych studniach
+            5. Całkowicie izolować tranzystory PMOS od NMOS
+            6. Obniżenie napięcia zasilania
+
+    3. Protekcja przed ESD
+        Podbicie pojemności wejściowych,
+        Filtr LowPass - na ścieżkach sygnałowych,
+        Źle zaprojektowany - może stworzyć zatrzask
+
+    4. Elektromigracja
+        Prąd o wysokim natężeniu ma tendencję do odrywania atomów przewodnika i przenoszenia ich w inne miejsce.
+        W związku z czym może powodować pęknięcia w metalach, zwiększać z czasem rezystancję połączeń przy całkowicie przerywać obwody.
+        Aby tego uniknąć należy stosować odpowiednio szerokie ścieżki z metali
+
+
+        
