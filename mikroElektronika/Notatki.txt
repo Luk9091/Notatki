@@ -4,7 +4,7 @@
     P MOS - Podłoże typu N
 
     Zasada działania:
-        Spolaryzowanie zaporowo Gata powoduje odepchnięcie nośników większościowych występując w podłożu.
+        Spolaryzowanie zaporowo Gate'a powoduje odepchnięcie nośników większościowych występując w podłożu.
         I utworzenie wolnego kanału, którym mogą przemieszczać się nośniki mniejszościowe
 
     Napięcie progowe:
@@ -116,7 +116,7 @@ Wspólne źródło z degeneracją (rezystorem źródłowym)
                                                                                                                                                         |   Czas     |  Czas  |
     1. Typy układów scalonych:                                                                                                                          | projektowy | testów | Cena
                                                                                                                                                         |------------|--------|------
-        full-custom - reczne tworzenie elementów oraz umiejscawiania ich na layoucie,                                                                  |Bardzo długi| Długi  | Drogo
+        full-custom - reczne tworzenie elementów oraz umiejscawiania ich na layoucie,                                                                   |Bardzo długi| Długi  | Drogo
         macro-cell  - samodzielne zbudowanie gotowych bloków, modułów (np. wzmacniaczy, negatorów, etc.) i następnie ręcznie rozmieszczenie modów       | Długi      | Długi  | Drogo
         std-cell    - skorzystanie z gotowych bibliotek modułów/tranzystorów, wykorzystując biblioteki standardowe, i ręczne umieszczenie na layoucie   | Średni     | Długi  | Drogo
         GALL        - macierze programowanych bramek logicznych, tranzystorów i przerzutników, które należy zaprogramować                               | Średni     | Średni | Taniej
@@ -126,11 +126,11 @@ Wspólne źródło z degeneracją (rezystorem źródłowym)
         Do roztopionego krzemu, wkłada się zarodek monokryształu, następnie zarodek delikatnie wyciąga się, cały czas obracając,
         Tak uzyskany walec krzemu, następnie jest cięty na pojedynczy dyski, które następnie trafiają do fabryki,
         
-        Fotolitografia - na wafel krzemowy, nakładana jest maska z fotorezyst (typu positive lub negative), następnie wafel z maską naświetla się i w zależności od fotorezystu, na waflu zostają wytrawione zabezpieczone lub odkryte elementy
+        Fotolitografia - na wafel krzemowy, nakładana jest maska z fotorezystor (typu positive lub negative), następnie wafel z maską naświetla się i w zależności od fotorezystor, na waflu zostają wytrawione zabezpieczone lub odkryte elementy
         Implementacja jonowa - metoda domieszkowania, przez strzelanie na danym obszarze atomami domieszki skupionymi w formie plazmy (proces wstrzykiwania odbywa się pod pewnym kątem)
         Dyfuzja - proces samoistnego mieszania się materiałów, można go kontrolować poprzez kontrole warunków w jakich zachodzi (np. podnieść temperaturę lub ciśnienie),
         Depozycja - proces wystawienia na chmurę gazów metali, atomy domieszki osiadają na waflu krzemowym nadbudowując go. Z tego powodu proces powinien być powolny (zachodzić w niskiej temperaturze oraz niskim ciśnieniu) tak aby nowo powstała struktura też była monokryształem, oraz nie zachodził proces dyfuzji
-        Planaryzacja - proces polerowania wafla w celu wyrownania poszczególnych warstw metali.
+        Planeryzacja - proces polerowania wafla w celu wyrownania poszczególnych warstw metali.
         
 
     3. Technologie poprzeczne
@@ -153,12 +153,12 @@ Wspólne źródło z degeneracją (rezystorem źródłowym)
             |   |   \_____N+_______/    \___/     \___/ |       |    \__/       \___/   \___/   |   |
             |   | Studnia typu N                        |       |   Podłoże typu P              |   |
             |    \_____________________________________/         \_____________________________/    |
-            |   Podłoże typu P albo N                                                               |
+            |   Podłoże typu P                                                                      |
              \_____________________________________________________________________________________/
 
 
-        Triple-Well                                Gate                                Gate
-                                            |-----|                 Podłoże         |---|
+        Triple-Well                           Gate                                 Gate
+                                            |-----|                 Podłoże        |---|
             _____________NMOS_______________|_____|__________________PMOS__________|___|____________
             |   |   | Podłoże MOSa |    | P |     | P |         |   | P+ |      | N |   | N |   | | |
             |   |   \_____N+_______/    \___/     \___/         |    \__/       \___/   \___/   | | |
@@ -230,7 +230,7 @@ Wspólne źródło z degeneracją (rezystorem źródłowym)
 
     4. Elektromigracja
         Prąd o wysokim natężeniu ma tendencję do odrywania atomów przewodnika i przenoszenia ich w inne miejsce.
-        W związku z czym może powodować pęknięcia w metalach, zwiększać z czasem rezystancję połączeń przy całkowicie przerywać obwody.
+        W związku z czym może powodować pęknięcia w metalach, zwiększać z czasem rezystancję połączeń czy całkowicie przerywać obwód.
         Aby tego uniknąć należy stosować odpowiednio szerokie ścieżki z metali
 
 
