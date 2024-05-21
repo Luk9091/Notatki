@@ -1,15 +1,15 @@
 Wykład I:
     Topologie:
         - gwiazda
-        - pierścieniowa
+        - pierścioniowa
         - magistrali
         - połączenie wielokrotne
 
     
     Standard: IEEE 802.3 - ethernet
     Dla topologii magistrali:
-        CSMA - carrier sense multiped access with collision detection 
-        - w sieci ethernet w momencie kolizji ramki są  gubione a inne nadajniki próbują ciągle nadawać
+        CSMA - carrier sense multipe access with conllision detection 
+        - w sieci ethenrnet w momencie kolizji ramki są  gubione a inne nadajniki próbują ciągle nadawać
 
         Występuje sygnał JAM - sygnał o wystąpieniu kolizji, wysyłana przez stację przez nadawczą, dla stacji odbiorczych aby dać informację o błędnych danych
         Minimalna długość ramki transmisyjnej powinna trwać nie mniej niż 51.2µs
@@ -25,17 +25,8 @@ Wykład I:
         DF - data frame
         PAD - padding 
 
-        Kodowanie przy użyciu Manchester
+        Kodowanie przy użyciu Meanchester
 
 
-    W transmisji full-duplex: urządzenia sieciowe, wyłączają systemy wyrywania kolizji
+    W transmisji full-duplex: urządzenia scieciowe, wyłączają systemy wyrywania kolizji
 
-Protokół i listy
-    IP
-    ICMP
-    ARP
-    RARP
-
-    Ramka danych:
-        Czas życia diagramu TTL - zabezpiecza przed przed pustym krążeniem ramek
-        ToS - wskaźnik priorytetu danych, flagi optymalizacji (nie działa :C w sieciach domowych)
