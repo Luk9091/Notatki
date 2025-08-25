@@ -1,0 +1,194 @@
+Parametry sensorów:
+    - Zakres pomiarowy - zakres wartości wejściowej
+    - Zakres dynamiczny - zakres wartości na wyjściu
+    - Czułość - ΔOut/ΔIn
+    - Nieliniowość - odbieżność od idelanej prostej
+    - Offset - odległość od idealnego zera
+    - Histereza = δOUT/ΔIN · 100%
+    - Poziom szumów U(ΔF) = Sv ·√Δf
+        - Sv- widmo szumowe
+    - SNR
+    - Rozdzielczość - najmniejszy wykrywalny przyrotst
+    - Dokładność - zgodność z wartością rzeczywistą
+    - Precyzja - zdolność do uzyskania tego samego pomiru w tych samych warunkach
+    - Powtarzalność - precyzja pomiaru w krótkich odstępach czasu
+    - Reprodukowalność - powtarzalność w dłuższych okresach
+    - Pasmo w częstotliwości
+    - Odpowiedź czasowa
+    - Generujące (Aktywne) - generują sygnał elektryczny i nie potrzebują dodatkowego zasilania
+    - Modulujące (Pasywne) - wymagają dodatkowego zasilania
+
+
+Rodzaje materiałów:
+    - feromagnetyki (materiały żelazne) - dobrze przewodzą pole magnetyczne
+    - paramagnetyki (np. aluminium) - no takie średnie
+    - diamagnetyki (np. miedź) - źle **przewodzą** pole magnetyczne
+
+    Z pkt. widzenia magnetyzmu wszystkie materiały składają się z domen magntycznych,
+    które pod wypływem zew. pola układają się w określony sposób.
+
+Czujniki manetyczne:
+    Pole magnetyczne - obszar na którym działa siła Lorenca
+        Jednoskta:
+            - Tesla [T] = [N/(Am)]
+            - Gaus [Gs] = Oersted (Oe) = 10^-4 T
+
+    Rodzaje:
+        - Indukcyjne
+            Wykorzystują zjawisko indukcji
+            - mierzą tylko pole zmienne U = dB/dt
+            - napięcie zależy od częstotliwości
+            - ograniczona miniaturyzacja
+            + generujące
+
+            - Zakres częstotlwiości:    Hz - MHz
+            - Czułość:                  mV/mT
+            - Zakres pomiarowy:         pT - T
+            - Poziom szumów:            pT/√Hz
+
+            Zastosowanie:
+                - Przemysł - wykrywanie obiektów metalowych / kontrola jakości
+                - Energetyka - monitorowanie pól magnetycznych transformatorów
+
+        - Transkonduktorowe
+            + pomiar pól stałych i zmiennych
+            + pomiar kierunkowość pomiaru
+            - modulujące
+            - wymagają dodatkowych układów
+
+            - Zakres częstotlwiości:    0 - kHz
+            - Czułość:                  kV/mT
+            - Zakres pomiarowy:         nT - mT
+            - Poziom szumów:            pT/√Hz
+
+            Zastosowanie:
+                - geofizyka - pomiar pola ziemskiego
+                - nawikacja - system GPS
+                - detekcja obiektów magnetycznych
+                - przemysł lotniczy
+
+        - Halla
+            Generują napięcie w kierunku prostopadłym do płynącego prądu i pola magnetycznego
+            + pomiar pól stałych i zmiennych
+            + pomiar kierunkowość pomiaru
+            + możliwa łatwa miniaturyzacja
+            - koniczność zasilania
+            - znaczny wpływ temperaturowy
+
+            - Zakres częstotlwiości:    0 - kHz
+            - Czułość:                  0.1V/T
+            - Zakres pomiarowy:         mT - T
+            - Poziom szumów:            µT/√Hz
+
+            Zastosowanie:
+                - motoryzacja - pomiar prędkości pojazdu, obciążenia akumulatorów
+                - przemysł - pozycionowanie
+                - użytkowa - detekcja zamknięcia
+                - energetyka - pomiar kierunku i natężenia prądu
+
+        - SQIUD
+            Modulacja prądu w cewce nadprzewodzącej
+                W obecności pola magnetycznego zmienia się faza fukncji falowej elektrnów,
+                co prowadzi do zmian w nadprzewodnictwie
+            + mierzą pole stałe i zmienne
+            + detekcja pola rzędu fT
+            - wymagają kriogenicznego chłodzenia (4 - 77K)
+            - znaczne rozmiary
+            - duży pobór mocy
+
+            Zakres częstotliwości:      0 - kHz
+            Zakres pomiarowy:           fT - nT
+            Poziom szumów:              fT/√Hz
+
+            Zastosowanie:
+                - biomedycyna - badania neurologiczne
+                - geofizyka - wykrywanie anomalii magnetycznych w skorupie ziemskiej
+                - przemysł kosmiczny - ultra dokładna nawikacja i wykrywanie obiektów
+
+        - Atomowe
+            Wykorzystują zmianę poziomów energetycznych w atomach pod wpływem pola magnetycznego
+            + detekcja rzędu fT
+            + małe
+            + mierzą pole stałe i zmienne
+
+            Zakres częstotliwości:      0 - kHz
+            Zakres pomiarowy:           fT - nT
+            Poziom szumów:              fT/√Hz
+
+            Zastosowanie:
+                - biomedycyna - badania neurologiczne
+                - geofizyka - wykrywanie anomalii magnetycznych w skorupie ziemskiej
+                - przemysł kosmiczny - detekcja pól magnetycznych
+
+    Parametry do zmierzenia pośrednio dzięki polu magnetycznemu:
+        - prad
+        - Położenie liniowe
+        - kąt
+        - prędkość obrotowa
+
+
+
+Sensory spintroniczne
+    spin - wektor obrotu ładunku
+    
+    Elementy spitronniczne:
+        - magnetorezystor - rezystor zmieniający swoją rezystancję po wpływem pola magnetycznego
+            - zmiana rezystancji 1%
+            - zmiana rezystancji w wąskim zakresie pola magnetycznego
+            - maksymalna rezystancja w 0 polu
+
+            Jako sensor:
+                - wymaga integracji wzmacniacza z elementem
+                + pomiar słabych pól
+                - konieczna symetryzacja R(H)
+
+        - sensor AMR
+            to kilka połączonnych w mostek magnetorezystorów
+            + pomiar pola stałego i zmiennego
+            + wąski zakres pomiaru
+            + sygnał zależy od kąta między prądem a polem
+            + prosta konstrukcja
+            + możliwa miniaturyzacja
+
+            Zakres częstotliwości:      0 - MHz
+            Czułość:                    µV/mT
+            Zakres pomiarowy:           ≤ 2mT
+            Poziom szumów:              nT/√Hz
+
+
+        - sensory GMR
+            mostki wykorzystujące GigaMagnetoRezystory
+            + mierzą stałe i zmienne pole
+            + duża zmiana rezystancji
+            + zmiany rezystancji w szerokim paśmie pola magnetycznego
+            + miniaturyzacja do nm
+            - sygnał zależy od kąta między namagnesowaniem warstw
+            - wymagają układu linearyzacji
+
+            Zakres częstotliwości:      0 - MHz
+            Czułość:                    mV/mT
+            Zakres pomiarowy:           ≤ 0.3T
+            Poziom szumów:              nT/√Hz
+
+
+        - sensory TMR
+            + mierzą pole stałe i zmienne
+            + ogromna zmiana rezystancji
+            + szeroki zakres pomiarowy
+            + miniaturyzacja do nm
+            - wymaga linearyzacji
+            - złożona konstrukcja
+
+            Zakres częstotliwości:      0 - GHz
+            Czułość:                    V/mT
+            Zakres pomiarowy:           ≤ 0.2T
+            Poziom szumów:              nT/√Hz
+
+Pomiar temperatury:
+    Rezystor:
+        R = R + ΔR
+
+
+Sensory MEMS (Micor-Electro-Mechanical System):
+    
+

@@ -1,0 +1,125 @@
+\documentclass[12pt]{article}
+\usepackage{anyfontsize}
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage{polski}
+\usepackage{tabto}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{pdfpages}
+\usepackage{subcaption}
+
+
+
+\usepackage{tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{R}{>{\raggedright\arraybackslash}X}
+\newcommand{\centerY}[2]{\multirow{#1}{*}{#2}}
+
+\usepackage{wrapfig}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    urlcolor=blue,
+    linkcolor= black
+}
+
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\numberwithin{equation}{section}
+
+\usepackage{graphicx}
+\graphicspath{{./Img/}}
+
+\usepackage{csvsimple}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat= newest}
+
+
+\usepackage{titlesec}
+\titlelabel{\thetitle.\quad}
+% \AddToHook{cmd/section/before}{\clearpage}
+
+\usepackage[european, american currents, americanvoltages, RPvoltages, cute inductor]{circuitikz}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\ctikzset{
+    logic ports=ieee,
+    logic ports/scale=0.75,
+}
+
+\usepgfplotslibrary{external}
+\tikzexternalize[prefix=figs/]
+
+\usepackage{csquotes}
+\usepackage[sorting=none]{biblatex}
+\bibliography{bibliography.bib}
+
+\usepackage{listings}
+\lstset{
+literate=%
+    {ą}{{\k{a}}}1
+    {Ą}{{\k{A}}}1
+    {ć}{{\'c}}1
+    {Ć}{{\'{C}}}1
+    {ę}{{\k{e}}}1
+    {Ę}{{\k{E}}}1
+    {ł}{{\l{}}}1
+    {Ł}{{\L{}}}1
+    {ń}{{\'n}}1
+    {Ń}{{\'N}}1
+    {ó}{{\'o}}1
+    {Ó}{{\'O}}1
+    {ś}{{\'s}}1
+    {Ś}{{\'S}}1
+    {ż}{{\.z}}1
+    {Ż}{{\.Z}}1
+    {ź}{{\'z}}1
+    {Ź}{{\'Z}}1
+}
+
+
+\title{
+    \includegraphics[width = 0.3\textwidth]{agh_logo.jpg}\\
+    \textbf{Akademia Górniczo-Hutnicza w Krakowie}\\
+    Wydział Informatyki, Elektroniki i  Telekomunikacji\\\vspace{2cm}
+    \textbf{Raport z projektu}\\
+    Title
+}
+\author{
+    \begin{tabularx}{\textwidth}{l l}
+    Autor: &Łukasz Przystupa\\
+    Kierunek studiów: & Elektronika i Telekomunikacja\\
+    \end{tabularx}
+}
+\date{\vspace{2cm}\today}
+
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+\usepackage{chngcntr}
+\usepackage{etoolbox}
+\newcounter{TaskCounter}[section]
+\newcommand{\task}{
+    \stepcounter{TaskCounter}
+    \noindent\textbf{Zadanie \theTaskCounter:\\}
+}
+
+
+
+\begin{document}
+    \begin{titlepage}
+        \maketitle
+        \thispagestyle{empty}
+    \end{titlepage}
+
+    \include{Chapters/Zadanie}
+\end{document}
