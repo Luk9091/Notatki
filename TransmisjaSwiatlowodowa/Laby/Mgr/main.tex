@@ -1,0 +1,178 @@
+\documentclass[12pt]{article}
+\usepackage{anyfontsize}
+\usepackage[a4paper, landscape, margin=2cm]{geometry}
+\usepackage{polski}
+\usepackage{tabto}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{pdfpages}
+
+\usepackage{tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{R}{>{\raggedright\arraybackslash}X}
+\newcommand{\centerY}[2]{\multirow{#1}{*}{#2}}
+
+\usepackage{wrapfig}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    urlcolor=blue,
+    linkcolor= black
+}
+
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\numberwithin{equation}{section}
+
+\usepackage{graphicx}
+\graphicspath{{./Img/}}
+
+\usepackage{csvsimple}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat= newest}
+
+
+\usepackage{titlesec}
+\titlelabel{\thetitle.\quad}
+% \AddToHook{cmd/section/before}{\clearpage}
+
+\usepackage[european, american currents, americanvoltages, RPvoltages, cute inductor]{circuitikz}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\ctikzset{
+    logic ports=ieee,
+    logic ports/scale=0.7,
+}
+
+
+\usepackage{listings}
+\lstset{
+literate=%
+    {ą}{{\k{a}}}1
+    {Ą}{{\k{A}}}1
+    {ć}{{\'c}}1
+    {Ć}{{\'{C}}}1
+    {ę}{{\k{e}}}1
+    {Ę}{{\k{E}}}1
+    {ł}{{\l{}}}1
+    {Ł}{{\L{}}}1
+    {ń}{{\'n}}1
+    {Ń}{{\'N}}1
+    {ó}{{\'o}}1
+    {Ó}{{\'O}}1
+    {ś}{{\'s}}1
+    {Ś}{{\'S}}1
+    {ż}{{\.z}}1
+    {Ż}{{\.Z}}1
+    {ź}{{\'z}}1
+    {Ź}{{\'Z}}1
+}
+
+
+\title{
+    \includegraphics[width = 0.3\textwidth]{agh_logo.jpg}\\
+    \textbf{Akademia Górniczo-Hutnicza w Krakowie}\\
+    Wydział Informatyki, Elektroniki i  Telekomunikacji\\\vspace{2cm}
+    \textbf{Raport z projektu}\\
+    Title
+}
+\author{
+    \begin{tabularx}{\textwidth}{l l}
+    Autor: &Łukasz Przystupa\\
+    Kierunek studiów: & Elektronika i Telekomunikacja\\
+    \end{tabularx}
+}
+\date{\vspace{2cm}\today}
+
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+\begin{document}
+    \begin{table}[!ht]
+        \vspace{4cm}
+        \centering
+        Ilość błędów w zależności od wzmocnienia diody ADP\\
+        \begin{tabular}{|c|c|c|c|c|c|c|c|}\hline
+            $U_{VDD}$ & $M$ & $m_{1}$ & $m_{2}$ & $\delta_1$ & $\delta_2$ & $Q$ & $BER$\\
+                 $[V]$  &     & $[mV]$    & $[mV]$    & $[mV]$       & $[mV]$       &     &\\\hline
+            34      & 1     & 2.3   & -23       & 1.4   & 1.4   & 1.6 & 5.1e-3  \\\hline
+            50      & 3.5   & 6.8   & -6.7      & 1.5   & 1.3   & 4.8 & 7.2e-7  \\\hline
+            54      & 5.8   & 13.4  & -13.5     & 2.2   & 1.4   & 7.5 & 4.0e-14 \\\hline
+            56.8    & 17    & 38.3  & -39.3     & 6.0   & 2.5   & 9.1 & 3.4e-20 \\\hline
+            58.5    & 37    & 86.5  & -82.2     & 23.6  & 36.6  & 2.8 & 2.6e-3  \\\hline
+        \end{tabular}
+    \end{table}
+
+
+    \begin{figure}[!ht]
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width = 0.8\textwidth,
+                grid = both,
+                grid style= dashed,
+                xlabel= Time {$[ms]$},
+                ylabel= Intensity{$[nW]$},
+                xmin = 0, xmax = 0.7,
+                title = {Moc w funkcji czas},
+                % ymin = 0, ymax = 1200
+            ]
+                \addplot [blue, mark=*] table [x=Time, y=Power, col sep=comma]{Measure/measure.csv};
+                \addplot [red] coordinates {(0, 1076) (1, 1076)};
+                \node [above] at (axis cs: 0.7/2, 1076) {Ref level};
+            \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+    \pagestyle{empty}
+
+    \begin{figure}[!ht]
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width = 0.8\textwidth,
+                grid = both,
+                grid style= dashed,
+                xlabel= Distance {$[km]$},
+                ylabel= Gain {$[dB]$},
+                xmin = -2, xmax = 65,
+                title = {Tłumienie w funkcji długości światłowodu}
+                % ymin = -30, ymax = 12.5
+            ]
+                \addplot [blue, mark=*] table [x=Distance, y=Gain, col sep=comma]{Measure/measure.csv};
+                \node [above=0.3cm] at (10, -2)  {$-0.420\frac{dB}{km}$};
+                \node [above=0.3cm] at (30, -6) {$-0.414\frac{dB}{km}$};
+                \node [above=0.3cm] at (50, -10) {$-0.406\frac{dB}{km}$};
+            \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+
+
+
+    \begin{figure}[!ht]
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                width = 0.8\textwidth,
+                grid = both,
+                grid style= dashed,
+                xlabel= Moc wejściowa {$[dBm]$},
+                ylabel= Moc {$[dBm]$},
+                legend style={at = {(0.9, 0.1)}, anchor = south east},
+                title = {Nieliniowości w światłowodzie},
+            ]
+                \addplot [blue, mark=*] table [x=Pin, y=Pout, col sep=comma]{Measure/nlin.csv};
+                \addplot [red, mark=*] table [x=Pin, y=Pret, col sep=comma]{Measure/nlin.csv};
+                \legend{Moc na wyjściu, Moc wracająca na wejście};
+            \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+\end{document}

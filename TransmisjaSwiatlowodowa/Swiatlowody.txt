@@ -1,0 +1,232 @@
+Światłowody:
+    Budowa:
+        ------------------------
+        płaszcz               n2
+        ------------------------        n1 > n2
+   ---->rdzeń                 n1        Większy ale niewiele 
+     Φ/ ------------------------        
+     /  ------------------------
+    
+    Φ - kąt wejściowy określony przez storzek padania, światło skierowane pod zbyt ostrym kątem po prostu odbije się od światłowodu
+
+    Aby światłowodó przewodził musi wystąpić całkowite wew. odbicie <=> prawo Snelisusa
+        n1 sin(Φ1) = n2 sin(Φ2)
+
+        Apertura numeryczna:
+            NA = sqrt(n1² - n2²)    
+            Na podstawie tego parametru można określić kąt akceptacji. Czyli maksymalny kat dla którego światło będzie się propagować w światłowodzie.
+
+    Tłumienie sygnału w światłowodzie wynika z dwóch rzeczy:
+        + absorbncji
+        + rozproszenia
+
+
+    ^ absorbcja ɑ [dB/km]
+    |\
+    |\\
+    |  \
+    |  \\
+    |    \
+    |    \\        pik
+    |    ^ \      wodny
+    |rozpr.\\__    __    // <abs. IR
+    |Rayleia   \__/  \  //
+    |\______ \_______ \//
+    -^-------|---|-----|--> λ
+    abs.     |   |     Trzecie okno transmisyjne około 1 550nm
+      UV     |   Drugie okno około 1 300nm
+             Pierwsze okno 850nm
+
+Dyspersja:
+
+    Impuls emitowane przez laser |       Po porzejściu przez światłowdów
+    ^                            |       ^            _____                        
+    |        ^                   |       |           /     \                         
+    |       | |                  |       |          /       \                        
+    |      |   |                 |       |         /         \                       
+    |      |   |                 |       |        /           \                      
+    |     /     \                |       |       /             \                     
+    |----|---|---|------         |       |------|---------------|-> czas
+
+    Dyspersja modowa:
+        Dla światłowdów o profilu skokowym
+            Δt_mod = Z / 2n1C · (NA)²
+
+        Dla światłowdów o profilu gradientowym
+            Δt_mod = Z / 2n1C · (NA)⁴
+
+        D_mod = Δt/Z
+
+    Dyspresja chromatyczna:
+        D_choma = D_materiałowa + D_falowa
+
+        t_chromatyczna = zD_chromatuczna·Δλ
+
+        różne kolory mają różne przędkości w światłowodzie,
+        co może powodować zmianę szerokości impulsu.
+
+        Dyspresja materiałowa chromatyczna:
+            D_materiał = Z/Δt_g · Δλ
+                            ↑      ↑
+              opóźnienie grupowe   Nie występuje w drugim oknie :D
+    
+        Dyspresja falowa chromatyczne
+            - tylko dla jednomodowych
+    
+            n_efektywny (Efektrywny współczynnik załamania)
+            ^
+      1.641 | - - - - - - - - - - -
+            | \_
+            |   ---_
+            |       ---___________
+      1.640 | - - - - - - - - - - - 
+            |------------------------> λ
+    
+    Łączny wpływ dyspresji
+        Δt = sqrt(t²_chr + t²_mod)
+        t_imp_out = sqrt(t²_imp_in + Δt²)
+
+        pasmo modulacyjne
+            B_3dB   = 0.44/Δt <- przeliczane dla mocy
+            B_1.5dB = 0.31/Δt <- przeliczane dla napięcia
+
+
+Reflektormetr:
+        pomiar linii światłowodowych
+
+         | <- laser     --------------     /\/\/\/\
+        / \ ↑↑          |            |     \/\/\/\/
+       /   \  ----->>---| cylkulator | ----/      \----| terminacja
+       -----            |            |
+         |              --------------
+                              ↓
+                              |
+                        --------------   -------------
+                        |            |   |           |
+                        | fotodioda  |->-| odbiornik |
+                        |            |   |           |
+                        --------------   -------------
+            moc zarejestrowana w odb
+            ^
+            |   |
+            | \_|   |        | < odbicia na połączeniach lasera
+            |   ---_|        |
+            |       ---______|_____< rozpraszanie Rayleia
+            |------------------------> t
+
+Lasery półprzewodnikowe:
+    Laser Fabry-Perota
+          Rezonator  FP  
+    ||  |---------------|  ||                   Generalnie spoko ale słaby,
+    ||--|---------------|--|| <- lustro         widmo nie jest pojedyńczym prążkiem 
+    ||  |    światło    |  ||                   tylko składa sie z wielu
+    ||--|---------------|--||                   moc optytczna
+    ||  |---------------|  ||                   ^        
+            /|   |\                             |     | |  
+             |   |                              |   | | | |  
+             Pompa                              |------------>λ
+
+
+Półprzewodnikowe lasery przestrajane
+
+    emisja
+    spontaniczna
+    |
+    + -- | exp(g_c(lambda)L > --
+    nwm
+
+    
+    g_c(lambda)L                                                        | W efekcie uzyskaliśmy skokową zmianę modów lasera
+    ^                                                                   | Dużym problemem jest to że jeśli wzmocnienie będzie równe
+    |      ____ <- przesunęliśmy wzmocnienie lasera na inną długość fali| dla dwóch modów, laser może skakać między modami
+    |-----/----\------> lambda                                          |
+    |  ___                                                              |
+    | /   \ <- pierwotnie                                               |
+    |                                                                   
+
+    g_c(lambda)L                                                        | W efekcie uzyskaliśmy ciągłą regulację długości fali
+    ^                                                                   | Wadą jest niewielki zakres regulacji
+    |      ____ <- przesunęliśmy wzmocnienie lasera przy stalej długości|
+    |-----/----\------> lambda                                          |
+    |      ____                                                         |
+    |     /    \ <- pierwotnie                                          |
+    |                                                                   |
+
+    Rozwiązaniem powyższych problemów jest połączenie obu metod
+
+* Zmiana wzmocnienia w obszarze aktywnym, niesie za sobą negatywne konsekwencje
+    - silna zależność od prądu pompy
+    - mała selektywność
+    - kłopoty z pracą jednomodową (laser, przez chwilę może świecić na jednym modzie a potem przeskoczyć do innego)
+
+* Zmiana współczynnika załamania (n_e) prądem/napięciem
+    - wstrzykiwanie nośników (free-carrier plasma effect)
+    - efekt Franza-Keldysh'a
+        - polem elektrycznym wymuszamy nachylenie pasm energetycznych, dzięki czemu możliwe jest zjawisko tunelowania nośników.
+            Dzięki temu możemy regulować częstotliwość absorbcji poszczególnych długości fali
+        - Δn = mała
+    - kwantowy efekt Starka
+        - Δn = duża <- raczej wykorzystujemy to
+    - zmiana temperatury
+
+
+Budowa złącza półprzewodnikowego:
+        +|              Długość fali maleje wraz z zwiększaniem koncentracji
+    |------------|
+    | P          |
+    |------------|
+    | i          |
+    |Koncentracja|
+    | nośników   |
+    |----------- |
+    | N          |
+    |----------- |
+        -|wykorzysty
+
+
+        +|              Długość fali maleje wraz z zwiększaniem koncentracji
+    |------------|      Dołożenie siatki Braga, powoduje zmniejszenie mocy lasera
+    | P          |
+    |------------|
+    | i          |t: 
+    |Koncentracja|
+    | nośników   |
+    |------------|
+    |/\/\/\/\/\/\| <- siatka Braga
+    | N          |
+    |------------|
+        -|
+
+
+
+
+Wielosekcyjny laser przestrajany
+
+ rezonator
+    ||                                                          ||
+    || -> obszar aktywny <- zmienny profil -> zmienny profil -> ||
+    || <-  wzmocnienia   ->  wzmocnienia   <-     fazy       <- ||
+    ||                                                          ||
+
+
+    - szerokość spektralna profilu wzmocnienia  ~ 100nm
+    - szerokość pasma przenoszenia EDFA         ~ 30nm
+    - szerokość pasma przenoszenia WDM          ~ 15nm
+
+    
+
+Duże sieci światłowodowe
+    - multipleksacja WDM wykorzystywana jest do trasowania ścieżek optycznych
+    - cała sieć oparta jest o rozwiązania optycze. Bez konwersji elektrycznej
+    - transmisja rzędu 30 000km
+        - wzmaczniacze EDFA i Ramanna
+        - kompensacja dyspresji chromatycznej
+        - FEC - forward error correction
+
+    Kluczowy komponen ROADM - reconfigurable optical add-drop multiplrexer
+
+    Na przejściu między klientem a siecią wstawione są transpondery (muxpondery),  
+    które zbierają dane optyczne od klientów, terminują na postaś elektryczną, 
+    następnie muxują i konwertują ponownie na optykę
+
+

@@ -1,0 +1,43 @@
+\usepackage{titlesec}
+\titlelabel{\thetitle.\quad}
+% \AddToHook{cmd/section/before}{\clearpage}
+\usepackage[title,toc,page]{appendix}
+\usepackage{lipsum}
+\usepackage{pdflscape}
+\makeatletter
+\newcommand{\newgeometryfull}[1]{%
+  \clearpage
+  \Gm@restore@org
+  \Gm@initnewgm
+ % \Gm@newgmtrue
+  \setkeys{Gm}{#1}%
+%  \Gm@newgmfalse
+  \Gm@process
+  \ifnum\mag=\@m\else\Gm@magtooffset\fi
+  \Gm@changelayout
+  \Gm@showparams{newgeometry}}%
+\makeatother
+
+
+\newcommand*\useBigLandscape{%
+    \newgeometryfull{a3paper,landscape, width=360mm, top = 20mm, bottom = 25mm}
+    % \newgeometry{a3paper, landscape}
+    % set the correct dimension for the PDF viewer
+    \pdfpageheight=297mm
+    \pdfpagewidth=420mm
+}
+
+\newcommand*\useNormalLandscape{%
+    \newgeometryfull{a4paper,landscape, width=257mm, top = 15mm, bottom = 15mm}
+    % set the correct dimension for the PDF viewer
+    \pdfpageheight=210mm
+    \pdfpagewidth=297mm
+}
+
+\newcommand*\useportrait{%
+    \restoregeometry
+    \clearpage
+    % set the correct dimension for the PDF viewer
+    \pdfpageheight=297mm
+    \pdfpagewidth=210mm
+}
